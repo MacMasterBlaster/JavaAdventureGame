@@ -15,4 +15,5 @@ public class CharacterController{
     public static int xp; // character exp value or players current exp amount
     public static String charClass; // sets default values for maxHealth, maxMana, & damageMod
 
+    //TODO look up what interfaces are in java.
 }

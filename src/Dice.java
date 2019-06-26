@@ -1,3 +1,4 @@
+
 // *****************************************************
 // Die.java
 //
@@ -5,41 +6,43 @@
 // Will also be used for all random number generation.
 // *****************************************************
 
-import java.util.*;
+import java.util.Scanner;
+import java.util.Random;;
 
-public class Dice{
+public class Dice {
     static Random rand = new Random();
 
-    public static int RollDamage(int die, int damageMod){
+    public static int RollDamage(int die, int damageMod) {
         int i = rand.nextInt(die + 1);
-        while (i == 0){
+        while (i == 0) {
             i = rand.nextInt(die + 1);
         }
         return i + damageMod;
     }
 
-    public static int RollAttack(int die, int attackMod){
+    public static int RollAttack(int die, int attackMod) {
         int i = rand.nextInt(die + 1);
-        while (i == 0){
+        while (i == 0) {
             i = rand.nextInt(die + 1);
         }
         return i + attackMod;
     }
-             
-    /*  
-        public static void main(String[] args){
+
+    // /*
+    public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         System.out.println("Test RollAttack Method:");
         System.out.println("Attack mod value:");
         int attackMod = scan.nextInt();
         System.out.println("Attack Roll: " + RollAttack(20, attackMod) + "\n");
-        
+
         System.out.println("Test RollDamage Method:");
         System.out.println("Damage die type:");
         int damageDie = scan.nextInt();
         System.out.println("DamageMod value:");
         int damageMod = scan.nextInt();
         System.out.println("Damage Roll: " + RollDamage(damageDie, damageMod));
-        } 
-    */
+        scan.close();
+    }
+    // */
 }
