@@ -7,7 +7,17 @@
 package java_adventure;
 
 public class Room {
-    private boolean nDoor, sDoor, wDoor, eDoor;
+
+    private boolean nDoor, sDoor, wDoor, eDoor, hasEnemy;
+
+    public Room(boolean hasNDoor, boolean hasSDoor, boolean hasWDoor, boolean hasEDoor, boolean _hasEnemy){
+        nDoor = hasNDoor;
+        sDoor = hasSDoor;
+        wDoor = hasWDoor;
+        eDoor = hasEDoor;
+        hasEnemy = _hasEnemy;
+    }
+
 //north door properties
     public boolean getnDoor() {
         return nDoor;
@@ -36,4 +46,7 @@ public class Room {
     public void seteDoor(boolean doesExist) {
         eDoor = doesExist;
     }
+
+//TODO: toString() required
+
 }

@@ -7,7 +7,7 @@
 // *****************************************************
 package java_adventure;
 
-import java.util.Scanner;
+//import java.util.Scanner;
 import java.util.Random;;
 
 public class Dice {
@@ -29,7 +29,7 @@ public class Dice {
         return i + attackMod;
     }
 
-    // /*
+    /*
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         System.out.println("Test RollAttack Method:");
@@ -45,5 +45,5 @@ public class Dice {
         System.out.println("Damage Roll: " + RollDamage(damageDie, damageMod));
         scan.close();
     }
-    // */
+    */
 }

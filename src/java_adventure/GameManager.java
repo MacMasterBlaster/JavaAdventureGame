@@ -44,4 +44,6 @@ public class GameManager{
         newCharacter.setAttackMod(100);
         newCharacter.setCharClass("God");
     }
+
+    //TODO: Make enemy types
 }

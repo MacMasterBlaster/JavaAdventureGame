@@ -24,14 +24,13 @@ public class InputManager {
         System.out.println("What would you like to do?");
         Scanner scan = new Scanner(System.in);
         boolean isValid = false;
-        boolean hasDoor = true;
         while (isValid == false) {
             String input = scan.nextLine();
             switch (input.toLowerCase()) {
             case "north":
             case "n":
                 isValid = true;
-                if (currentRoom.nDoor) {
+                if (currentRoom.getnDoor()) {
                     System.out.println("You move north");
                 }
                 else{
@@ -41,7 +40,7 @@ public class InputManager {
             case "south":
             case "s":
                 isValid = true;
-                if (currentRoom.sDoor) {
+                if (currentRoom.getsDoor()) {
                     System.out.println("You move south");
                 }
                 else{
@@ -51,7 +50,7 @@ public class InputManager {
             case "east":
             case "e":
                 isValid = true;
-                if (currentRoom.eDoor) {
+                if (currentRoom.geteDoor()) {
                     System.out.println("You move east");
                 }
                 else{
@@ -61,7 +60,7 @@ public class InputManager {
             case "west":
             case "w":
                 isValid = true;
-                if (currentRoom.wDoor) {
+                if (currentRoom.getwDoor()) {
                     System.out.println("You move west");
                 }
                 else{

@@ -11,11 +11,9 @@ package java_adventure;
 public class CharacterController{
     private String name; // the name of the character
     private int health, maxHealth; // current health and max possible health
-    //private int mana, maxMana; // current mana and max possible mana.
     private int armorClass; // the threshold for hitting with an attack
     private int damageDie, damageMod, attackMod; // die type rolled & modifiers added to character attacks
-    // private int xp; // character exp value or players current exp amount
-    private String charClass; // sets default values for maxHealth, maxMana, & damageMod
+    private String charClass; // sets default values for maxHealth & damageMod
 
     
     public CharacterController(String newName, String newCharClass){
