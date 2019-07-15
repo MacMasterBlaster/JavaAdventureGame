@@ -23,8 +23,6 @@ public class CharacterController{
         charClass = newCharClass;
         health = 10;
         maxHealth = 10;
-        // mana = 0;
-        // maxMana = 0;
         armorClass = 10;
         damageDie = 4;
         damageMod = 0;

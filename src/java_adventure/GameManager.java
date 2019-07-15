@@ -10,11 +10,11 @@ public class GameManager{
 
     public static void main(String[] args){
         CharacterController player = new CharacterController("Mac", "Wizard");
-        MakeGod(player);
+        MakeGod(player, player.getName());
         System.out.println(player.toString());
     }
 
-    public static void MakeWizard(CharacterController newCharacter) {
+    public static void MakeWizard(CharacterController newCharacter, String name) {
         newCharacter.setHealth(15);
         newCharacter.setMaxHealth(15);
         newCharacter.setArmorClass(8);
@@ -24,7 +24,7 @@ public class GameManager{
         newCharacter.setCharClass("Wizard");
     }
 
-    public static void MakeWarrior(CharacterController newCharacter) {
+    public static void MakeWarrior(CharacterController newCharacter, String name) {
         newCharacter.setHealth(30);
         newCharacter.setMaxHealth(30);
         newCharacter.setArmorClass(15);
@@ -35,7 +35,7 @@ public class GameManager{
     }
 
     // For play testing only!
-    public static void MakeGod(CharacterController newCharacter) {
+    public static void MakeGod(CharacterController newCharacter, String name) {
         newCharacter.setHealth(1000);
         newCharacter.setMaxHealth(1000);
         newCharacter.setArmorClass(100);
