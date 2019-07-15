@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - GameManager",
+            "request": "launch",
+            "mainClass": "java_adventure.GameManager",
+            "projectName": "JavaAdventure_508aef7b"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - InputManager",
             "request": "launch",
             "mainClass": "InputManager",

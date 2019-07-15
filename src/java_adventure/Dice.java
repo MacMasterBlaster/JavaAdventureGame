@@ -5,6 +5,7 @@
 // A controller for "rolling" dice for attacks and for damage.
 // Will also be used for all random number generation.
 // *****************************************************
+package java_adventure;
 
 import java.util.Scanner;
 import java.util.Random;;
