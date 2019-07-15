@@ -47,6 +47,6 @@ public class Room {
         eDoor = doesExist;
     }
 
-//TODO: toString() required
+//TODO: toString() required. Should build room image.
 
 }
