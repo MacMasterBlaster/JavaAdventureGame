@@ -49,15 +49,6 @@ public class Room {
         exits[2] = nextRoom;
     }
 
-    // west door properties
-    public Room getwDoor() {
-        return exits[4];
-    }
-
-    public void setwDoor(Room nextRoom) {
-        exits[4] = nextRoom;
-    }
-
     // east door properties
     public Room geteDoor() {
         return exits[1];
@@ -65,6 +56,15 @@ public class Room {
 
     public void seteDoor(Room nextRoom) {
         exits[1] = nextRoom;
+    }
+
+    // west door properties
+    public Room getwDoor() {
+        return exits[3];
+    }
+
+    public void setwDoor(Room nextRoom) {
+        exits[3] = nextRoom;
     }
 
     // monster Properties
