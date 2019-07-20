@@ -69,20 +69,20 @@ public class GameManager{
         Room end = new Room();
         //Set all room linkages
         start.seteDoor(moveAssit);
-        moveAssit.setExists(fight, null, null, start);
-        fight.setExists(empty1, null, moveAssit, null);
+        moveAssit.setExits(fight, null, null, start);
+        fight.setExits(empty1, null, moveAssit, null);
         fight.setHasEnemy(true);
-        empty1.setExists(empty3, empty2, fight, null);
-        empty2.setExists(slime1, slime2, null, empty1);
-        empty3.setExists(null, slime1, empty1, null);
-        slime1.setExists(null, chest2, empty2, empty3);
-        slime2.setExists(null, null, mimic, empty2);
-        chest1.setExists(null, mimic, null, null);
-        chest2.setExists(null, slime1, null, null);
-        mimic.setExists(slime2, null, spider, null);
-        spider.setExists(mimic, empty4, null, null);
-        empty4.setExists(boss, null, null, empty4);
-        boss.setExists(treasure, null, empty4, null);
+        empty1.setExits(empty3, empty2, fight, null);
+        empty2.setExits(slime1, slime2, null, empty1);
+        empty3.setExits(null, slime1, empty1, null);
+        slime1.setExits(null, chest2, empty2, empty3);
+        slime2.setExits(null, null, mimic, empty2);
+        chest1.setExits(null, mimic, null, null);
+        chest2.setExits(null, slime1, null, null);
+        mimic.setExits(slime2, null, spider, null);
+        spider.setExits(mimic, empty4, null, null);
+        empty4.setExits(boss, null, null, empty4);
+        boss.setExits(treasure, null, empty4, null);
         //Add all rooms to the dungeon list
         dungeon.add(start);
         dungeon.add(moveAssit);
