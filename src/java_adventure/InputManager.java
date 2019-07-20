@@ -151,24 +151,34 @@ public class InputManager {
         while (!isValid) {
             String classAnswer = scan.nextLine();
             switch (classAnswer.toLowerCase()) {
+            case "p":
             case "pen":
                 isValid = true;
                 gm.MakeWizard(gm.player, gm.player.getName());
                 System.out
-                        .println("Congratulations! Your a wizard " + gm.player.getName() + "! Here's your free wand. ");
+                        .println("Congratulations! Your a wizard " + gm.player.getName() + "! Here's your free wand.\n");
                 break;
+            case "s":
             case "sword":
                 isValid = true;
                 gm.MakeWarrior(gm.player, gm.player.getName());
                 System.out.println("Might makes right! I always say. Well " + gm.player.getName()
-                        + ", here's your free sword and shield.");
+                        + ", here's your free sword and shield.\n");
+                break;
+            case "c":
+            case "code":
+                isValid = true;
+                gm.MakeGod(gm.player, gm.player.getName());
+                System.out.println("You must be a programmer " + gm.player.getName()
+                        + ". Better start debugging.\n");
                 break;
             default:
                 System.out.println("Um... okay. But \"" + classAnswer.toLowerCase() + "\" wasn't one of the choices. "
-                        + "Which do do you think is mightier? The PEN or the SWORD?");
+                        + "Which do you think is mightier? The PEN or the SWORD?");
             }
         }
-        System.out.println("Well now that you have provided all the necessary information "
+        System.out.println("Your current stats are: " + gm.player.toString());
+        System.out.println("Now that you have provided all the necessary information "
                 + "\nand waived the Adventurers' Guild of all liability in the case of your death or dismemberment."
                 + "\nWe wish you luck in your conquest of the dungeon of the Terrible Javalang.");
         scan.nextLine();

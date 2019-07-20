@@ -15,6 +15,17 @@ public class CharacterController {
     private int damageDie, damageMod, attackMod; // die type rolled & modifiers added to character attacks
     private String charClass; // sets default values for maxHealth & damageMod
     private Dice d;
+    
+    public CharacterController() {
+        name = "Nobody";
+        charClass = "N/A";
+        health = 10;
+        maxHealth = 10;
+        armorClass = 10;
+        damageDie = 4;
+        damageMod = 0;
+        attackMod = 0;
+    }
 
     public CharacterController(String newName, String newCharClass) {
         name = newName;

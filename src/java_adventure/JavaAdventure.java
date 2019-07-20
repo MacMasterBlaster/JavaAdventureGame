@@ -9,7 +9,7 @@ public class JavaAdventure {
         InputManager im = new InputManager(gm);
         im.Welcome();
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor(); // clears the console window.
-        gm.RoomCreationTest();
+        gm.CreateDungeon();
         im.setCurrentRoom(gm.dungeon.get(0));
         while (gm.player.getHealth() > 0) {
             im.VerifyInput(im.getCurrentRoom());
