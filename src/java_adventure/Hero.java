@@ -2,7 +2,7 @@
 //
 // Author: Noah Wagstaff
 // Defines the hero sprite
-package GameResources;
+package java_adventure;
 
 import java.util.Scanner;
 
@@ -23,14 +23,6 @@ public class Hero {
     String W4 = "¿";
     String e1 = blank, e2 = blank, e3 = blank, e4 = blank, e5 = blank;
     String h1, h2, h3, h4, h5;
-    Scanner scan = new Scanner(System.in);
-    
-    String charClass;
-    
-    System.out.println("Enter character class: ");
-    charClass = scan.nextLine();
-    
-    
     switch (charClass)
     {
         case "WARRIOR":

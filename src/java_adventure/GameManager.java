@@ -54,7 +54,7 @@ public class GameManager {
     }
 
     // endregion
-    
+
     // region Enemies
     public void MakeGoblin(CharacterController newCharacter, String name) {
         newCharacter.setHealth(10);
@@ -126,20 +126,36 @@ public class GameManager {
         Room end = new Room();
         // Set all room linkages
         start.seteDoor(moveAssit);
+        start.setRoomImage(null);
         moveAssit.setExits(fight, null, null, start);
+        moveAssit.setRoomImage(null);
         fight.setExits(empty1, null, moveAssit, null);
+        fight.setRoomImage(null);
         //fight.setHasEnemy(true);// this could be changed to a enemy object instead.
+        //fight.setRoomImage(null);
         empty1.setExits(empty3, empty2, fight, null);
+        empty1.setRoomImage(null);
         empty2.setExits(slime1, slime2, null, empty1);
+        empty2.setRoomImage(null);
         empty3.setExits(null, slime1, empty1, null);
+        empty3.setRoomImage(null);
         slime1.setExits(null, chest2, empty2, empty3);
+        slime1.setRoomImage(null);
         slime2.setExits(null, null, mimic, empty2);
+        slime2.setRoomImage(null);
         chest1.setExits(null, mimic, null, null);
+        chest1.setRoomImage(null);
         chest2.setExits(null, slime1, null, null);
+        chest2.setRoomImage(null);
         mimic.setExits(slime2, null, spider, null);
+        mimic.setRoomImage(null);
         spider.setExits(mimic, empty4, null, null);
+        spider.setRoomImage(null);
         empty4.setExits(boss, null, null, empty4);
+        empty4.setRoomImage(null);
         boss.setExits(treasure, null, empty4, null);
+        boss.setRoomImage(null);
+        
         // Add all rooms to the dungeon list
         dungeon.add(start);
         dungeon.add(moveAssit);
