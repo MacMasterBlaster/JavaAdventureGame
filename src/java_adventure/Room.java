@@ -11,7 +11,8 @@ public class Room {
     private Room[] exits = new Room[4];
     private CharacterController monster;
     private boolean hasChest;
-    
+    private RoomImage roomImage;
+
     // Room Contructor
     public Room() {
         exits[0] = null; // north
@@ -20,6 +21,7 @@ public class Room {
         exits[3] = null; // west
         monster = null;
         hasChest = false;
+        roomImage = null;
     }
 
     public void setExits(Room nRoom, Room eRoom, Room sRoom, Room wRoom) {
@@ -83,6 +85,15 @@ public class Room {
 
     public void setHasChest(boolean _hasChest) {
         hasChest = _hasChest;
+    }
+
+    // The properties for setting the rooms text based image
+    public RoomImage getRoomImage() {
+        return roomImage;
+    }
+
+    public void setRoomImage(RoomImage temp) {
+        roomImage = temp;
     }
 
     // TODO: toString() required. Should build room image.
