@@ -6,14 +6,12 @@
 // *****************************************************
 package java_adventure;
 
-public class GameManager{
+import java.util.ArrayList;
 
-    public static void main(String[] args){
-        CharacterController player = new CharacterController("Mac", "Wizard");
-        MakeGod(player, player.getName());
-        System.out.println(player.toString());
-    }
+public class GameManager {
+    ArrayList<Room> dungeon = new ArrayList<Room>();
 
+    // region Player Classes
     public static void MakeWizard(CharacterController newCharacter, String name) {
         newCharacter.setHealth(15);
         newCharacter.setMaxHealth(15);
@@ -45,7 +43,9 @@ public class GameManager{
         newCharacter.setCharClass("God");
     }
 
-   public static void MakeGoblin(CharacterController newCharacter, String name) {
+    // endregion
+    // region Enemies
+    public static void MakeGoblin(CharacterController newCharacter, String name) {
         newCharacter.setHealth(10);
         newCharacter.setMaxHealth(10);
         newCharacter.setArmorClass(3);
@@ -54,7 +54,7 @@ public class GameManager{
         newCharacter.setAttackMod(3);
         newCharacter.setCharClass("Goblin");
     }
-   
+
     public static void MakeSlime(CharacterController newCharacter, String name) {
         newCharacter.setHealth(25);
         newCharacter.setMaxHealth(25);
@@ -64,8 +64,8 @@ public class GameManager{
         newCharacter.setAttackMod(4);
         newCharacter.setCharClass("Slime");
     }
-   
-     public static void MakeMimic(CharacterController newCharacter, String name) {
+
+    public static void MakeMimic(CharacterController newCharacter, String name) {
         newCharacter.setHealth(18);
         newCharacter.setMaxHealth(18);
         newCharacter.setArmorClass(10);
@@ -74,7 +74,8 @@ public class GameManager{
         newCharacter.setAttackMod(10);
         newCharacter.setCharClass("Mimic");
     }
-     public static void MakeSpider(CharacterController newCharacter, String name) {
+
+    public static void MakeSpider(CharacterController newCharacter, String name) {
         newCharacter.setHealth(25);
         newCharacter.setMaxHealth(25);
         newCharacter.setArmorClass(20);
@@ -83,8 +84,8 @@ public class GameManager{
         newCharacter.setAttackMod(0);
         newCharacter.setCharClass("Spider");
     }
-   
-     public static void MakeKnight(CharacterController newCharacter, String name) {
+
+    public static void MakeKnight(CharacterController newCharacter, String name) {
         newCharacter.setHealth(40);
         newCharacter.setMaxHealth(40);
         newCharacter.setArmorClass(22);
@@ -92,15 +93,12 @@ public class GameManager{
         newCharacter.setDamageMod(6);
         newCharacter.setAttackMod(8);
         newCharacter.setCharClass("Knight");
-//endregion
+    }
+    // endregion
 
-    //TODO: Make enemy types
+    // TODO: Make GameState switch case, or do while loop for when game should end.
 
-    //TODO: Make GameState switch case, or do while loop for when game should end.
-
-    //TODO: Create Room array manager
-
-    public void RoomCreationTest(){
+    public void RoomCreationTest() {
         Room start = new Room();
         Room moveAssit = new Room();
         Room fight = new Room();
@@ -117,7 +115,7 @@ public class GameManager{
         Room boss = new Room();
         Room treasure = new Room();
         Room end = new Room();
-        //Set all room linkages
+        // Set all room linkages
         start.seteDoor(moveAssit);
         moveAssit.setExits(fight, null, null, start);
         fight.setExits(empty1, null, moveAssit, null);
@@ -133,7 +131,7 @@ public class GameManager{
         spider.setExits(mimic, empty4, null, null);
         empty4.setExits(boss, null, null, empty4);
         boss.setExits(treasure, null, empty4, null);
-        //Add all rooms to the dungeon list
+        // Add all rooms to the dungeon list
         dungeon.add(start);
         dungeon.add(moveAssit);
         dungeon.add(fight);
@@ -151,9 +149,8 @@ public class GameManager{
         dungeon.add(treasure);
         dungeon.add(end);
     }
-            
-            
-    //TODO: Create/balance enemy stats
-    //Boss/Knight > Spider > > Mimic > Slime > Goblin
-           
+
+    // TODO: Create/balance enemy stats
+    // Boss/Knight > Spider > > Mimic > Slime > Goblin
+
 }
