@@ -1,16 +1,17 @@
 package java_adventure;
 
 public class JavaAdventure {
+
     public static void main(String[] args) {
-        InputManager im = new InputManager();
         GameManager gm = new GameManager();
-        CharacterController player = new CharacterController("Mac", "Wizard");
-        gm.MakeGod(player, player.getName());
+        InputManager im = new InputManager(gm);
+        im.Welcome();
         gm.RoomCreationTest();
         im.setCurrentRoom(gm.dungeon.get(0));
-        while (player.getHealth() > 0) {
+        while (gm.player.getHealth() > 0) {
             im.VerifyInput(im.getCurrentRoom());
         }
+        im.GameOver();
     }
 
 }

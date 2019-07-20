@@ -10,9 +10,10 @@ import java.util.ArrayList;
 
 public class GameManager {
     ArrayList<Room> dungeon = new ArrayList<Room>();
+    CharacterController player = new CharacterController("Nobody", "None");
 
     // region Player Classes
-    public static void MakeWizard(CharacterController newCharacter, String name) {
+    public void MakeWizard(CharacterController newCharacter, String name) {
         newCharacter.setHealth(15);
         newCharacter.setMaxHealth(15);
         newCharacter.setArmorClass(8);
@@ -22,7 +23,7 @@ public class GameManager {
         newCharacter.setCharClass("Wizard");
     }
 
-    public static void MakeWarrior(CharacterController newCharacter, String name) {
+    public void MakeWarrior(CharacterController newCharacter, String name) {
         newCharacter.setHealth(30);
         newCharacter.setMaxHealth(30);
         newCharacter.setArmorClass(15);
@@ -33,7 +34,7 @@ public class GameManager {
     }
 
     // For play testing only!
-    public static void MakeGod(CharacterController newCharacter, String name) {
+    public void MakeGod(CharacterController newCharacter, String name) {
         newCharacter.setHealth(1000);
         newCharacter.setMaxHealth(1000);
         newCharacter.setArmorClass(100);
@@ -45,7 +46,7 @@ public class GameManager {
 
     // endregion
     // region Enemies
-    public static void MakeGoblin(CharacterController newCharacter, String name) {
+    public void MakeGoblin(CharacterController newCharacter, String name) {
         newCharacter.setHealth(10);
         newCharacter.setMaxHealth(10);
         newCharacter.setArmorClass(3);
@@ -55,7 +56,7 @@ public class GameManager {
         newCharacter.setCharClass("Goblin");
     }
 
-    public static void MakeSlime(CharacterController newCharacter, String name) {
+    public void MakeSlime(CharacterController newCharacter, String name) {
         newCharacter.setHealth(25);
         newCharacter.setMaxHealth(25);
         newCharacter.setArmorClass(20);
@@ -65,7 +66,7 @@ public class GameManager {
         newCharacter.setCharClass("Slime");
     }
 
-    public static void MakeMimic(CharacterController newCharacter, String name) {
+    public void MakeMimic(CharacterController newCharacter, String name) {
         newCharacter.setHealth(18);
         newCharacter.setMaxHealth(18);
         newCharacter.setArmorClass(10);
@@ -75,7 +76,7 @@ public class GameManager {
         newCharacter.setCharClass("Mimic");
     }
 
-    public static void MakeSpider(CharacterController newCharacter, String name) {
+    public void MakeSpider(CharacterController newCharacter, String name) {
         newCharacter.setHealth(25);
         newCharacter.setMaxHealth(25);
         newCharacter.setArmorClass(20);
@@ -85,7 +86,7 @@ public class GameManager {
         newCharacter.setCharClass("Spider");
     }
 
-    public static void MakeKnight(CharacterController newCharacter, String name) {
+    public void MakeKnight(CharacterController newCharacter, String name) {
         newCharacter.setHealth(40);
         newCharacter.setMaxHealth(40);
         newCharacter.setArmorClass(22);
@@ -96,8 +97,7 @@ public class GameManager {
     }
     // endregion
 
-    // TODO: Make GameState switch case, or do while loop for when game should end.
-
+ 
     public void RoomCreationTest() {
         Room start = new Room();
         Room moveAssit = new Room();
@@ -119,7 +119,7 @@ public class GameManager {
         start.seteDoor(moveAssit);
         moveAssit.setExits(fight, null, null, start);
         fight.setExits(empty1, null, moveAssit, null);
-        fight.setHasEnemy(true);
+        fight.setHasEnemy(true);// this could be changed to a enemy object instead.
         empty1.setExits(empty3, empty2, fight, null);
         empty2.setExits(slime1, slime2, null, empty1);
         empty3.setExits(null, slime1, empty1, null);

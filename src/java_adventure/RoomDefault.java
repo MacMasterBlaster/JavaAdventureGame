@@ -15,57 +15,52 @@ public class RoomDefault {
         String Monster5 = "MMMMMM";
         String BlankM = "      ";
         
-        String M1, M2, M3, M4, M5;
+        String H1, H2, H3, H4, H5;
         
-        M1 = Monster1;
-        M2 = Monster2;
-        M3 = Monster3;
-        M4 = Monster4;
-        M5 = Monster5;
+        H1 = Monster1;
+        H2 = Monster2;
+        H3 = Monster3;
+        H4 = Monster4;
+        H5 = Monster5;
+        
+        // create prompt strings to be inserted into room string
+        String P1 = "Enter north(n), east(e), south(s), or west(w) ";
+        String P2 = "to go through that door. Enter STATUS to check ";
+        String P3 = "your character's status, leave to run away, or ";
+        String P4 = "FIGHT to fight: ";
+        String P5 = " ";
+               
         
         
         
-        System.out.println("******************" + "************" + "******************" 
-                          +"\t You enter a new room. in front of you is an" 
-                        +"\n/                                              \\"
-                          +"\t empty room with no doors."
-                        +"\n\\                                              /"
-                          +"\t There are 4 doors to The NORTH, SOUTH, EAST, and WEST."
-                        +"\n/                                              \\"
-                          +"\t YOU ARE TRAPPED FOREVER"
-                        +"\n\\                                              /"
-                        +"\t text."
-                        +"\n/                                              \\"
-                          +"\t text."
-                        +"\n\\                    " + M1 + "                    /"
-                          +"\t text."
-                        +"\n" + "/" + "                    " + M2 + "                    " + "\\"
-                          +"\t text."
-                        +"\n" + "\\" + "                    " + M3 + "                    " + "/"
-                          +"\t text"
-                        +"\n" + "/" + "                    " + M4 + "                    " + "\\"
-                          +"\t text."
-                        +"\n" + "\\" + "                    " + M5 + "                    " + "/"
-                          +"\t text"
-                        +"\n/                                              \\"
-                          +"\t text."
-                        +"\n\\                                              /"
-                          +"\t text"
-                        +"\n/                                              \\"
-                          +"\t text."
-                        +"\n\\                                              /"
-                          +"\tEnter NORTH, EAST, SOUTH, or WEST to go through that door. "
-                         +"\n/                                              \\"
-                          +"\tEnter STATUS to check your character's status, leave to run away, "
-                        +"\n\\                                              /"
-                          +"\tor FIGHT to fight: "
-                        + "\n******************" + "************" + "******************"
-                          +"\t text"
-        //+ "\nEnter NORTH, EAST, SOUTH, or WEST to go through that door. "
-        //+ "Enter STATUS to check your character's status, leave to run away, "
-        //+ "\nor FIGHT to fight. "
-        //+ "choose what to do next based on said prompts"
-        );
+        System.out.println("   ******************" + "************" + "******************" 
+                          +"\tYou enter a new room. in front of you is an" 
+                        +"\n   |                                              |"
+                          +"\tempty room with no doors."
+                        +"\n   |                                              |"
+                          +"\tThere are 4 doors to The NORTH, SOUTH, EAST, and WEST."
+                        +"\n   |                                              |"
+                          +"\tYOU ARE TRAPPED FOREVER"
+                        +"\n   |                                              |"
+                        +"\n   |                                              |"
+                        +"\n   |                    " + H1 + "                    |"
+                        +"\n   " + "|" + "                    " + H2 + "                    " + "|"
+                        +"\n   " + "|" + "                    " + H3 + "                    " + "|"
+                        +"\n   " + "|" + "                    " + H4 + "                    " + "|"
+                        +"\n   " + "|" + "                    " + H5 + "                    " + "|"                          
+                        +"\n   |                                              |"
+                        +"\n   |                                              |"
+
+                        +"\n   |                                              |"
+                          +"\t" + P1
+                        +"\n   |                                              |"
+                          +"\t" + P2
+                         +"\n   |                                              |"
+                          +"\t" + P3
+                        +"\n   |                                              |"
+                          +"\t" + P4
+                        + "\n   ******************" + "************" + "******************"
+                          +"\t" + P5);
         
     }
     
