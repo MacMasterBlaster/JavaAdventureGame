@@ -7,11 +7,20 @@
 package java_adventure;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class GameManager {
     ArrayList<Room> dungeon = new ArrayList<Room>();
     CharacterController player = new CharacterController("Nobody", "None");
+    private boolean inCombat = false;
 
+    public boolean getInCombat() {
+        return inCombat;
+    }
+    
+    public void setInCombat(boolean temp) {
+        inCombat = temp;
+    }
     // region Player Classes
     public void MakeWizard(CharacterController newCharacter, String name) {
         newCharacter.setHealth(15);
@@ -97,7 +106,6 @@ public class GameManager {
     }
     // endregion
 
- 
     public void RoomCreationTest() {
         Room start = new Room();
         Room moveAssit = new Room();
@@ -119,7 +127,7 @@ public class GameManager {
         start.seteDoor(moveAssit);
         moveAssit.setExits(fight, null, null, start);
         fight.setExits(empty1, null, moveAssit, null);
-        fight.setHasEnemy(true);// this could be changed to a enemy object instead.
+        //fight.setHasEnemy(true);// this could be changed to a enemy object instead.
         empty1.setExits(empty3, empty2, fight, null);
         empty2.setExits(slime1, slime2, null, empty1);
         empty3.setExits(null, slime1, empty1, null);
@@ -150,6 +158,88 @@ public class GameManager {
         dungeon.add(end);
     }
 
+    public void StartCombat(CharacterController player, CharacterController monster) {
+        int playerIntiative = 0, monsterIntiative = 0;
+        playerIntiative = player.RollInitiative();
+        monsterIntiative = monster.RollInitiative();
+        boolean inCombat = true;
+        System.out.println("Entered combat with " + monster.getName() + "!");
+        while (inCombat == true) {
+            {
+                if (playerIntiative > monsterIntiative) {
+                    System.out.println("What would you like to do?");
+                    Scanner scan = new Scanner(System.in);
+                    String input = scan.nextLine();
+                    switch (input.toLowerCase()) {
+                    case "attack":
+                    case "a":
+                        // Player attacks first
+                        Attack(player, monster);
+                        break;
+                    case "leave":
+                    case "l":
+                        if (player.RollInitiative() > monster.RollInitiative()) {
+                            System.out.println("You escaped!");
+                            //TODO: player returns to previous room
+                            inCombat = false;
+                        } else {
+                            System.out.println(monster.getName() + "prevents your escape!");
+                        }
+                    default:
+                        System.out.println("You do not attack.");
+                        break;
+                    }
+                    // monster attack
+                    Attack(monster, player);
+                } else {
+                    // monster attacks first
+                    Attack(monster, player);
+                    // then player gets to respond
+                    System.out.println("What would you like to do?");
+                    Scanner scan = new Scanner(System.in);
+                    String input = scan.nextLine();
+                    switch (input.toLowerCase()) {
+                    case "attack":
+                    case "a":
+                        // Player attack
+                        Attack(player, monster);
+                        break;
+                    case "leave":
+                    case "l":
+                        if (player.RollInitiative() > monster.RollInitiative()) {
+                            System.out.println("You escaped!");
+                            //TODO: player returns to previous room
+                            inCombat = false;
+                        } else {
+                            System.out.println(monster.getName() + "prevents your escape!");
+                        }
+                    default:
+                        System.out.println("You do not attack.");
+                        break;
+                    }
+                }
+            }
+        }
+        inCombat = false;
+    }
+
+    private void Attack(CharacterController attacker, CharacterController target) {
+        if (attacker.getAttackRoll() > target.getArmorClass()) {
+            int damage = attacker.getDamageRoll();
+            target.setHealth(target.getHealth() - damage);
+            System.out.println(attacker.getName() + " did " + damage + "damage to " + target.getName());
+            inCombat = true;
+        }
+        if (target.getHealth() <= 0) {
+            System.out.println(attacker.getName() + " defeated " + target.getName() + "!");
+            //TODO: if target is a monster the monster needs to be removed form the current room.
+            inCombat = false;
+        } else {
+            System.out.println(attacker.getName() + "missed!");
+            inCombat = true;
+        }
+
+    }
     // TODO: Create/balance enemy stats
     // Boss/Knight > Spider > > Mimic > Slime > Goblin
 

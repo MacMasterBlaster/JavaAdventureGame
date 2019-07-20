@@ -9,14 +9,16 @@ package java_adventure;
 public class Room {
 
     private Room[] exits = new Room[4];
-    private boolean hasEnemy, hasChest;
+    private CharacterController monster;
+    private boolean hasChest;
+    
     // Room Contructor
     public Room() {
         exits[0] = null; // north
         exits[1] = null; // east
         exits[2] = null; // south
         exits[3] = null; // west
-        hasEnemy = false;
+        monster = null;
         hasChest = false;
     }
 
@@ -25,7 +27,7 @@ public class Room {
         exits[1] = eRoom; // east
         exits[2] = sRoom; // south
         exits[3] = wRoom; // west
-        hasEnemy = false;
+        monster = null;
         hasChest = false;
     }
 
@@ -65,16 +67,16 @@ public class Room {
         exits[1] = nextRoom;
     }
 
-    // hasEnemyProperties
-    public boolean getHasEnemy() {
-        return hasEnemy;
+    // monster Properties
+    public CharacterController getMonster() {
+        return monster;
     }
 
-    public void setHasEnemy(boolean _hasEnemy) {
-        hasEnemy = _hasEnemy;
+    public void setMonster(CharacterController _monster) {
+        monster = _monster;
     }
 
-    // hasEnemyProperties
+    // chest properties
     public boolean getHasChest() {
         return hasChest;
     }

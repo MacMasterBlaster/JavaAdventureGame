@@ -13,7 +13,7 @@ import java.util.Random;;
 public class Dice {
     static Random rand = new Random();
 
-    public static int RollDamage(int die, int damageMod) {
+    public int RollDamage(int die, int damageMod) {
         int i = rand.nextInt(die + 1);
         while (i == 0) {
             i = rand.nextInt(die + 1);
@@ -21,14 +21,20 @@ public class Dice {
         return i + damageMod;
     }
 
-    public static int RollAttack(int die, int attackMod) {
+    public int RollAttack(int die, int attackMod) {
         int i = rand.nextInt(die + 1);
         while (i == 0) {
             i = rand.nextInt(die + 1);
         }
         return i + attackMod;
     }
-    
+    public int RollInitiative(int die, int mod) {
+        int i = rand.nextInt(die + 1);
+        while (i == 0) {
+            i = rand.nextInt(die + 1);
+        }
+        return i + mod;
+    }
     /*
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);

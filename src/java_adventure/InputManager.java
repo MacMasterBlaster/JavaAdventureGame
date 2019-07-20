@@ -30,7 +30,7 @@ public class InputManager {
     }
 
     public Room getPreviousRoom() {
-        return currentRoom;
+        return previousRoom;
     }
 
     public void setPreviousRoom(Room _previousRoom) {
@@ -38,7 +38,6 @@ public class InputManager {
     }
 
     // Compares user input against possible acceptable values.
-    // TODO Figure out how to define which inputs are valid for a given room.
     public void VerifyInput(Room currentRoom) {
         System.out.println("What would you like to do?");
         Scanner scan = new Scanner(System.in);
