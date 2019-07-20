@@ -10,8 +10,7 @@ import java.util.Scanner;
 
 public class Hero {
      
-    public static void main(String[] args) {
-        
+public String HeroSprite(){        
          // initialize and define strings to represent the hero sprite
     String F1 = "|";
     String F2 = "|";
