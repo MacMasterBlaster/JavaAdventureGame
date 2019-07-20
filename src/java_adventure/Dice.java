@@ -28,7 +28,7 @@ public class Dice {
         }
         return i + attackMod;
     }
-
+    
     /*
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
