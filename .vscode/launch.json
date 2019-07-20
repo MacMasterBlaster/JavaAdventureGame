@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - ConsoleClearTest",
+            "request": "launch",
+            "mainClass": "java_adventure.ConsoleClearTest",
+            "projectName": "JavaAdventure_508aef7b"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - RoomDefault",
             "request": "launch",
             "mainClass": "java_adventure.RoomDefault",

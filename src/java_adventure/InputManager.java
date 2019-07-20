@@ -171,6 +171,7 @@ public class InputManager {
         System.out.println("Well now that you have provided all the necessary information "
                 + "\nand waived the Adventurers' Guild of all liability in the case of your death or dismemberment."
                 + "\nWe wish you luck in your conquest of the dungeon of the Terrible Javalang.");
+        scan.nextLine();
     }
 
     // This method should be called on player death.
