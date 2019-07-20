@@ -54,6 +54,7 @@ public class GameManager {
     }
 
     // endregion
+    
     // region Enemies
     public void MakeGoblin(CharacterController newCharacter, String name) {
         newCharacter.setHealth(10);

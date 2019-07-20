@@ -53,7 +53,7 @@ public class InputManager {
                     previousRoom = currentRoom;
                     currentRoom = currentRoom.getnDoor();
                 } else {
-                    System.out.println("You can't do that. Try a different direction or actions.");
+                    System.out.println("You can't do that. Try a different direction or action.");
                 }
                 break;
             case "south":
@@ -64,7 +64,7 @@ public class InputManager {
                     previousRoom = currentRoom;
                     currentRoom = currentRoom.getsDoor();
                 } else {
-                    System.out.println("You can't do that. Try a different direction or actions.");
+                    System.out.println("You can't do that. Try a different direction or action.");
                 }
                 break;
             case "east":
@@ -75,7 +75,7 @@ public class InputManager {
                     previousRoom = currentRoom;
                     currentRoom = currentRoom.geteDoor();
                 } else {
-                    System.out.println("You can't do that. Try a different direction or actions.");
+                    System.out.println("You can't do that. Try a different direction or action.");
                 }
                 break;
             case "west":
@@ -86,7 +86,7 @@ public class InputManager {
                     previousRoom = currentRoom;
                     currentRoom = currentRoom.getwDoor();
                 } else {
-                    System.out.println("You can't do that. Try a different direction or actions.");
+                    System.out.println("You can't do that. Try a different direction or action.");
                 }
                 break;
             case "help":
@@ -187,8 +187,7 @@ public class InputManager {
             case "y":
                 isValid = true;
                 System.out.println("Okay then! Up you get, the blood should wash out eventually.");
-                // TODO: restore player and previous enemy to full health and place player in
-                // previous room. Increment a death counter.
+                // TODO: restore player and previous enemy to full health and place player in previous room. Increment a death counter.
                 break;
             case "no":
             case "n":
