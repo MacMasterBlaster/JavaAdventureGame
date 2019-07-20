@@ -44,6 +44,7 @@ public class GameManager{
         newCharacter.setAttackMod(100);
         newCharacter.setCharClass("God");
     }
+
    public static void MakeGoblin(CharacterController newCharacter, String name) {
         newCharacter.setHealth(10);
         newCharacter.setMaxHealth(10);
@@ -91,6 +92,64 @@ public class GameManager{
         newCharacter.setDamageMod(6);
         newCharacter.setAttackMod(8);
         newCharacter.setCharClass("Knight");
+//endregion
+
+    //TODO: Make enemy types
+
+    //TODO: Make GameState switch case, or do while loop for when game should end.
+
+    //TODO: Create Room array manager
+
+    public void RoomCreationTest(){
+        Room start = new Room();
+        Room moveAssit = new Room();
+        Room fight = new Room();
+        Room empty1 = new Room();
+        Room empty2 = new Room();
+        Room empty3 = new Room();
+        Room slime1 = new Room();
+        Room slime2 = new Room();
+        Room chest1 = new Room();
+        Room chest2 = new Room();
+        Room mimic = new Room();
+        Room spider = new Room();
+        Room empty4 = new Room();
+        Room boss = new Room();
+        Room treasure = new Room();
+        Room end = new Room();
+        //Set all room linkages
+        start.seteDoor(moveAssit);
+        moveAssit.setExits(fight, null, null, start);
+        fight.setExits(empty1, null, moveAssit, null);
+        fight.setHasEnemy(true);
+        empty1.setExits(empty3, empty2, fight, null);
+        empty2.setExits(slime1, slime2, null, empty1);
+        empty3.setExits(null, slime1, empty1, null);
+        slime1.setExits(null, chest2, empty2, empty3);
+        slime2.setExits(null, null, mimic, empty2);
+        chest1.setExits(null, mimic, null, null);
+        chest2.setExits(null, slime1, null, null);
+        mimic.setExits(slime2, null, spider, null);
+        spider.setExits(mimic, empty4, null, null);
+        empty4.setExits(boss, null, null, empty4);
+        boss.setExits(treasure, null, empty4, null);
+        //Add all rooms to the dungeon list
+        dungeon.add(start);
+        dungeon.add(moveAssit);
+        dungeon.add(fight);
+        dungeon.add(empty1);
+        dungeon.add(empty2);
+        dungeon.add(empty3);
+        dungeon.add(slime1);
+        dungeon.add(slime2);
+        dungeon.add(chest1);
+        dungeon.add(chest2);
+        dungeon.add(mimic);
+        dungeon.add(spider);
+        dungeon.add(empty4);
+        dungeon.add(boss);
+        dungeon.add(treasure);
+        dungeon.add(end);
     }
             
             

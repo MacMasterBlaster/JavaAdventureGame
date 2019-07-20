@@ -20,7 +20,7 @@ public class Room {
         hasChest = false;
     }
 
-    public void setExists(Room nRoom, Room eRoom, Room sRoom, Room wRoom) {
+    public void setExits(Room nRoom, Room eRoom, Room sRoom, Room wRoom) {
         exits[0] = nRoom; // north
         exits[1] = eRoom; // east
         exits[2] = sRoom; // south
