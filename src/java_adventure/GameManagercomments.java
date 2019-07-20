@@ -12,13 +12,6 @@ import java.util.Scanner;
 public class GameManager {
     ArrayList<Room> dungeon = new ArrayList<Room>();
     CharacterController player = new CharacterController("Nobody", "None");
-    CharacterController m_goblin = new CharacterController();
-    CharacterController m_slime1 = new CharacterController();
-    CharacterController m_slime2 = new CharacterController();
-    CharacterController m_mimic = new CharacterController();
-    CharacterController m_spider = new CharacterController();
-    CharacterController m_boss = new CharacterController();
-
     private boolean inCombat = false;
 
     public boolean getInCombat() {
@@ -63,25 +56,17 @@ public class GameManager {
     // endregion
 
     // region Enemies
-<<<<<<< HEAD
-    public void MakeGoblin(CharacterController newCharacter) {
-        newCharacter.setHealth(10);
-        newCharacter.setMaxHealth(10);
-        newCharacter.setArmorClass(3);
-=======
     public void MakeGoblin(CharacterController newCharacter, String name) {
         newCharacter.setHealth(7);
         newCharacter.setMaxHealth(7);
         newCharacter.setArmorClass(10);
->>>>>>> a1f2490e4dbc7ed07165e15a7c471c7b830136a9
         newCharacter.setDamageDie(5);
         newCharacter.setDamageMod(2);
         newCharacter.setAttackMod(3);
         newCharacter.setCharClass("Goblin");
-        newCharacter.setName("Goblin");
     }
 
-    public void MakeSlime(CharacterController newCharacter) {
+    public void MakeSlime(CharacterController newCharacter, String name) {
         newCharacter.setHealth(25);
         newCharacter.setMaxHealth(25);
         newCharacter.setArmorClass(20);
@@ -89,10 +74,9 @@ public class GameManager {
         newCharacter.setDamageMod(3);
         newCharacter.setAttackMod(4);
         newCharacter.setCharClass("Slime");
-        newCharacter.setName("Slime");
     }
 
-    public void MakeMimic(CharacterController newCharacter) {
+    public void MakeMimic(CharacterController newCharacter, String name) {
         newCharacter.setHealth(18);
         newCharacter.setMaxHealth(18);
         newCharacter.setArmorClass(10);
@@ -100,10 +84,9 @@ public class GameManager {
         newCharacter.setDamageMod(1);
         newCharacter.setAttackMod(10);
         newCharacter.setCharClass("Mimic");
-        newCharacter.setName("Mimic");
     }
 
-    public void MakeSpider(CharacterController newCharacter) {
+    public void MakeSpider(CharacterController newCharacter, String name) {
         newCharacter.setHealth(25);
         newCharacter.setMaxHealth(25);
         newCharacter.setArmorClass(20);
@@ -111,10 +94,9 @@ public class GameManager {
         newCharacter.setDamageMod(0);
         newCharacter.setAttackMod(0);
         newCharacter.setCharClass("Spider");
-        newCharacter.setName("Spider");
     }
 
-    public void MakeKnight(CharacterController newCharacter) {
+    public void MakeKnight(CharacterController newCharacter, String name) {
         newCharacter.setHealth(40);
         newCharacter.setMaxHealth(40);
         newCharacter.setArmorClass(22);
@@ -122,11 +104,10 @@ public class GameManager {
         newCharacter.setDamageMod(6);
         newCharacter.setAttackMod(8);
         newCharacter.setCharClass("Knight");
-        newCharacter.setName("Black Knight Javalang");
     }
     // endregion
 
-    public void CreateDungeon() {
+    public void RoomCreationTest() {
         Room start = new Room();
         Room moveAssit = new Room();
         Room fight = new Room();
@@ -143,60 +124,36 @@ public class GameManager {
         Room boss = new Room();
         Room treasure = new Room();
         Room end = new Room();
-        //Make Monsters
-        MakeGoblin(m_goblin);
-        MakeSlime(m_slime1);
-        MakeSlime(m_slime2);
-        MakeMimic(m_mimic);
-        MakeSpider(m_spider);
-        MakeKnight(m_boss);
         // Set all room linkages
         start.seteDoor(moveAssit);
         start.setRoomImage(null);
-
         moveAssit.setExits(fight, null, null, start);
         moveAssit.setRoomImage(null);
-
         fight.setExits(empty1, null, moveAssit, null);
-        fight.setMonster(m_goblin);
         fight.setRoomImage(null);
-
+        //fight.setHasEnemy(true);// this could be changed to a enemy object instead.
+        //fight.setRoomImage(null);
         empty1.setExits(empty3, empty2, fight, null);
         empty1.setRoomImage(null);
-
         empty2.setExits(slime1, slime2, null, empty1);
         empty2.setRoomImage(null);
-
         empty3.setExits(null, slime1, empty1, null);
         empty3.setRoomImage(null);
-
         slime1.setExits(null, chest2, empty2, empty3);
-        slime1.setMonster(m_slime1);
         slime1.setRoomImage(null);
-
         slime2.setExits(null, null, mimic, empty2);
-        slime2.setMonster(m_slime2);
         slime2.setRoomImage(null);
-
         chest1.setExits(null, mimic, null, null);
         chest1.setRoomImage(null);
-
         chest2.setExits(null, slime1, null, null);
         chest2.setRoomImage(null);
-
         mimic.setExits(slime2, null, spider, null);
-        mimic.setMonster(m_mimic);
         mimic.setRoomImage(null);
-
         spider.setExits(mimic, empty4, null, null);
-        spider.setMonster(m_spider);
         spider.setRoomImage(null);
-
         empty4.setExits(boss, null, null, empty4);
         empty4.setRoomImage(null);
-
         boss.setExits(treasure, null, empty4, null);
-        boss.setMonster(m_boss);
         boss.setRoomImage(null);
         
         // Add all rooms to the dungeon list
