@@ -16,6 +16,17 @@ public class CharacterController {
     private String charClass; // sets default values for maxHealth & damageMod
     private Dice d = new Dice();
     
+    String F1 = "|";
+    String F2 = "|";
+    String F3 = "D";
+    String blank = " ";
+    String W1 = "ø";
+    String W2 = "¥";
+    String W3 = "|";
+    String W4 = "¿";
+    String e1 = blank, e2 = blank, e3 = blank, e4 = blank, e5 = blank;
+    String H1, H2, H3, H4, H5;
+    
     public CharacterController() {
         name = "Nobody";
         charClass = "N/A";
@@ -40,24 +51,15 @@ public class CharacterController {
 
     //set hero sprite lines
     public void CharacterSprite() {
-        String F1 = "|";
-        String F2 = "|";
-        String F3 = "D";
-        String blank = " ";
-        String W1 = "ø";
-        String W2 = "¥";
-        String W3 = "|";
-        String W4 = "¿";
-        String e1 = blank, e2 = blank, e3 = blank, e4 = blank, e5 = blank;
-        String H1, H2, H3, H4, H5;
         switch (charClass.toLowerCase())
         {
-            case "WARRIOR":
+            case "warrior":
                 e1 = F1;
                 e2 = F2;
                 e3 = F3;
                 break;
-            case "WIZARD":
+            case "wizard":
+            case "god":
                 e1 = W1;
                 e2 = W2;
                 e3 = W3;
