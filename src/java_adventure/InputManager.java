@@ -15,6 +15,7 @@ public class InputManager {
     private Room currentRoom, previousRoom;
     private GameManager gm;
 
+    //Input Manager Constructor
     public InputManager(GameManager _gm) {
         currentRoom = null;
         previousRoom = null;
@@ -38,83 +39,89 @@ public class InputManager {
     }
 
     // Compares user input against possible acceptable values.
-    public void VerifyInput(Room currentRoom) {
+    public void VerifyInput(Room cr) {
+        System.out.println("\n\t*You are now in " + cr.getName() + ".*");
         System.out.println("What would you like to do?");
         Scanner scan = new Scanner(System.in);
         boolean isValid = false;
-        while (isValid == false) {
-            String input = scan.nextLine();
-            switch (input.toLowerCase()) {
-            case "north":
-            case "n":
-                // isValid = true;
-                if (currentRoom.getnDoor() != null) {
-                    System.out.println("You move north");
-                    previousRoom = currentRoom;
-                    currentRoom = currentRoom.getnDoor();
-                } else {
-                    System.out.println("You can't do that. Try a different direction or action.");
-                }
-                break;
-            case "south":
-            case "s":
-                // isValid = true;
-                if (currentRoom.getsDoor() != null) {
-                    System.out.println("You move south");
-                    previousRoom = currentRoom;
-                    currentRoom = currentRoom.getsDoor();
-                } else {
-                    System.out.println("You can't do that. Try a different direction or action.");
-                }
-                break;
-            case "east":
-            case "e":
-                // isValid = true;
-                if (currentRoom.geteDoor() != null) {
-                    System.out.println("You move east");
-                    previousRoom = currentRoom;
-                    currentRoom = currentRoom.geteDoor();
-                } else {
-                    System.out.println("You can't do that. Try a different direction or action.");
-                }
-                break;
-            case "west":
-            case "w":
-                // isValid = true;
-                if (currentRoom.getwDoor() != null) {
-                    System.out.println("You move west");
-                    previousRoom = currentRoom;
-                    currentRoom = currentRoom.getwDoor();
-                } else {
-                    System.out.println("You can't do that. Try a different direction or action.");
-                }
-                break;
-            case "help":
-            case "h":
-                // isValid = false;
-                System.out.println("Try typing in a direction or action you wish to attempt.");
-                break;
-            case "status":
-            case "stat":
-                // isValid = false;
-                // TODO: Added references to player to GameManager class
-                // System.out.println(gm.player.toString());
-                break;
-            case "quit":
-            case "q":
-                System.out.println("\nDo you want quit? (Y)es or (N)o");
-                input = scan.nextLine().toLowerCase();
-                if (input.equals("yes") || input.equals("y"))
-                    scan.close();
-                else if (input.equals("no") || input.equals("n"))
+        if (!cr.getHasMonster()) {
+            while (!isValid) {
+                String input = scan.nextLine();
+                switch (input.toLowerCase()) {
+                case "north":
+                case "n":
+                    isValid = true;
+                    if (cr.getnDoor() != null) {
+                        System.out.println("You move north");
+                        previousRoom = cr;
+                        currentRoom = cr.getnDoor();
+                    } else {
+                        System.out.println("You can't do that. Try a different direction or action.");
+                    }
                     break;
-            default:
-                // isValid = false;
-                System.out.println("Sorry I don't understand. What do you want to do?");
-                break;
+                case "south":
+                case "s":
+                    isValid = true;
+                    if (cr.getsDoor() != null) {
+                        System.out.println("You move south");
+                        previousRoom = cr;
+                        currentRoom = cr.getsDoor();
+                    } else {
+                        System.out.println("You can't do that. Try a different direction or action.");
+                    }
+                    break;
+                case "east":
+                case "e":
+                    isValid = true;
+                    if (cr.geteDoor() != null) {
+                        System.out.println("You move east");
+                        previousRoom = cr;
+                        currentRoom = cr.geteDoor();
+                    } else {
+                        System.out.println("You can't do that. Try a different direction or action.");
+                    }
+                    break;
+                case "west":
+                case "w":
+                    isValid = true;
+                    if (cr.getwDoor() != null) {
+                        System.out.println("You move west");
+                        previousRoom = cr;
+                        currentRoom = cr.getwDoor();
+                    } else {
+                        System.out.println("You can't do that. Try a different direction or action.");
+                    }
+                    break;
+                case "help":
+                case "h":
+                    isValid = false;
+                    System.out.println("Try typing in a direction or action you wish to attempt.");
+                    break;
+                case "status":
+                case "stat":
+                    isValid = false;
+                    // TODO: Added references to player to GameManager class
+                    System.out.println(gm.player.toString());
+                    break;
+                case "quit":
+                case "q":
+                    isValid = true;
+                    System.out.println("\nDo you want quit? (Y)es or (N)o");
+                    input = scan.nextLine().toLowerCase();
+                    if (input.equals("yes") || input.equals("y"))
+                        scan.close();
+                    else if (input.equals("no") || input.equals("n"))
+                        break;
+                default:
+                    isValid = false;
+                    System.out.println("Sorry I don't understand. What do you want to do?");
+                    break;
+                }
             }
+        } else {
+            // If the player is in combat they have fewer options.
+            gm.StartCombat(gm.player, currentRoom.getMonster());
         }
-        scan.close();
     }
 
     // This method should be called when new game is started.
@@ -155,8 +162,8 @@ public class InputManager {
             case "pen":
                 isValid = true;
                 gm.MakeWizard(gm.player, gm.player.getName());
-                System.out
-                        .println("Congratulations! Your a wizard " + gm.player.getName() + "! Here's your free wand.\n");
+                System.out.println(
+                        "Congratulations! Your a wizard " + gm.player.getName() + "! Here's your free wand.\n");
                 break;
             case "s":
             case "sword":
@@ -169,8 +176,7 @@ public class InputManager {
             case "code":
                 isValid = true;
                 gm.MakeGod(gm.player, gm.player.getName());
-                System.out.println("You must be a programmer " + gm.player.getName()
-                        + ". Better start debugging.\n");
+                System.out.println("You must be a programmer " + gm.player.getName() + ". Better start debugging.\n");
                 break;
             default:
                 System.out.println("Um... okay. But \"" + classAnswer.toLowerCase() + "\" wasn't one of the choices. "
@@ -197,7 +203,8 @@ public class InputManager {
             case "y":
                 isValid = true;
                 System.out.println("Okay then! Up you get, the blood should wash out eventually.");
-                // TODO: restore player and previous enemy to full health and place player in previous room. Increment a death counter.
+                // TODO: restore player and previous enemy to full health and place player in
+                // previous room. Increment a death counter.
                 break;
             case "no":
             case "n":

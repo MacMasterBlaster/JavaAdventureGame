@@ -14,7 +14,7 @@ public class CharacterController {
     private int armorClass; // the threshold for hitting with an attack
     private int damageDie, damageMod, attackMod; // die type rolled & modifiers added to character attacks
     private String charClass; // sets default values for maxHealth & damageMod
-    private Dice d;
+    private Dice d = new Dice();
     
     public CharacterController() {
         name = "Nobody";

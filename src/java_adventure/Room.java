@@ -10,9 +10,9 @@ public class Room {
 
     private Room[] exits = new Room[4];
     private CharacterController monster;
-    private boolean hasChest;
+    private boolean hasMonster, hasChest;
     private RoomImage roomImage;
-
+    private String name;
     // Room Contructor
     public Room() {
         exits[0] = null; // north
@@ -20,8 +20,10 @@ public class Room {
         exits[2] = null; // south
         exits[3] = null; // west
         monster = null;
+        hasMonster = false;
         hasChest = false;
         roomImage = null;
+        name = "";
     }
 
     public void setExits(Room nRoom, Room eRoom, Room sRoom, Room wRoom) {
@@ -29,8 +31,6 @@ public class Room {
         exits[1] = eRoom; // east
         exits[2] = sRoom; // south
         exits[3] = wRoom; // west
-        monster = null;
-        hasChest = false;
     }
 
     // north door properties
@@ -78,6 +78,14 @@ public class Room {
         monster = _monster;
     }
 
+    public boolean getHasMonster() {
+        return hasMonster;
+    } 
+
+    public void setHasMonster(boolean _hasMonster) {
+        hasMonster = _hasMonster;
+    }
+
     // chest properties
     public boolean getHasChest() {
         return hasChest;
@@ -95,7 +103,15 @@ public class Room {
     public void setRoomImage(RoomImage temp) {
         roomImage = temp;
     }
-
+    
+    // Name Properties
+    public String getName() {
+        return name;
+    }
+    
+    public void setName(String _name) {
+        name = _name;
+    }
     // TODO: toString() required. Should build room image.
 
 }

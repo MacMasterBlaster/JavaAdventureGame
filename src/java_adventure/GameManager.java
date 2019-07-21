@@ -10,24 +10,30 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GameManager {
+    InputManager im;
+    boolean inCombat = false;
     ArrayList<Room> dungeon = new ArrayList<Room>();
-    CharacterController player = new CharacterController("Nobody", "None");
     CharacterController m_goblin = new CharacterController();
     CharacterController m_slime1 = new CharacterController();
     CharacterController m_slime2 = new CharacterController();
     CharacterController m_mimic = new CharacterController();
     CharacterController m_spider = new CharacterController();
     CharacterController m_boss = new CharacterController();
+    
+    public CharacterController player = new CharacterController("Nobody", "None");
 
-    private boolean inCombat = false;
+    public void setInputManager(InputManager _im){
+        im = _im;
+    }
 
     public boolean getInCombat() {
         return inCombat;
     }
-    
+
     public void setInCombat(boolean temp) {
         inCombat = temp;
     }
+
     // region Player Classes
     public void MakeWizard(CharacterController newCharacter, String name) {
         newCharacter.setHealth(15);
@@ -136,7 +142,24 @@ public class GameManager {
         Room boss = new Room();
         Room treasure = new Room();
         Room end = new Room();
-        //Make Monsters
+        //room names for debugging
+        start.setName("start");
+        moveAssit.setName("moveAssit");
+        fight.setName("fight");
+        empty1.setName("empty1");
+        empty2.setName("empty2");
+        empty3.setName("empty3");
+        slime1.setName("slime1");
+        slime2.setName("slime2");
+        chest1.setName("chest1");
+        chest2.setName("chest2");
+        mimic.setName("mimic");
+        spider.setName("spider");
+        empty4.setName("empty4");
+        boss.setName("boss");
+        treasure.setName("treasure");
+        end.setName("end");
+        // Make Monsters
         MakeGoblin(m_goblin);
         MakeSlime(m_slime1);
         MakeSlime(m_slime2);
@@ -144,7 +167,7 @@ public class GameManager {
         MakeSpider(m_spider);
         MakeKnight(m_boss);
         // Set all room linkages
-        start.seteDoor(moveAssit);
+        start.setwDoor(moveAssit);
         start.setRoomImage(null);
 
         moveAssit.setExits(fight, null, null, start);
@@ -152,6 +175,7 @@ public class GameManager {
 
         fight.setExits(empty1, null, moveAssit, null);
         fight.setMonster(m_goblin);
+        fight.setHasMonster(true);
         fight.setRoomImage(null);
 
         empty1.setExits(empty3, empty2, fight, null);
@@ -165,10 +189,12 @@ public class GameManager {
 
         slime1.setExits(null, chest2, empty2, empty3);
         slime1.setMonster(m_slime1);
+        slime1.setHasMonster(true);
         slime1.setRoomImage(null);
 
         slime2.setExits(null, null, mimic, empty2);
         slime2.setMonster(m_slime2);
+        slime2.setHasMonster(true);
         slime2.setRoomImage(null);
 
         chest1.setExits(null, mimic, null, null);
@@ -179,10 +205,12 @@ public class GameManager {
 
         mimic.setExits(slime2, null, spider, null);
         mimic.setMonster(m_mimic);
+        mimic.setHasMonster(true);
         mimic.setRoomImage(null);
 
         spider.setExits(mimic, empty4, null, null);
         spider.setMonster(m_spider);
+        spider.setHasMonster(true);
         spider.setRoomImage(null);
 
         empty4.setExits(boss, null, null, empty4);
@@ -190,8 +218,9 @@ public class GameManager {
 
         boss.setExits(treasure, null, empty4, null);
         boss.setMonster(m_boss);
+        boss.setHasMonster(true);
         boss.setRoomImage(null);
-        
+
         // Add all rooms to the dungeon list
         dungeon.add(start);
         dungeon.add(moveAssit);
@@ -216,7 +245,7 @@ public class GameManager {
         playerIntiative = player.RollInitiative();
         monsterIntiative = monster.RollInitiative();
         boolean inCombat = true;
-        System.out.println("Entered combat with " + monster.getName() + "!");
+        System.out.println("Entered combat with " + monster.getName() + "!\n");
         while (inCombat == true) {
             {
                 if (playerIntiative > monsterIntiative) {
@@ -231,19 +260,39 @@ public class GameManager {
                         break;
                     case "leave":
                     case "l":
+                    case "run":
+                    case "retreat":
+                    case "flee":
                         if (player.RollInitiative() > monster.RollInitiative()) {
                             System.out.println("You escaped!");
-                            //TODO: player returns to previous room
+                            monster.setHealth(monster.getMaxHealth()); //Reset monster health.
+                            im.setCurrentRoom(im.getPreviousRoom()); //Returns player to the previous room.
                             inCombat = false;
                         } else {
-                            System.out.println(monster.getName() + "prevents your escape!");
+                            System.out.println(monster.getName() + " prevents your escape!");
                         }
+                    case "help":
+                    case "h":
+                        System.out.println("Try typing in a direction or action you wish to attempt.");
+                        break;
+                    case "status":
+                    case "stat":
+                        System.out.println(player.toString());
+                        break;
+                    case "quit":
+                    case "q":
+                        System.out.println("\nDo you want quit? (Y)es or (N)o");
+                        input = scan.nextLine().toLowerCase();
+                        if (input.equals("yes") || input.equals("y"))
+                            scan.close();
+                        else if (input.equals("no") || input.equals("n"))
+                            break;
                     default:
                         System.out.println("You do not attack.");
                         break;
                     }
-                    // monster attack
-                    Attack(monster, player);
+                    // if monster is still alive it attacks
+                    if (inCombat) Attack(monster, player);
                 } else {
                     // monster attacks first
                     Attack(monster, player);
@@ -254,18 +303,38 @@ public class GameManager {
                     switch (input.toLowerCase()) {
                     case "attack":
                     case "a":
-                        // Player attack
+                        // Player attacks
                         Attack(player, monster);
                         break;
                     case "leave":
                     case "l":
+                    case "run":
+                    case "retreat":
+                    case "flee":
                         if (player.RollInitiative() > monster.RollInitiative()) {
                             System.out.println("You escaped!");
-                            //TODO: player returns to previous room
+                            monster.setHealth(monster.getMaxHealth()); //Reset monster health.
+                            im.setCurrentRoom(im.getPreviousRoom()); //Returns player to the previous room.
                             inCombat = false;
                         } else {
                             System.out.println(monster.getName() + "prevents your escape!");
                         }
+                    case "help":
+                    case "h":
+                        System.out.println("Try typing in a direction or action you wish to attempt.");
+                        break;
+                    case "status":
+                    case "stat":
+                        System.out.println(player.toString());
+                        break;
+                    case "quit":
+                    case "q":
+                        System.out.println("\nDo you want quit? (Y)es or (N)o");
+                        input = scan.nextLine().toLowerCase();
+                        if (input.equals("yes") || input.equals("y"))
+                            scan.close();
+                        else if (input.equals("no") || input.equals("n"))
+                            break;
                     default:
                         System.out.println("You do not attack.");
                         break;
@@ -280,15 +349,15 @@ public class GameManager {
         if (attacker.getAttackRoll() > target.getArmorClass()) {
             int damage = attacker.getDamageRoll();
             target.setHealth(target.getHealth() - damage);
-            System.out.println(attacker.getName() + " did " + damage + "damage to " + target.getName());
+            System.out.println(attacker.getName() + " did " + damage + " damage to " + target.getName());
             inCombat = true;
         }
         if (target.getHealth() <= 0) {
             System.out.println(attacker.getName() + " defeated " + target.getName() + "!");
-            //TODO: if target is a monster the monster needs to be removed form the current room.
+            if (attacker == player) im.getCurrentRoom().setHasMonster(false);
             inCombat = false;
         } else {
-            System.out.println(attacker.getName() + "missed!");
+            System.out.println(attacker.getName() + " missed!");
             inCombat = true;
         }
 
@@ -296,14 +365,14 @@ public class GameManager {
     // TODO: Create/balance enemy stats
     // Boss/Knight > Spider > > Mimic > Slime > Goblin
     // General range to scale numbers off of once playtested
-    // Very Low - 1 - 3 
+    // Very Low - 1 - 3
     // Low - 3 - 4
     // Medium 5
     // High 5 - 10
     // Goblin - low damage, very low health, medium armor
     // Slime - low damage, high health, very low armor
     // Mimic - medium damage, low health, high armor
-    // Spider -  high damage, high health, very low armor
-    // Boss -  medium damage, very high health, medium armor
+    // Spider - high damage, high health, very low armor
+    // Boss - medium damage, very high health, medium armor
     // Each has 1 low stat, weakness, except the boss
 }
