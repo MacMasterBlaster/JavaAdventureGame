@@ -1,4 +1,4 @@
-// *****************************************************
+/* // *****************************************************
 // GameManager.java
 
 // Manages game states, player and enemy creation, and 
@@ -271,4 +271,4 @@ public class GameManager {
     // Boss -  medium damage, very high health, medium armor
     // Each has 1 low stat, weakness, except the boss
 
-}
+} */

@@ -63,17 +63,10 @@ public class GameManager {
     // endregion
 
     // region Enemies
-<<<<<<< HEAD
     public void MakeGoblin(CharacterController newCharacter) {
-        newCharacter.setHealth(10);
-        newCharacter.setMaxHealth(10);
-        newCharacter.setArmorClass(3);
-=======
-    public void MakeGoblin(CharacterController newCharacter, String name) {
         newCharacter.setHealth(7);
         newCharacter.setMaxHealth(7);
         newCharacter.setArmorClass(10);
->>>>>>> a1f2490e4dbc7ed07165e15a7c471c7b830136a9
         newCharacter.setDamageDie(5);
         newCharacter.setDamageMod(2);
         newCharacter.setAttackMod(3);
@@ -313,5 +306,4 @@ public class GameManager {
     // Spider -  high damage, high health, very low armor
     // Boss -  medium damage, very high health, medium armor
     // Each has 1 low stat, weakness, except the boss
-
 }
