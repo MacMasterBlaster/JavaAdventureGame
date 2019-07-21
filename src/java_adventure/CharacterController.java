@@ -39,7 +39,7 @@ public class CharacterController {
     }
 
     //set hero sprite lines
-    public CharacterSprite() {
+    public void CharacterSprite() {
         String F1 = "|";
         String F2 = "|";
         String F3 = "D";

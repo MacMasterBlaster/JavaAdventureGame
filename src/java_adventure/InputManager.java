@@ -183,8 +183,9 @@ public class InputManager {
                         + "Which do you think is mightier? The PEN or the SWORD?");
             }
         }
+        gm.player.CharacterSprite();//set the players character sprite based on class chosen.
         System.out.println("Your current stats are: " + gm.player.toString());
-        System.out.println("Now that you have provided all the necessary information "
+        System.out.println("\nNow that you have provided all the necessary information "
                 + "\nand waived the Adventurers' Guild of all liability in the case of your death or dismemberment."
                 + "\nWe wish you luck in your conquest of the dungeon of the Terrible Javalang.");
         scan.nextLine();
