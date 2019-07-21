@@ -21,7 +21,7 @@ public String HeroSprite(){
     String W3 = "|";
     String W4 = "¿";
     String e1 = blank, e2 = blank, e3 = blank, e4 = blank, e5 = blank;
-    String h1, h2, h3, h4, h5;
+    String H1, H2, H3, H4, H5;
     switch (charClass)
     {
         case "WARRIOR":
@@ -41,15 +41,15 @@ public String HeroSprite(){
     
     
     // Define hero avatar lines
-    h1 = "     " + e1;
-    h2 = "  O  " + e2;
-    h3 = " /T\\_" + e3;
-    h4 = " / \\ " + e4;
-    h5 = "-   -" + e5;
+    H1 = "     " + e1;
+    H2 = "  O  " + e2;
+    H3 = " /T\\_" + e3;
+    H4 = " / \\ " + e4;
+    H5 = "-   -" + e5;
     
     // test display
     
-    System.out.println( h1 + "\n" + h2 + "\n" + h3 + "\n" + h4 + "\n" + h5);
+    System.out.println( H1 + "\n" + H2 + "\n" + H3 + "\n" + H4 + "\n" + H5);
     
     
     }
