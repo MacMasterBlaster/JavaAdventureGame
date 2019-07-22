@@ -62,6 +62,7 @@ public class InputManager {
                 // TODO: add "go [direction]" to the list of options
                 case "north":
                 case "go north":
+                case "forward":
                 case "go forward":
                 case "n":
                     isValid = true;
@@ -77,6 +78,8 @@ public class InputManager {
                 case "go south":
                 case "go back":
                 case "go down":
+                case "back":
+                case "down":
                 case "s":
                     isValid = true;
                     if (cr.getsDoor() != null) {
@@ -90,6 +93,8 @@ public class InputManager {
                 case "east":
                 case "go east":
                 case "go right":
+                case "right":
+                case "r":
                 case "e":
                     isValid = true;
                     if (cr.geteDoor() != null) {
@@ -103,6 +108,8 @@ public class InputManager {
                 case "west":
                 case "go west":
                 case "go left":
+                case "left":
+                case "l":
                 case "w":
                     isValid = true;
                     if (cr.getwDoor() != null) {
