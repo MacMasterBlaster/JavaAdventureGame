@@ -96,8 +96,8 @@ public class Room {
     }
 
     // The properties for setting the rooms text based image
-    public RoomImage getRoomImage() {
-        return roomImage;
+    public String getRoomImage() {
+        return roomImageString;
     }
 
     public void setRoomImage(String temp) {
