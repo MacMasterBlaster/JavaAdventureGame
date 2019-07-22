@@ -149,7 +149,7 @@ public class RoomImage {
         + "\n   ******************            ******************" + "\t" + P5;
   }
 
-  static public String Chest1With() {
+  static public String chest1With() {
     SetCommands();
     return "   ************************************************" + "\tYou enter a new room. in front of you is an"
         + "\n   /                                              |" + "\told looking treasure chest."

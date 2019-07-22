@@ -187,58 +187,58 @@ public class GameManager {
         MakeKnight(m_boss);
         // Set all room linkages
         start.setwDoor(moveAssit);
-        start.setRoomImages(RoomImage.start(), null);
+        start.setRoomImages(null, RoomImage.start());
 
         moveAssit.setExits(fight, null, null, start);
-        moveAssit.setRoomImages(RoomImage.moveAssit(), null);
+        moveAssit.setRoomImages(null, RoomImage.moveAssit());
 
         fight.setExits(empty1, null, moveAssit, null);
         fight.setMonster(m_goblin);
         fight.setHasMonster(true);
-        fight.setRoomImages(RoomImage.fightWithEnemy(), null);
+        fight.setRoomImages(RoomImage.fightWithEnemy(), RoomImage.fightWithoutEnemy());
 
         empty1.setExits(empty3, empty2, fight, null);
-        empty1.setRoomImages(RoomImage.empty1(), null);
+        empty1.setRoomImages(null, RoomImage.empty1());
 
         empty2.setExits(slime1, slime2, null, empty1);
-        empty2.setRoomImages(RoomImage.empty2(), null);
+        empty2.setRoomImages(null, RoomImage.empty2());
 
         empty3.setExits(null, slime1, empty1, null);
-        empty3.setRoomImages(RoomImage.empty3(), null);
+        empty3.setRoomImages(null, RoomImage.empty3());
 
         slime1.setExits(null, chest2, empty2, empty3);
         slime1.setMonster(m_slime1);
         slime1.setHasMonster(true);
-        slime1.setRoomImages(RoomImage.slime1WithEnemy(), null);
+        slime1.setRoomImages(RoomImage.slime1WithEnemy(), RoomImage.slime1WithoutEnemy());
 
         slime2.setExits(null, null, mimic, empty2);
         slime2.setMonster(m_slime2);
         slime2.setHasMonster(true);
-        slime2.setRoomImages(RoomImage.slime2WithEnemy(), null);
+        slime2.setRoomImages(RoomImage.slime2WithEnemy(), RoomImage.slime2WithoutEnemy());
 
         chest1.setExits(null, mimic, null, null);
-        // TODO:chest1.setRoomImages(RoomImage.chest1With(), null);
+        chest1.setRoomImages(RoomImage.chest1With(), RoomImage.chest1Without());
 
         chest2.setExits(null, slime1, null, null);
-        chest2.setRoomImages(RoomImage.chest2With(), null);
+        chest2.setRoomImages(RoomImage.chest2With(), RoomImage.chest2Without());
 
         mimic.setExits(slime2, null, spider, null);
         mimic.setMonster(m_mimic);
         mimic.setHasMonster(true);
-        mimic.setRoomImages(RoomImage.mimicWithEnemy(), null);
+        mimic.setRoomImages(RoomImage.mimicWithEnemy(), RoomImage.mimicWithoutEnemy());
 
         spider.setExits(mimic, empty4, null, null);
         spider.setMonster(m_spider);
         spider.setHasMonster(true);
-        spider.setRoomImages(RoomImage.spiderWithEnemy(), null);
+        spider.setRoomImages(RoomImage.spiderWithEnemy(), RoomImage.spiderWithoutEnemy());
 
         empty4.setExits(boss, null, null, empty4);
-        empty4.setRoomImages(RoomImage.empty4(), null);
+        empty4.setRoomImages(null, RoomImage.empty4());
 
         boss.setExits(treasure, null, empty4, null);
         boss.setMonster(m_boss);
         boss.setHasMonster(true);
-        boss.setRoomImages(RoomImage.bossWithEnemy(), null);
+        boss.setRoomImages(RoomImage.bossWithEnemy(), RoomImage.bossWithoutEnemy());
 
         // Add all rooms to the dungeon list
         dungeon.add(start);
