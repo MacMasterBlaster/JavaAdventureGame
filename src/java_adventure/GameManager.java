@@ -55,19 +55,19 @@ public class GameManager {
 
     // region Player Classes
     public void MakeWizard(CharacterController newCharacter, String name) {
-        newCharacter.setHealth(15);
-        newCharacter.setMaxHealth(15);
-        newCharacter.setArmorClass(8);
+        newCharacter.setHealth(40);
+        newCharacter.setMaxHealth(40);
+        newCharacter.setArmorClass(3);
         newCharacter.setDamageDie(6);
-        newCharacter.setDamageMod(5);
-        newCharacter.setAttackMod(5);
+        newCharacter.setDamageMod(8);
+        newCharacter.setAttackMod(8);
         newCharacter.setCharClass("Wizard");
     }
 
     public void MakeWarrior(CharacterController newCharacter, String name) {
-        newCharacter.setHealth(30);
-        newCharacter.setMaxHealth(30);
-        newCharacter.setArmorClass(15);
+        newCharacter.setHealth(60);
+        newCharacter.setMaxHealth(60);
+        newCharacter.setArmorClass(5);
         newCharacter.setDamageDie(10);
         newCharacter.setDamageMod(2);
         newCharacter.setAttackMod(6);
@@ -92,7 +92,7 @@ public class GameManager {
         newCharacter.setHealth(10);
         newCharacter.setMaxHealth(10);
         newCharacter.setArmorClass(4);
-        newCharacter.setDamageDie(1);
+        newCharacter.setDamageDie(4);
         newCharacter.setDamageMod(2);
         newCharacter.setAttackMod(2);
         newCharacter.setCharClass("Goblin");
@@ -103,9 +103,9 @@ public class GameManager {
         newCharacter.setHealth(25);
         newCharacter.setMaxHealth(25);
         newCharacter.setArmorClass(5);
-        newCharacter.setDamageDie(1);
-        newCharacter.setDamageMod(1);
-        newCharacter.setAttackMod(1);
+        newCharacter.setDamageDie(4);
+        newCharacter.setDamageMod(3);
+        newCharacter.setAttackMod(3);
         newCharacter.setCharClass("Slime");
         newCharacter.setName("Slime");
     }
@@ -113,10 +113,10 @@ public class GameManager {
     public void MakeMimic(CharacterController newCharacter) {
         newCharacter.setHealth(15);
         newCharacter.setMaxHealth(15);
-        newCharacter.setArmorClass(10);
-        newCharacter.setDamageDie(5);
+        newCharacter.setArmorClass(7);
+        newCharacter.setDamageDie(8);
         newCharacter.setDamageMod(2);
-        newCharacter.setAttackMod(4);
+        newCharacter.setAttackMod(6);
         newCharacter.setCharClass("Mimic");
         newCharacter.setName("Mimic");
     }
@@ -124,19 +124,19 @@ public class GameManager {
     public void MakeSpider(CharacterController newCharacter) {
         newCharacter.setHealth(25);
         newCharacter.setMaxHealth(25);
-        newCharacter.setArmorClass(20);
-        newCharacter.setDamageDie(5);
-        newCharacter.setDamageMod(4);
-        newCharacter.setAttackMod(5);
+        newCharacter.setArmorClass(8);
+        newCharacter.setDamageDie(8);
+        newCharacter.setDamageMod(3);
+        newCharacter.setAttackMod(4);
         newCharacter.setCharClass("Spider");
         newCharacter.setName("Spider");
     }
 
     public void MakeKnight(CharacterController newCharacter) {
         newCharacter.setHealth(40);
-        newCharacter.setMaxHealth(40);
-        newCharacter.setArmorClass(10);
-        newCharacter.setDamageDie(7);
+        newCharacter.setMaxHealth(30);
+        newCharacter.setArmorClass(8);
+        newCharacter.setDamageDie(12);
         newCharacter.setDamageMod(5);
         newCharacter.setAttackMod(6);
         newCharacter.setCharClass("Knight");
