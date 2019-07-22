@@ -512,8 +512,8 @@ public class InputManager {
                 System.out.println("\n   \"You must be a programmer " + gm.player.getName() + ". Better start debugging.\"\n");
                 break;
             default:
-                System.out.println("\n   Frowning the man says, \"Um... okay. But \"" + classAnswer.toLowerCase() + "\" wasn't one of the choices. "
-                        + "So which do you think is mightier? The PEN or the SWORD?\" ");
+                System.out.print("\n   Frowning the man says, \"Um... okay. But \"" + classAnswer.toLowerCase() + "\" wasn't one of the choices. "
+                        + "\n   So which do you think is mightier? The PEN or the SWORD?\" ");
             }
         }
         gm.player.CharacterSprite();// set the players character sprite based on class chosen.
@@ -554,6 +554,8 @@ public class InputManager {
 
     // This method should be called on player death.
     public void GameOver() throws IOException, InterruptedException {
+        ClearConsole();
+        System.out.println(currentRoom.toString(currentRoom.getHasMonster()));// draw room
         Scanner scan = new Scanner(System.in);
         boolean isValid = false;
         if (gm.player.getHealth() <= 0) {
