@@ -604,6 +604,7 @@ public class InputManager {
                 isValid = true;
                 // if player dies
                 if (gm.player.getHealth() <= 0) {
+                    gm.inCombat = false;
                     System.out.print("Oh well. We can't all be winners.\n");
                     scan.nextLine();
                     scan.close();
@@ -623,7 +624,9 @@ public class InputManager {
     // This method should be called on player win.
     public void Win(Scanner scan) throws IOException, InterruptedException {
         ClearConsole();
-
+        System.out.println("CONGRATULATIONS! You have conquered the dungeon of Javalang!"
+        + "\n It only took you " + gm.playerDeaths + " terrible death(s) to do so.");
+        System.out.println("This game was created by:\n\tMac Orchard");
         gm.player.setHealth(0);
         scan.close(); // This will cause the game to end.
     }
