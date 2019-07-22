@@ -85,7 +85,7 @@ public class RoomImage {
 
   static public String moveAssit() {
     SetCommands();
-    return "   ******************" + "************" + "******************"
+    return "   ******************            ******************"
         + "\tYou enter a new room. There is nothing in it but"
         + "\n   /                                              \\" + "\tyou. There are 2 doors to the North, and EAST."
         + "\n   \\                                              /" + "\tChoose a door to LEAVE."
@@ -99,7 +99,7 @@ public class RoomImage {
         + "\n   |                                              |"
         + "\n   |                                              |" + "\t" + P1
         + "\n   |                                              |" + "\t" + P2
-        + "\n  |                                              |" + "\t" + P3
+        + "\n   |                                              |" + "\t" + P3
         + "\n   |                                              |" + "\t" + P4
         + "\n   ************************************************" + "\t" + P5;
   }
