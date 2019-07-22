@@ -1,5 +1,7 @@
 package java_adventure;
 
+import static java_adventure.GameManager.player;
+
 import java.io.IOException;
 
 public class JavaAdventure {
@@ -10,9 +12,8 @@ public class JavaAdventure {
         gm.setInputManagerInstance();
         im.Welcome();
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor(); // clears the console window.
-        gm.CreateDungeon();
         im.setCurrentRoom(gm.dungeon.get(0));
-        while (gm.player.getHealth() > 0) {
+        while (player.getHealth() > 0) {
             new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();// clears the console window.
             im.VerifyInput(im.getCurrentRoom());
         }
