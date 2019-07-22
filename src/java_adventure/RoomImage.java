@@ -382,7 +382,7 @@ public class RoomImage {
     return "   ******************            ******************" + "\tYou enter a new room. in front of you is an"
         + "\n   /                                              \\"
         + "\told looking treasure chest. But there's something"
-        + "\n   \\                                              /" + "\toff about it. Do you OPEN the chest or LEAVE?"
+        + "\n   \\                                              /" + "\toff about it. Oh no! It's a mimic!"
         + "\n   /                                              \\"
         + "\n   \\                                              /"
         + "\n   /                                              \\"
