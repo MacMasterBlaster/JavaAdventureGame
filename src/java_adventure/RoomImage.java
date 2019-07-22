@@ -491,7 +491,7 @@ public class RoomImage {
         + "\n   \\                                              /"
         + "\tThe figure's voice echoes loudly all around you."
         + "\n   /                                              \\" + "\tIt is time for your deadliest FIGHT yet."
-        + "\n   \\                           {|}                /"
+        + "\n   \\                      (_)  {|}                /"
         + "\n   /                     _|T|_ {|}                \\"
         + "\n   \\                /{\\_/|THT|\\{|}                /"
         + "\n   /                \\{/   VWV  \\T                 \\"
