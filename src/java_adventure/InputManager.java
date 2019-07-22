@@ -16,7 +16,7 @@ public class InputManager {
     private Room currentRoom, previousRoom;
     private GameManager gm = GameManager.getInstance();
     private static InputManager instance = null;
-
+    
     // private constructor restricted to this class itself
     public InputManager() {
         currentRoom = null;
@@ -458,24 +458,27 @@ public class InputManager {
         }
         gm.player.CharacterSprite();// set the players character sprite based on class chosen.
         System.out.println(gm.player.toString());
-        System.out.println("\nHe takes all the paperwork you filled out and sits back in his chair."
-                + "\"Now that you have provided all the necessary information and waived the your right"
-                + "to hold the Adventurers' Guild liable in the case of your death or dismemberment.\""
-                +"\n He says still smiling. \"We wish you the best of luck in your conquest of the dungeon"
-                + "of the Terrible Javalang.\" He gives you a map and begins to shove you out the door with your new"
-                +"\nequipment clutched awkardly in arms."
+        System.out.print("\nHe takes all the paperwork you filled out and gets out in his chair."
+                + "\n\"Now that you have provided all the necessary information and waived the your right"
+                + "\nto hold the Adventurers' Guild liable in the case of your death or dismemberment.\""
+                +"\nHe says still smiling. \"We wish you the best of luck in your conquest of the dungeon"
+                + "\nof the Terrible Javalang.\" He gives you a map and begins to shove you out the door with your new"
+                +"\nequipment clutched awkwardly in your arms."
                 + "\n\n Time seems to pass in a blur. Next thing you know you are standing before the entrance to a"
-                + "\ncave located right where the map said it would be.\n\n Do you dare to enter? (Y)es or (N)o:");
+                + "\ncave located right where the map said it would be.\n\n Do you dare to enter? (Y)es or (N)o: ");
         String input = scan.nextLine();
+        isValid = false;
         while (!isValid) {
             switch (input.toLowerCase()) {
             case "y":
             case "yes":
                 isValid = true;
+                gm.beginQuest = true;
                 break;
             case "n":
             case "no":
             isValid = true;
+                gm.beginQuest = false;
                 System.out.println("Alright you go home and live a boring life. THE END");
                 gm.player.setHealth(0);
                 scan.close();
