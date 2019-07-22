@@ -104,7 +104,7 @@ public class InputManager {
                     break;
                 case "help":
                 case "h":
-                    //TODO: Make help actually useful.
+                    // TODO: Make help actually useful.
                     isValid = false;
                     System.out.println("Try typing in a direction or action you wish to attempt.");
                     break;
@@ -136,6 +136,7 @@ public class InputManager {
     }
 
     public void StartCombat(CharacterController player, CharacterController monster) {
+        Scanner scan = new Scanner(System.in);
         int playerIntiative = 0, monsterIntiative = 0;
         playerIntiative = player.RollInitiative();
         monsterIntiative = monster.RollInitiative();
@@ -144,10 +145,9 @@ public class InputManager {
         while (gm.inCombat == true) {
             {
                 isValid = false;
-                while (!isValid) {
-                    if (playerIntiative > monsterIntiative) {
+                if (playerIntiative > monsterIntiative) {
+                    while (!isValid) {
                         System.out.println("What would you like to do?");
-                        Scanner scan = new Scanner(System.in);
                         String input = scan.nextLine();
                         switch (input.toLowerCase()) {
                         case "attack":
@@ -170,9 +170,10 @@ public class InputManager {
                             } else {
                                 System.out.println(monster.getName() + " prevents your escape!");
                             }
+                            break;
                         case "help":
                         case "h":
-                            //TODO: Make help actually useful.
+                            // TODO: Make help actually useful.
                             System.out.println("Try typing in a direction or action you wish to attempt.");
                             break;
                         case "status":
@@ -181,31 +182,35 @@ public class InputManager {
                             break;
                         case "quit":
                         case "q":
-                            isValid = true;
                             System.out.println("\nDo you want quit? (Y)es or (N)o");
                             input = scan.nextLine().toLowerCase();
-                            if (input.equals("yes") || input.equals("y"))
+                            if (input.equals("yes") || input.equals("y")) {
+                                isValid = true;
                                 scan.close();
-                            else if (input.equals("no") || input.equals("n"))
+                                gm.inCombat = false;
+                                break;
+                            } else if (input.equals("no") || input.equals("n"))
                                 break;
                         default:
                             System.out.println("You can't do that.");
                             break;
                         }
-                        // if monster is still alive it attacks
-                        if (gm.inCombat)
-                            Attack(monster, player);
-                    } else {
-                        // monster attacks first
-                        if (gm.inCombat)
-                            Attack(monster, player);
+                    }
+                    // if monster is still alive it attacks
+                    if (gm.inCombat)
+                        Attack(monster, player);
+                } else {
+                    // monster attacks first
+                    if (gm.inCombat)
+                        Attack(monster, player);
+                    while (!isValid) {
                         // then player gets to respond
                         System.out.println("What would you like to do?");
-                        Scanner scan = new Scanner(System.in);
                         String input = scan.nextLine();
                         switch (input.toLowerCase()) {
                         case "attack":
                         case "a":
+                            isValid = true;
                             // Player attacks
                             Attack(player, monster);
                             break;
@@ -214,6 +219,7 @@ public class InputManager {
                         case "run":
                         case "retreat":
                         case "flee":
+                            isValid = true;
                             if (player.RollInitiative() > monster.RollInitiative()) {
                                 System.out.println("You escaped!");
                                 monster.setHealth(monster.getMaxHealth()); // Reset monster health.
@@ -224,7 +230,7 @@ public class InputManager {
                             }
                         case "help":
                         case "h":
-                            //TODO: Make help actually useful.
+                            // TODO: Make help actually useful.
                             System.out.println("Try typing in a direction or action you wish to attempt.");
                             break;
                         case "status":
@@ -235,9 +241,12 @@ public class InputManager {
                         case "q":
                             System.out.println("\nDo you want quit? (Y)es or (N)o");
                             input = scan.nextLine().toLowerCase();
-                            if (input.equals("yes") || input.equals("y"))
+                            if (input.equals("yes") || input.equals("y")) {
+                                isValid = true;
                                 scan.close();
-                            else if (input.equals("no") || input.equals("n"))
+                                gm.inCombat = false;
+                                break;
+                            } else if (input.equals("no") || input.equals("n"))
                                 break;
                         default:
                             System.out.println("You do not attack.");
@@ -247,6 +256,8 @@ public class InputManager {
                 }
             }
         }
+    }
+
     }
 
     private void Attack(CharacterController attacker, CharacterController target) {
@@ -307,8 +318,8 @@ public class InputManager {
             case "pen":
                 isValid = true;
                 gm.MakeWizard(gm.player, gm.player.getName());
-                System.out.println("Congratulations! You're a wizard " + gm.player.getName() 
-                + "! Here's your free wand.\n");
+                System.out.println(
+                        "Congratulations! You're a wizard " + gm.player.getName() + "! Here's your free wand.\n");
                 break;
             case "s":
             case "sword":
@@ -347,10 +358,10 @@ public class InputManager {
             switch (input.toLowerCase()) {
             case "yes":
             case "y":
-            //TODO: Add player death tracker.
+                // TODO: Add player death tracker.
                 isValid = true;
                 System.out.println("Okay then! Up you get, the blood should wash out eventually.");
-                gm.player.setHealth(gm.player.getMaxHealth()); //Reset player health.
+                gm.player.setHealth(gm.player.getMaxHealth()); // Reset player health.
                 currentRoom.getMonster().setHealth(currentRoom.getMonster().getMaxHealth()); // Reset monster health.
                 setCurrentRoom(getPreviousRoom()); // Returns player to the previous room.
                 gm.inCombat = false;
