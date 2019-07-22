@@ -24,8 +24,7 @@ public class GameManager {
     private static GameManager instance = null;
 
     // private constructor restricted to this class itself
-    GameManager() {
-    }
+    GameManager() {}
 
     // static method to create instance of Singleton class GameManager
     public static GameManager getInstance() {
@@ -238,7 +237,7 @@ public class GameManager {
         boss.setExits(treasure, null, empty4, null);
         boss.setMonster(m_boss);
         boss.setHasMonster(true);
-        boss.setRoomImages(RoomImage.bossWithEnemy(), RoomImage.BossWithoutEnemy());
+        boss.setRoomImages(RoomImage.bossWithEnemy(), RoomImage.bossWithoutEnemy());
 
         // Add all rooms to the dungeon list
         dungeon.add(start);
