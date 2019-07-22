@@ -25,6 +25,7 @@ public class GameManager {
 
     // private constructor restricted to this class itself 
     GameManager(){
+        CreateDungeon();
     }
     // static method to create instance of Singleton class GameManager 
     public static GameManager getInstance() 

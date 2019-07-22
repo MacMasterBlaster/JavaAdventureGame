@@ -14,7 +14,6 @@ public class JavaAdventure {
             im.VerifyInput(im.getCurrentRoom());
             //new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();// clears the console window.
         }
-        im.GameOver();
     }
 
 }
