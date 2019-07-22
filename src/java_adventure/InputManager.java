@@ -522,7 +522,7 @@ public class InputManager {
         }
     }
 
-        // This method should be called on player death.
+        // This method should be called on player win.
     public void Win(Scanner scan) throws IOException, InterruptedException {
         ClearConsole();
         
