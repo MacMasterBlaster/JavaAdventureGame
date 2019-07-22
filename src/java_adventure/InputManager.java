@@ -521,4 +521,13 @@ public class InputManager {
             }
         }
     }
+
+        // This method should be called on player death.
+    public void Win(Scanner scan) throws IOException, InterruptedException {
+        ClearConsole();
+        
+        gm.player.setHealth(0);
+        scan.close(); // This will cause the game to end.
+    }
+
 }
