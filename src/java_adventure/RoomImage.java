@@ -360,7 +360,7 @@ public class RoomImage {
   static public String chest2Without() {
     SetCommands();
     return "   ************************************************" + "\tThis room is now empty. There is a door"
-        + "\n   /                                              |" + "\tto the WEST and a door to the EAST."
+        + "\n   /                                              |" + "\tto the WEST and a door to the SOUTH."
         + "\n   \\                                              |" + "\tChoose a door to LEAVE."
         + "\n   /                                              |"
         + "\n   \\                                              |"
