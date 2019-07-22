@@ -138,6 +138,14 @@ public class InputManager {
                         scan.close();
                     else if (input.equals("no") || input.equals("n"))
                         break;
+                case "jumpto": //For Debugging ONLY! Allows player to jump to any room in the dungeon.
+                    if (gm.player.getCharClass().equals("God")){
+                        isValid = true;
+                        System.out.print("What room do you want to jump to? [0 - " + gm.dungeon.size()+"]: ");
+                        int room = scan.nextInt();
+                        currentRoom = gm.dungeon.get(room);
+                    }
+                    break;
                 default:
                     isValid = false;
                     System.out.println("Sorry I don't understand. What do you want to do?");
