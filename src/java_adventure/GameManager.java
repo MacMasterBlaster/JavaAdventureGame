@@ -18,22 +18,24 @@ public class GameManager {
     CharacterController m_mimic = new CharacterController();
     CharacterController m_spider = new CharacterController();
     CharacterController m_boss = new CharacterController();
-    
-    public static CharacterController player = new CharacterController("Nobody", "None");
-    
-    private static GameManager instance = null; 
 
-    // private constructor restricted to this class itself 
-    GameManager(){
-        CreateDungeon();
+    public CharacterController player = new CharacterController("Nobody", "None");
+
+    private static GameManager instance = null;
+
+    // private constructor restricted to this class itself
+    GameManager() {
     }
-    // static method to create instance of Singleton class GameManager 
-    public static GameManager getInstance() 
-    { 
-        if (instance == null) 
-            instance = new GameManager();  
-        return instance; 
-    } 
+
+    // static method to create instance of Singleton class GameManager
+    public static GameManager getInstance() {
+        if (instance == null) {
+            instance = new GameManager();
+            return instance;
+        } else {
+            return instance;
+        }
+    }
 
     public boolean getInCombat() {
         return inCombat;
@@ -42,9 +44,15 @@ public class GameManager {
     public void setInCombat(boolean temp) {
         inCombat = temp;
     }
-    public void setInputManagerInstance(){
+
+    public void setInputManagerInstance() {
         im = InputManager.getInstance();
     }
+
+    public CharacterController getPlayer() {
+        return player;
+    }
+
     // region Player Classes
     public void MakeWizard(CharacterController newCharacter, String name) {
         newCharacter.setHealth(15);
@@ -153,7 +161,7 @@ public class GameManager {
         Room boss = new Room();
         Room treasure = new Room();
         Room end = new Room();
-        //room names for debugging
+        // room names for debugging
         start.setName("start");
         moveAssit.setName("moveAssit");
         fight.setName("fight");
@@ -209,7 +217,7 @@ public class GameManager {
         slime2.setRoomImage(RoomImage.slime2WithEnemy());
 
         chest1.setExits(null, mimic, null, null);
-        //TODO:chest1.setRoomImage(RoomImage.chest1With());
+        // TODO:chest1.setRoomImage(RoomImage.chest1With());
 
         chest2.setExits(null, slime1, null, null);
         chest2.setRoomImage(RoomImage.chest2With());
