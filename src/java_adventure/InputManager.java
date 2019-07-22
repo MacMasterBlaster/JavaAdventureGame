@@ -199,6 +199,8 @@ public class InputManager {
                         System.out.print(" What room do you want to jump to? [0 - " + gm.dungeon.size() + "]: ");
                         int room = scan.nextInt();
                         currentRoom = gm.dungeon.get(room);
+                        ClearConsole();
+                        System.out.println(currentRoom.toString(currentRoom.getHasMonster()));// draw room
                     }
                     break;
                 default:
@@ -250,14 +252,14 @@ public class InputManager {
                                 System.out.println(currentRoom.toString(currentRoom.getHasMonster()));// draw room
                                 gm.inCombat = false;
                             } else {
-                                System.out.println("\t*" + monster.getName() + "prevents your escape!*");
+                                System.out.println("\t*" + monster.getName() + " prevents your escape!*");
                             }
                             break;
                         case "help":
                         case "h":
-                            System.out.println(" Try typing in a direction or action you wish to attempt.");
-                            System.out.println(" For a full list of commands, type \"comm\"");
-                            System.out.println(" Type \"shr\" for a list of command shortcuts.");
+                            System.out.println("    Try typing in a direction or action you wish to attempt.");
+                            System.out.println("    For a full list of commands, type \"comm\"");
+                            System.out.println("    Type \"shr\" for a list of command shortcuts.");
                             input = scan.nextLine();
                             switch (input.toLowerCase()) {
                                        case "comm":
@@ -345,7 +347,7 @@ public class InputManager {
                                 System.out.println(currentRoom.toString(currentRoom.getHasMonster()));// draw room
                                 gm.inCombat = false;
                             } else {
-                                System.out.println("\t*" + monster.getName() + "prevents your escape!*");
+                                System.out.println("\t*" + monster.getName() + " prevents your escape!*");
                             }
                             break;
                         case "help":
@@ -528,7 +530,7 @@ public class InputManager {
                 +"\n   He says still smiling. \"We wish you the best of luck in your conquest of the dungeon"
                 + "\n   of the Terrible Javalang.\" He gives you a map and begins to shove you out the door with your \"new\""
                 +"\n   equipment clutched awkwardly in your arms."
-                + "\n\n    Time seems to pass in a blur. Next thing you know you are standing before the entrance to a"
+                + "\n\n   Time seems to pass in a blur. Next thing you know you are standing before the entrance to a"
                 + "\n   cave located right where the map said it would be.\n\n Do you dare to enter? (Y)es or (N)o: ");
         String input = scan.nextLine();
         isValid = false;
@@ -583,6 +585,7 @@ public class InputManager {
                 // TODO: Add player death tracker.
                 isValid = true;
                 // if player dies
+                gm.inCombat = false;
                 if (gm.player.getHealth() <= 0) {
                     ClearConsole();
                     gm.player.setHealth(gm.player.getMaxHealth()); // Reset player health.
@@ -594,13 +597,11 @@ public class InputManager {
                     }
                     System.out.println(currentRoom.toString(currentRoom.getHasMonster()));// draw room
                     System.out.println("   Okay then! Up you get, the blood should wash out eventually.");
-                    gm.inCombat = false;
                     VerifyInput(currentRoom);
                 } else {
                     // player attempts to quit
-                    gm.inCombat = false;
                     gm.player.setHealth(0);
-                    System.out.print("   Oh well. We can't all be winners.\n");
+                    System.out.print("\n   Oh well. We can't all be winners.\n");
                     // scan.nextLine();
                     scan.close();
                 }
