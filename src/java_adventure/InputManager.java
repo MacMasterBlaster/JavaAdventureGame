@@ -250,7 +250,7 @@ public class InputManager {
                                 System.out.println(currentRoom.toString(currentRoom.getHasMonster()));// draw room
                                 gm.inCombat = false;
                             } else {
-                                System.out.println("\t*" + monster.getName() + "prevents your escape!*");
+                                System.out.println("\t*" + monster.getName() + " prevents your escape!*");
                             }
                             break;
                         case "help":
