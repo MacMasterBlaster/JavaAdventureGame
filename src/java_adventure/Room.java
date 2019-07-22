@@ -11,7 +11,8 @@ public class Room {
     private Room[] exits = new Room[4];
     private CharacterController monster;
     private boolean hasMonster, hasChest;
-    private String roomImageString;
+    private String roomImageEmpty;
+    private String roomImageHasMonster;
     private String name;
     
     // Room Contructor
@@ -95,16 +96,15 @@ public class Room {
         hasChest = _hasChest;
     }
 
-    // The properties for setting the rooms text based image
-    public String getRoomImage() {
-        return roomImageString;
+    public void setRoomImages(String hasMonster, String empty ) {
+        roomImageHasMonster = hasMonster;
+        roomImageEmpty = empty;
     }
 
-    public void setRoomImage(String temp) {
-        roomImageString = temp;
-    }
-
-    public String toString() {
+    public String toString(boolean hasMonster) {
+        String roomImageString;
+        if (hasMonster) roomImageString = roomImageHasMonster;
+        else roomImageString = roomImageEmpty;
         return roomImageString;
     }
 

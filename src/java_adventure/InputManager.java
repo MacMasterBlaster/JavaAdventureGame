@@ -48,7 +48,7 @@ public class InputManager {
 
     // Compares user input against possible acceptable values.
     public void VerifyInput(Room cr) {
-        System.out.println(cr.toString());
+        System.out.println(cr.toString(cr.getHasMonster()));//draw room
         System.out.println("\n\t*You are now in " + cr.getName() + ".*");
         Scanner scan = new Scanner(System.in);
         boolean isValid = false;
