@@ -197,7 +197,8 @@ public class InputManager {
                             Attack(monster, player);
                     } else {
                         // monster attacks first
-                        Attack(monster, player);
+                        if (gm.inCombat)
+                            Attack(monster, player);
                         // then player gets to respond
                         System.out.println("What would you like to do?");
                         Scanner scan = new Scanner(System.in);
