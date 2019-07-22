@@ -108,7 +108,7 @@ public class RoomImage {
     SetCommands();
     return "   ******************            ******************" + "\tYou enter a new room. in front of you is "
         + "\n   /                                              \\" + "\ta goblin. It looks easy enough. You think you "
-        + "\n   \\                                              /" + "\tcould take it. Dou you LEAVE or do you FIGHT?"
+        + "\n   \\                                              /" + "\tcould take it. Do you LEAVE or do you FIGHT?"
         + "\n   /                                              \\"
         + "\n   \\                                              /"
         + "\n   /                                              \\"
@@ -253,7 +253,7 @@ public class RoomImage {
 
   static public String slime1WithEnemy() {
     SetCommands();
-    return "   ************************************************" + "\tYou enter a new room. in front of you is a"
+    return "   ************************************************" + "\tYou enter a new room. In front of you is a"
         + "\n   /                                              \\" + "\tgiant moving mass of what looks like jello."
         + "\n   \\                                              /" + "\tThis is a monster called a slime. "
         + "\n   /                                              \\" + "\tDo you FIGHT or do you LEAVE?"
@@ -295,7 +295,7 @@ public class RoomImage {
 
   static public String slime2WithEnemy() {
     SetCommands();
-    return "   ******************            ******************" + "\tYou enter a new room. in front of you is a"
+    return "   ******************            ******************" + "\tYou enter a new room. In front of you is a"
         + "\n   /                                              \\" + "\tgiant moving mass of what looks like jello."
         + "\n   \\                                              /" + "\tThis is a monster called a slime. "
         + "\n   /                                              \\" + "\tDo you FIGHT or do you LEAVE?"
@@ -513,7 +513,7 @@ public class RoomImage {
         + "\n   \\                                              /" + "\tragged breathing and the drips of water on the"
         + "\n   /                                              \\" + "\tcave floor."
         + "\n   \\                                              /" + "\tThere is a door to the SOUTH and a door to the "
-        + "\n   /                                              \\" + "\tNORTH" + "\n   \\                    "
+        + "\n   /                                              \\" + "\tNORTH." + "\n  \\                    "
         + gm.getPlayer().H1 + "                    /" + "\n   /                    " + gm.getPlayer().H2 + "                    \\"
         + "\n   \\                    " + gm.getPlayer().H3 + "                    /" + "\n   /                    " + gm.getPlayer().H4
         + "                    \\" + "\n   \\                    " + gm.getPlayer().H5 + "                    /"
@@ -534,12 +534,12 @@ public class RoomImage {
         + "\n   \\    ||[]||   ||�||            [|-----|]       /"
         + "\tthey all belong to you now. And what luck! there"
         + "\n   /    ||||||   |||||            ||||�||||       \\" + "\tis light streaming in from the far door!"
-        + "\n   \\   _______                    |||||||||       /" + "\t text."
-        + "\n   /  [|-----|]   [---]                    {----} \\" + "\t text." + "\n   \\  |VVV�VVV|   ||�|| "
+        + "\n   \\   _______                    |||||||||       /" 
+        + "\n   /  [|-----|]   [---]                    {----} \\" + "\n   \\  |VVV�VVV|   ||�|| "
         + gm.getPlayer().H1 + "             ||[]|| /" + "\t text." + "\n   /  |||||||||   ||||| " + gm.getPlayer().H2
-        + "    [---]    |||||| \\" + "\t text." + "\n   \\  |||||||||         " + gm.getPlayer().H3 + "    ||�||           /"
-        + "\t text" + "\n   /             [---]  " + gm.getPlayer().H4 + "    |||||  [----]   \\"
-                          +"\t text."
+        + "    [---]    |||||| \\" +  "\n   \\  |||||||||         " + gm.getPlayer().H3 + "    ||�||           /"
+        + "\n   /             [---]  " + gm.getPlayer().H4 + "    |||||  [----]   \\"
+                          
                         +"\n   \\    [-----]  ||�||  " + gm.getPlayer().H5 + "    |||||  ||[]||   /"
                         +"\n   /    |||�|||  |||||                   ||||||   \\"
                         +"\n   \\    |||||||                [---]     _______  /"
