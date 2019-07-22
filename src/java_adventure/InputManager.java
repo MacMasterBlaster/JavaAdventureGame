@@ -134,9 +134,29 @@ public class InputManager {
                     break;
                 case "help":
                 case "h":
-                    // TODO: Make help actually useful.
                     isValid = false;
                     System.out.println("Try typing in a direction or action you wish to attempt.");
+                    System.out.println("For a full list of commands, type \"comm\"");
+                    System.out.println("Type \"shr\" for a list of command shortcuts.");
+                    input = scan.nextLine();
+                    switch (input.toLowerCase()) {
+                               case "comm":
+                                  isValid = false;
+                                  System.out.println("-Movement- \n North: (go) north, up, forward\n South: (go) south, down, back\n " +
+                                  "East:  (go) east, right\n West:  (go) west, left\n"  +
+                                  "-Combat-\n Attack:  attack\n Retreat: leave, run, retreat, flee\n View Status: (Works outside of combat): status\n" + 
+                                  "-Options-\n Quit (Warning: Stops the game): quit");
+                              break; 
+                              case "shr":
+                                  isValid = false;
+                                  System.out.println("Don't want to waste any time eh?\n-Movement-\n North: n\n South: s\n East:  e\n West:  w\n" +
+                                  "-Combat-\n Attack:  a \n Retreat: l \n Status:  stat \n" +
+                                  "-Options-\n Status: stat \n Quit:   q \n ");
+                              break;
+                              default:
+                                  System.out.println("Got your bearings?");
+                             break;
+                            }                   
                     break;
                 case "status":
                 case "stat":
@@ -231,8 +251,28 @@ public class InputManager {
                             break;
                         case "help":
                         case "h":
-                            // TODO: Make help actually useful.
                             System.out.println("Try typing in a direction or action you wish to attempt.");
+                            System.out.println("For a full list of commands, type \"comm\"");
+                            System.out.println("Type \"shr\" for a list of command shortcuts.");
+                            input = scan.nextLine();
+                            switch (input.toLowerCase()) {
+                                       case "comm":
+                                          isValid = false;
+                                          System.out.println("-Movement- \n North: (go) north, up, forward\n South: (go) south, down, back\n " +
+                                          "East:  (go) east, right\n West:  (go) west, left\n"  +
+                                          "-Combat-\n Attack:  attack\n Retreat: leave, run, retreat, flee\n View Status: (Works outside of combat): status\n" + 
+                                          "-Options-\n Quit (Warning: Stops the game): quit");
+                                       break; 
+                                       case "shr":
+                                          isValid = false;
+                                          System.out.println("Don't want to waste any time eh?\n-Movement-\n North: n\n South: s\n East:  e\n West:  w\n" +
+                                          "-Combat-\n Attack:  a \n Retreat: l \n Status:  stat \n" +
+                                          "-Options-\n Status: stat \n Quit:   q \n ");
+                                       break;
+                                       default:
+                                          System.out.println("Got your bearings?");
+                                       break;
+                                  }   
                             break;
                         case "status":
                         case "stat":
@@ -306,8 +346,28 @@ public class InputManager {
                             break;
                         case "help":
                         case "h":
-                            // TODO: Make help actually useful.
                             System.out.println("Try typing in a direction or action you wish to attempt.");
+                            System.out.println("For a full list of commands, type \"comm\"");
+                            System.out.println("Type \"shr\" for a list of command shortcuts.");
+                            input = scan.nextLine();
+                            switch (input.toLowerCase()) {
+                                        case "comm":
+                                           isValid = false;
+                                           System.out.println("-Movement- \n North: (go) north, up, forward\n South: (go) south, down, back\n " +
+                                           "East:  (go) east, right\n West:  (go) west, left\n"  +
+                                           "-Combat-\n Attack:  attack\n Retreat: leave, run, retreat, flee\n View Status: (Works outside of combat): status\n" + 
+                                           "-Options-\n Quit (Warning: Stops the game): quit");
+                                       break; 
+                                       case "shr":
+                                           isValid = false;
+                                           System.out.println("Don't want to waste any time eh?\n-Movement-\n North: n\n South: s\n East:  e\n West:  w\n" +
+                                           "-Combat-\n Attack:  a \n Retreat: l \n Status:  stat \n" +
+                                           "-Options-\n Status: stat \n Quit:   q \n ");
+                                       break;
+                                       default:
+                                           System.out.println("Got your bearings?");
+                                      break;
+                                     }   
                             break;
                         case "status":
                         case "stat":
