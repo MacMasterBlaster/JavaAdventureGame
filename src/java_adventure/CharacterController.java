@@ -12,7 +12,7 @@ public class CharacterController {
     private String name; // the name of the character
     private int health, maxHealth; // current health and max possible health
     private int armorClass; // the threshold for hitting with an attack
-    private int damageDie, damageMod, attackMod; // die type rolled & modifiers added to character attacks
+    private int damageDie, damageMod, attackMod, initMod; // die type rolled & modifiers added to character attacks
     private String charClass; // sets default values for maxHealth & damageMod
     private Dice d = new Dice();
     
@@ -36,6 +36,7 @@ public class CharacterController {
         damageDie = 4;
         damageMod = 0;
         attackMod = 0;
+        initMod = 0;
     }
 
     public CharacterController(String newName, String newCharClass) {
@@ -76,7 +77,7 @@ public class CharacterController {
     }
 
     public int RollInitiative(){
-        return d.RollInitiative(20, 0);
+        return d.RollInitiative(20, initMod);
     }
 
     public int getAttackRoll() {

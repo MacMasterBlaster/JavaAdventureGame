@@ -238,7 +238,7 @@ public class GameManager {
         boss.setExits(treasure, null, empty4, null);
         boss.setMonster(m_boss);
         boss.setHasMonster(true);
-        boss.setRoomImages(RoomImage.bossWithEnemy(), RoomImage.bossWithoutEnemy());
+        boss.setRoomImages(RoomImage.bossWithEnemy(), RoomImage.BossWithoutEnemy());
 
         // Add all rooms to the dungeon list
         dungeon.add(start);

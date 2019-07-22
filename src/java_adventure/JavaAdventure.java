@@ -9,11 +9,11 @@ public class JavaAdventure {
         InputManager im = InputManager.getInstance();
         gm.setInputManagerInstance();
         im.Welcome();
-        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor(); // clears the console window.
+        //new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor(); // clears the console window.
         gm.CreateDungeon();
         im.setCurrentRoom(gm.dungeon.get(0));
         while (gm.player.getHealth() > 0) {
-            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();// clears the console window.
+            //new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();// clears the console window.
             im.VerifyInput(im.getCurrentRoom());
         }
     }

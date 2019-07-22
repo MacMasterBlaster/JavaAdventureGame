@@ -9,6 +9,7 @@
 package java_adventure;
 
 import java.util.Scanner;
+import java.io.IOException;
 
 public class InputManager {
 
@@ -46,8 +47,12 @@ public class InputManager {
         previousRoom = _previousRoom;
     }
 
+    private void ClearConsole()throws IOException, InterruptedException{
+        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor(); // clears the console window.
+    }
     // Compares user input against possible acceptable values.
-    public void VerifyInput(Room cr) {
+    public void VerifyInput(Room cr)throws IOException, InterruptedException {
+        ClearConsole();
         System.out.println(cr.toString(cr.getHasMonster()));//draw room
         System.out.println("\n\t*You are now in " + cr.getName() + ".*");
         Scanner scan = new Scanner(System.in);
@@ -57,7 +62,6 @@ public class InputManager {
             while (!isValid) {
                 String input = scan.nextLine();
                 switch (input.toLowerCase()) {
-                // TODO: add "go [direction]" to the list of options
                 case "north":
                 case "go north":
                 case "go forward":
@@ -128,6 +132,8 @@ public class InputManager {
                 case "stat":
                     isValid = false;
                     System.out.println(gm.player.toString());
+                    scan.nextLine();
+                    ClearConsole();
                     break;
                 case "quit":
                 case "q":
