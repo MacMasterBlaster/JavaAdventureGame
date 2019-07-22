@@ -479,7 +479,7 @@ public class InputManager {
                 System.out.println("\n   \"Excellent!\" He says smiling even more broadly. ");
                 break;
             default:
-                System.out.print("\n\   "It's a yes or no question... So do you have any next of kin " + gm.player.getName()
+                System.out.print("\n   \"It's a yes or no question... So do you have any next of kin " + gm.player.getName()
                         + "?\" (Y)es or (N)o: ");
                 break;
             }
