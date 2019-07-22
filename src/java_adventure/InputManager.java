@@ -393,6 +393,7 @@ public class InputManager {
                 break;
             default:
                 System.out.println("It's a yes or no question " + gm.player.getName() + ". (Y)es or (N)o");
+                input = scan.nextLine();
                 break;
             }
         }
