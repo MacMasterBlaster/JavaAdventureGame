@@ -163,7 +163,7 @@ public class CharacterController {
 
 
     public String toString() {
-        return  name + "'s current stats are:\n   " + H1 + "\tClass: " + charClass + "\n   " + H2 + "\tHealth: " + health + "/" + maxHealth + "\n   " + H3 + "\tArmor Class: "
+        return name + "'s current stats are:\n   " + H1 + "\tClass: " + charClass + "\n   " + H2 + "\tHealth: " + health + "/" + maxHealth + "\n   " + H3 + "\tArmor Class: "
                 + armorClass + "\n   " + H4 + "\tDamage: 1D" + damageDie + " + " + damageMod + "\n   " + H5 + "\tAttack: 1D20" + " + "
                 + attackMod;
     }

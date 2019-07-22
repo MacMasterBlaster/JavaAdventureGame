@@ -377,7 +377,7 @@ public class InputManager {
         boolean isValid = false;
         Scanner scan = new Scanner(System.in);
         // prints the title image.
-        System.out.println("\t\t\t _______ _               _____                                     \n"
+        System.out.println("\n\n\n\t\t\t _______ _               _____                                     \n"
                 + "\t\t\t|__   __| |             |  __ \\                                    \n"
                 + "\t\t\t   | |  | |__   ___     | |  | |_   _ _ __   __ _  ___  ___  _ __  \n"
                 + "\t\t\t   | |  | '_ \\ / _ \\    | |  | | | | | '_ \\ / _` |/ _ \\/ _ \\| '_ \\ \n"
