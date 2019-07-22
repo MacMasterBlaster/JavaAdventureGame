@@ -79,7 +79,7 @@ public class InputManager {
                         System.out.println(currentRoom.toString(currentRoom.getHasMonster()));// draw room
                         System.out.println("\t*You moved north*");
                     } else {
-                        System.out.println("You can't do that. Try a different direction or action.");
+                        System.out.println("    You can't do that. Try a different direction or action.");
                     }
                     break;
                 case "south":
@@ -97,7 +97,7 @@ public class InputManager {
                         System.out.println(currentRoom.toString(currentRoom.getHasMonster()));// draw room
                         System.out.println("\t*You moved south*");
                     } else {
-                        System.out.println("You can't do that. Try a different direction or action.");
+                        System.out.println("    You can't do that. Try a different direction or action.");
                     }
                     break;
                 case "east":
@@ -113,7 +113,7 @@ public class InputManager {
                         System.out.println(currentRoom.toString(currentRoom.getHasMonster()));// draw room
                         System.out.println("\t*You moved east*");
                     } else {
-                        System.out.println("You can't do that. Try a different direction or action.");
+                        System.out.println("    You can't do that. Try a different direction or action.");
                     }
                     break;
                 case "west":
@@ -129,32 +129,32 @@ public class InputManager {
                         System.out.println(currentRoom.toString(currentRoom.getHasMonster()));// draw room
                         System.out.println("\t*You moved west*");
                     } else {
-                        System.out.println("You can't do that. Try a different direction or action.");
+                        System.out.println("    You can't do that. Try a different direction or action.");
                     }
                     break;
                 case "help":
                 case "h":
                     isValid = false;
-                    System.out.println("Try typing in a direction or action you wish to attempt.");
-                    System.out.println("For a full list of commands, type \"comm\"");
-                    System.out.println("Type \"shr\" for a list of command shortcuts.");
+                    System.out.println("    Try typing in a direction or action you wish to attempt.");
+                    System.out.println("    For a full list of commands, type \"comm\"");
+                    System.out.println("    Type \"shr\" for a list of command shortcuts.");
                     input = scan.nextLine();
                     switch (input.toLowerCase()) {
                                case "comm":
                                   isValid = false;
-                                  System.out.println("-Movement- \n North: (go) north, up, forward\n South: (go) south, down, back\n " +
+                                  System.out.println(" -Movement- \n North: (go) north, up, forward\n South: (go) south, down, back\n " +
                                   "East:  (go) east, right\n West:  (go) west, left\n"  +
                                   "-Combat-\n Attack:  attack\n Retreat: leave, run, retreat, flee\n View Status: (Works outside of combat): status\n" + 
                                   "-Options-\n Quit (Warning: Stops the game): quit");
                               break; 
                               case "shr":
                                   isValid = false;
-                                  System.out.println("Don't want to waste any time eh?\n-Movement-\n North: n\n South: s\n East:  e\n West:  w\n" +
+                                  System.out.println(" Don't want to waste any time eh?\n-Movement-\n North: n\n South: s\n East:  e\n West:  w\n" +
                                   "-Combat-\n Attack:  a \n Retreat: l \n Status:  stat \n" +
                                   "-Options-\n Status: stat \n Quit:   q \n ");
                               break;
                               default:
-                                  System.out.println("Got your bearings?");
+                                  System.out.println(" Got your bearings?");
                              break;
                             }                   
                     break;
@@ -180,7 +180,7 @@ public class InputManager {
                 case "die":
                     if (gm.player.getCharClass().equals("God")) {
                         isValid = true;
-                        System.out.print("You die.");
+                        System.out.print(" You die.");
                         gm.player.setHealth(0);
                         scan.nextLine();
                     }
@@ -192,14 +192,14 @@ public class InputManager {
                 case "jumpto": // For Debugging ONLY! Allows player to jump to any room in the dungeon.
                     if (gm.player.getCharClass().equals("God")) {
                         isValid = true;
-                        System.out.print("What room do you want to jump to? [0 - " + gm.dungeon.size() + "]: ");
+                        System.out.print(" What room do you want to jump to? [0 - " + gm.dungeon.size() + "]: ");
                         int room = scan.nextInt();
                         currentRoom = gm.dungeon.get(room);
                     }
                     break;
                 default:
                     isValid = false;
-                    System.out.println("Sorry I don't understand. What do you want to do?");
+                    System.out.println(" Sorry I don't understand. What do you want to do?");
                     break;
                 }
             }
@@ -251,26 +251,26 @@ public class InputManager {
                             break;
                         case "help":
                         case "h":
-                            System.out.println("Try typing in a direction or action you wish to attempt.");
-                            System.out.println("For a full list of commands, type \"comm\"");
-                            System.out.println("Type \"shr\" for a list of command shortcuts.");
+                            System.out.println(" Try typing in a direction or action you wish to attempt.");
+                            System.out.println(" For a full list of commands, type \"comm\"");
+                            System.out.println(" Type \"shr\" for a list of command shortcuts.");
                             input = scan.nextLine();
                             switch (input.toLowerCase()) {
                                        case "comm":
                                           isValid = false;
-                                          System.out.println("-Movement- \n North: (go) north, up, forward\n South: (go) south, down, back\n " +
+                                          System.out.println(" -Movement- \n North: (go) north, up, forward\n South: (go) south, down, back\n " +
                                           "East:  (go) east, right\n West:  (go) west, left\n"  +
                                           "-Combat-\n Attack:  attack\n Retreat: leave, run, retreat, flee\n View Status: (Works outside of combat): status\n" + 
                                           "-Options-\n Quit (Warning: Stops the game): quit");
                                        break; 
                                        case "shr":
                                           isValid = false;
-                                          System.out.println("Don't want to waste any time eh?\n-Movement-\n North: n\n South: s\n East:  e\n West:  w\n" +
+                                          System.out.println(" Don't want to waste any time eh?\n-Movement-\n North: n\n South: s\n East:  e\n West:  w\n" +
                                           "-Combat-\n Attack:  a \n Retreat: l \n Status:  stat \n" +
                                           "-Options-\n Status: stat \n Quit:   q \n ");
                                        break;
                                        default:
-                                          System.out.println("Got your bearings?");
+                                          System.out.println(" Got your bearings?");
                                        break;
                                   }   
                             break;
@@ -300,11 +300,11 @@ public class InputManager {
                             break;
                         default:
                             if (gm.inCombat) {
-                                System.out.println("You do not attack.");
+                                System.out.println(" You do not attack.");
                                 Attack(monster, player);
                                 break;
                             }
-                            System.out.println("You can't do that.");
+                            System.out.println(" You can't do that.");
                             break;
                         }
                     }
