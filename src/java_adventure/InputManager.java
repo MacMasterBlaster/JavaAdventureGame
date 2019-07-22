@@ -532,6 +532,7 @@ public class InputManager {
             switch (input.toLowerCase()) {
             case "y":
             case "yes":
+                ClearConsole();
                 isValid = true;
                 gm.beginQuest = true;
                 break;
@@ -539,17 +540,16 @@ public class InputManager {
             case "no":
             isValid = true;
                 gm.beginQuest = false;
-                System.out.println("Alright you go home and live a boring life. THE END");
+                System.out.println("\nAlright, you go home and live a boring life. THE END\n");
                 gm.player.setHealth(0);
                 scan.close();
                 break;
             default:
-                System.out.print("It's a yes or no question " + gm.player.getName() + ". (Y)es or (N)o: ");
+                System.out.print("\nIt's a yes or no question " + gm.player.getName() + ". (Y)es or (N)o: ");
                 input = scan.nextLine();
                 break;
             }
         }
-        ClearConsole();
     }
 
     // This method should be called on player death.
