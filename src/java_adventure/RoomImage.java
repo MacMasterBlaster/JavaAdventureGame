@@ -505,7 +505,7 @@ public class RoomImage {
         + "\n   ******************            ******************" + "\t" + P5;
   }
 
-  static public String BossWithoutEnemy() {
+  static public String bossWithoutEnemy() {
     SetCommands();
     return "   ******************            ******************" + "\tYou defeated the enemy and now stand alone in"
         + "\n   /                                              \\"
