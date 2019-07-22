@@ -196,7 +196,7 @@ public class GameManager {
         moveAssit.setExits(fight, start, null, null);
         moveAssit.setRoomImages(null, RoomImage.moveAssit());
 
-        fight.setExits(empty1, null, moveAssit, null);
+        fight.setExits(empty1, chest1, moveAssit, null);
         fight.setMonster(m_goblin);
         fight.setHasMonster(true);
         fight.setRoomImages(RoomImage.fightWithEnemy(), RoomImage.fightWithoutEnemy());
