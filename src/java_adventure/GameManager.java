@@ -240,13 +240,16 @@ public class GameManager {
         empty4.setExits(boss, null, null, spider);
         empty4.setRoomImages(RoomImage.empty4(), RoomImage.empty4());
 
-        treasure.setExits(null, null, boss, null);
+        treasure.setExits(end, null, boss, null);
         treasure.setRoomImages(null, RoomImage.treasure());
 
         boss.setExits(treasure, null, empty4, null);
         boss.setMonster(m_boss);
         boss.setHasMonster(true);
         boss.setRoomImages(RoomImage.bossWithEnemy(), RoomImage.bossWithoutEnemy());
+
+        end.setExits(null, null, null, null);
+        end.setRoomImages(null, RoomImage.end());
 
         // Add all rooms to the dungeon list
         dungeon.add(start);
