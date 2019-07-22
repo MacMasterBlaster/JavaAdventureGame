@@ -463,7 +463,7 @@ public class InputManager {
         + "\n   member of the Adventures' Guild, we need some personal information. For liabilty purposes.\"" + "\n\n   \"What is your name?\" ");
         String newName = scan.nextLine();
         if (!newName.equals(""))gm.player.setName(newName);
-        System.out.print("\n\"   Good, good! Just a few more questions. Do you have any next of kin " + gm.player.getName()
+        System.out.print("\n   \"Good, good! Just a few more questions. Do you have any next of kin " + gm.player.getName()
                 + "?\" (Y)es or (N)o: ");
         while (!isValid) {
             String answer = scan.nextLine();
