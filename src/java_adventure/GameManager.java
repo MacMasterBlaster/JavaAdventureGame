@@ -21,7 +21,7 @@ public class GameManager {
 
     public CharacterController player = new CharacterController("Nobody", "None");
     public int playerDeaths = 0;
-
+    public boolean beginQuest = false;
     private static GameManager instance = null;
 
     // private constructor restricted to this class itself
