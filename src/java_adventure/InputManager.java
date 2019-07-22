@@ -8,6 +8,8 @@
 // ***********************************************
 package java_adventure;
 
+import static java_adventure.GameManager.player;
+
 import java.util.Scanner;
 
 public class InputManager {
@@ -24,8 +26,9 @@ public class InputManager {
     // static method to create instance of Singleton class InputManager 
     public static InputManager getInstance() 
     { 
-        if (instance == null) 
-        instance = new InputManager();  
+        if (instance == null) {
+            instance = new InputManager();  
+        }
         return instance; 
     } 
     
@@ -47,6 +50,7 @@ public class InputManager {
 
     // Compares user input against possible acceptable values.
     public void VerifyInput(Room cr) {
+        System.out.println(cr.toString());
         System.out.println("\n\t*You are now in " + cr.getName() + ".*");
         Scanner scan = new Scanner(System.in);
         boolean isValid = false;
@@ -118,7 +122,7 @@ public class InputManager {
                 case "status":
                 case "stat":
                     isValid = false;
-                    System.out.println(gm.player.toString());
+                    System.out.println(player.toString());
                     break;
                 case "quit":
                 case "q":
@@ -138,7 +142,7 @@ public class InputManager {
         } else {
             gm.inCombat = true;
             // If the player is in combat they have fewer options.
-            StartCombat(gm.player, currentRoom.getMonster());
+            StartCombat(player, currentRoom.getMonster());
         }
     }
 
@@ -207,6 +211,7 @@ public class InputManager {
                     if (gm.inCombat)
                         Attack(monster, player);
                 } else {
+                    isValid = true;
                     // monster attacks first
                     if (gm.inCombat)
                         Attack(monster, player);
@@ -256,6 +261,11 @@ public class InputManager {
                             } else if (input.equals("no") || input.equals("n"))
                                 break;
                         default:
+                            if (monster.getHealth() <= 0) {
+                                gm.inCombat = false;
+                                currentRoom.setHasMonster(false);
+                                break;
+                            }
                             System.out.println("You do not attack.");
                             break;
                         }
@@ -263,8 +273,6 @@ public class InputManager {
                 }
             }
         }
-    }
-
     }
 
     private void Attack(CharacterController attacker, CharacterController target) {
@@ -275,7 +283,7 @@ public class InputManager {
 
             if (target.getHealth() <= 0) {
                 System.out.println(attacker.getName() + " defeated " + target.getName() + "!");
-                if (attacker == gm.player) {
+                if (attacker == player) {
                     currentRoom.setHasMonster(false);
                 } else {
                     GameOver();
@@ -294,8 +302,8 @@ public class InputManager {
         System.out.print("Greetings would-be adventurer! Before you begin your "
                 + "quest, \nwe need some personal information. (For liabilty purposes)" + "\nWhat is your name? ");
         String newName = scan.nextLine();
-        gm.player.setName(newName);
-        System.out.println("Great! Just a few more questions. \nDo you have any next of kin " + gm.player.getName()
+        player.setName(newName);
+        System.out.println("Great! Just a few more questions. \nDo you have any next of kin " + player.getName()
                 + "? (Y)es or (N)o");
         while (!isValid) {
             String answer = scan.nextLine();
@@ -311,7 +319,7 @@ public class InputManager {
                 System.out.print("Excellent! ");
                 break;
             default:
-                System.out.println("It's a yes or no question... So do you have any next of kin " + gm.player.getName()
+                System.out.println("It's a yes or no question... So do you have any next of kin " + player.getName()
                         + "? (Y)es or (N)o");
                 break;
             }
@@ -324,30 +332,30 @@ public class InputManager {
             case "p":
             case "pen":
                 isValid = true;
-                gm.MakeWizard(gm.player, gm.player.getName());
-                System.out.println(
-                        "Congratulations! You're a wizard " + gm.player.getName() + "! Here's your free wand.\n");
+                gm.MakeWizard(player, player.getName());
+                System.out
+                        .println("Congratulations! You're a wizard " + player.getName() + "! Here's your free wand.\n");
                 break;
             case "s":
             case "sword":
                 isValid = true;
-                gm.MakeWarrior(gm.player, gm.player.getName());
-                System.out.println("Might makes right! I always say. Well " + gm.player.getName()
+                gm.MakeWarrior(player, player.getName());
+                System.out.println("Might makes right! I always say. Well " + player.getName()
                         + ", here's your free sword and shield.\n");
                 break;
             case "c":
             case "code":
                 isValid = true;
-                gm.MakeGod(gm.player, gm.player.getName());
-                System.out.println("You must be a programmer " + gm.player.getName() + ". Better start debugging.\n");
+                gm.MakeGod(player, player.getName());
+                System.out.println("You must be a programmer " + player.getName() + ". Better start debugging.\n");
                 break;
             default:
                 System.out.println("Um... okay. But \"" + classAnswer.toLowerCase() + "\" wasn't one of the choices. "
                         + "So which do you think is mightier? The PEN or the SWORD?");
             }
         }
-        gm.player.CharacterSprite();// set the players character sprite based on class chosen.
-        System.out.println("Your current stats are: " + gm.player.toString());
+        player.CharacterSprite();// set the players character sprite based on class chosen.
+        System.out.println("Your current stats are: " + player.toString());
         System.out.println("\nNow that you have provided all the necessary information "
                 + "\nand waived the your right to hold the Adventurers' Guild liabile in the case of your death or dismemberment."
                 + "\nWe wish you luck in your conquest of the dungeon of the Terrible Javalang.");
@@ -368,7 +376,7 @@ public class InputManager {
                 // TODO: Add player death tracker.
                 isValid = true;
                 System.out.println("Okay then! Up you get, the blood should wash out eventually.");
-                gm.player.setHealth(gm.player.getMaxHealth()); // Reset player health.
+                player.setHealth(player.getMaxHealth()); // Reset player health.
                 currentRoom.getMonster().setHealth(currentRoom.getMonster().getMaxHealth()); // Reset monster health.
                 setCurrentRoom(getPreviousRoom()); // Returns player to the previous room.
                 gm.inCombat = false;
@@ -380,7 +388,7 @@ public class InputManager {
                 scan.close();
                 break;
             default:
-                System.out.println("It's a yes or no question " + gm.player.getName() + ". (Y)es or (N)o");
+                System.out.println("It's a yes or no question " + player.getName() + ". (Y)es or (N)o");
                 break;
             }
         }

@@ -9,7 +9,7 @@ package java_adventure;
 import java.util.ArrayList;
 
 public class GameManager {
-    InputManager im = InputManager.getInstance();
+    InputManager im;
     boolean inCombat = false;
     ArrayList<Room> dungeon = new ArrayList<Room>();
     CharacterController m_goblin = new CharacterController();
@@ -19,12 +19,13 @@ public class GameManager {
     CharacterController m_spider = new CharacterController();
     CharacterController m_boss = new CharacterController();
     
-    public CharacterController player = new CharacterController("Nobody", "None");
+    public static CharacterController player = new CharacterController("Nobody", "None");
     
     private static GameManager instance = null; 
 
     // private constructor restricted to this class itself 
     GameManager(){
+        CreateDungeon();
     }
     // static method to create instance of Singleton class GameManager 
     public static GameManager getInstance() 
@@ -41,7 +42,9 @@ public class GameManager {
     public void setInCombat(boolean temp) {
         inCombat = temp;
     }
-
+    public void setInputManagerInstance(){
+        im = InputManager.getInstance();
+    }
     // region Player Classes
     public void MakeWizard(CharacterController newCharacter, String name) {
         newCharacter.setHealth(15);
@@ -134,7 +137,6 @@ public class GameManager {
     // endregion
 
     public void CreateDungeon() {
-        RoomImage rm = new RoomImage();
         Room start = new Room();
         Room moveAssit = new Room();
         Room fight = new Room();
@@ -177,58 +179,58 @@ public class GameManager {
         MakeKnight(m_boss);
         // Set all room linkages
         start.setwDoor(moveAssit);
-        start.setRoomImage(null);
+        start.setRoomImage(RoomImage.start());
 
         moveAssit.setExits(fight, null, null, start);
-        moveAssit.setRoomImage(RoomImage.moveAssit);
+        moveAssit.setRoomImage(RoomImage.moveAssit());
 
         fight.setExits(empty1, null, moveAssit, null);
         fight.setMonster(m_goblin);
         fight.setHasMonster(true);
-        fight.setRoomImage(RoomImage.fightWithEnemy);
+        fight.setRoomImage(RoomImage.fightWithEnemy());
 
         empty1.setExits(empty3, empty2, fight, null);
-        empty1.setRoomImage(RoomImage.empty1);
+        empty1.setRoomImage(RoomImage.empty1());
 
         empty2.setExits(slime1, slime2, null, empty1);
-        empty2.setRoomImage(RoomImage.empty2);
+        empty2.setRoomImage(RoomImage.empty2());
 
         empty3.setExits(null, slime1, empty1, null);
-        empty3.setRoomImage(RoomImage.empty3);
+        empty3.setRoomImage(RoomImage.empty3());
 
         slime1.setExits(null, chest2, empty2, empty3);
         slime1.setMonster(m_slime1);
         slime1.setHasMonster(true);
-        slime1.setRoomImage(RoomImage.slime1WithEnemy);
+        slime1.setRoomImage(RoomImage.slime1WithEnemy());
 
         slime2.setExits(null, null, mimic, empty2);
         slime2.setMonster(m_slime2);
         slime2.setHasMonster(true);
-        slime2.setRoomImage(RoomImage.slime2WithEnemy);
+        slime2.setRoomImage(RoomImage.slime2WithEnemy());
 
         chest1.setExits(null, mimic, null, null);
-        chest1.setRoomImage(RoomImage.chest1);
+        //TODO:chest1.setRoomImage(RoomImage.chest1With());
 
         chest2.setExits(null, slime1, null, null);
-        chest2.setRoomImage(RoomImage.chest2With);
+        chest2.setRoomImage(RoomImage.chest2With());
 
         mimic.setExits(slime2, null, spider, null);
         mimic.setMonster(m_mimic);
         mimic.setHasMonster(true);
-        mimic.setRoomImage(RoomImage.mimicWithEnemy);
+        mimic.setRoomImage(RoomImage.mimicWithEnemy());
 
         spider.setExits(mimic, empty4, null, null);
         spider.setMonster(m_spider);
         spider.setHasMonster(true);
-        spider.setRoomImage(RoomImage.spiderWithEnemy);
+        spider.setRoomImage(RoomImage.spiderWithEnemy());
 
         empty4.setExits(boss, null, null, empty4);
-        empty4.setRoomImage(RoomImage.empty4);
+        empty4.setRoomImage(RoomImage.empty4());
 
         boss.setExits(treasure, null, empty4, null);
         boss.setMonster(m_boss);
         boss.setHasMonster(true);
-        boss.setRoomImage(RoomImage.bossWithEnemy);
+        boss.setRoomImage(RoomImage.bossWithEnemy());
 
         // Add all rooms to the dungeon list
         dungeon.add(start);
