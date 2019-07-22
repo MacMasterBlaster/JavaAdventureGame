@@ -4,17 +4,17 @@
 // a reference for all room images
 package java_adventure;
 
-import static java_adventure.GameManager.player;
 
 public class RoomImage {
   static String P1, P2, P3, P4, P5;
-  // GameManager gm = GameManager.getInstance();
+  static GameManager gm;
   static void SetCommands(){
     P1 = "Enter north(n), east(e), south(s), or west(w) ";
     P2 = "to go through that door. Enter STATUS to check ";
     P3 = "your character's status, leave to run away, or ";
     P4 = "FIGHT to fight: ";
     P5 = " ";
+    gm = GameManager.getInstance();
   }
 
   static public String defaultRoom() {
@@ -25,11 +25,11 @@ public class RoomImage {
         + "\tThere are 4 doors to The NORTH, SOUTH, EAST, and WEST."
         + "\n   |                                              |" + "\tYOU ARE TRAPPED FOREVER"
         + "\n   |                                              |"
-        + "\n   |                                              |" + "\n   |                    " + player.H1
-        + "                    |" + "\n   " + "|" + "                    " + player.H2 + "                    " + "|"
-        + "\n   " + "|" + "                    " + player.H3 + "                    " + "|" + "\n   " + "|"
-        + "                    " + player.H4 + "                    " + "|" + "\n   " + "|" + "                    "
-        + player.H5 + "                    " + "|" + "\n   |                                              |"
+        + "\n   |                                              |" + "\n   |                    " + gm.getPlayer().H1
+        + "                    |" + "\n   " + "|" + "                    " + gm.getPlayer().H2 + "                    " + "|"
+        + "\n   " + "|" + "                    " + gm.getPlayer().H3 + "                    " + "|" + "\n   " + "|"
+        + "                    " + gm.getPlayer().H4 + "                    " + "|" + "\n   " + "|" + "                    "
+        + gm.getPlayer().H5 + "                    " + "|" + "\n   |                                              |"
         + "\n   |                                              |"
 
         + "\n   |                                              |" + "\t" + P1
@@ -53,10 +53,10 @@ public class RoomImage {
         + "\n\t\t     /          \\\t\t" + "\tYtell you what the area looks like and give you "
         + "\n\t\t     \\          /\t\t" + "\tideas if what you can do in all caps. Try typing in"
         + "\n\t\t     /          \\\t\t" + "\tSTATUS. You will also be using the cardinal" + "\n\t\t     \\  "
-        + player.H1 + "  /\t\t" + "\tdirections to move. you can type in the whole" + "\n\t\t     /  " + player.H2
-        + "  \\\t\t" + "\tdirection or the first letter and it will still" + "\n\t\t     \\  " + player.H3 + "  /\t\t"
-        + "\twork. But we will leave a full list at the bottom" + "\n\t\t     /  " + player.H4 + "  \\\t\t"
-        + "\tfor you just in case." + "\n\t\t     \\  " + player.H5 + "  /\t\t" + "\tType NORTH or N to move forward. "
+        + gm.getPlayer().H1 + "  /\t\t" + "\tdirections to move. you can type in the whole" + "\n\t\t     /  " + gm.getPlayer().H2
+        + "  \\\t\t" + "\tdirection or the first letter and it will still" + "\n\t\t     \\  " + gm.getPlayer().H3 + "  /\t\t"
+        + "\twork. But we will leave a full list at the bottom" + "\n\t\t     /  " + gm.getPlayer().H4 + "  \\\t\t"
+        + "\tfor you just in case." + "\n\t\t     \\  " + gm.getPlayer().H5 + "  /\t\t" + "\tType NORTH or N to move forward. "
         + "\n\t\t     /          \\\t\t" + "\n\t\t     \\          /\t\t" + "\n\t\t     /          \\\t\t" + "\t" + P1
         + "\n\t\t     \\          /\t\t" + "\t" + P2 + "\n\t\t     /          \\\t\t" + "\t" + P3
         + "\n\t\t     \\          /\t\t" + "\t" + P4 + "\n\t\t     /          \\\t\t" + "\t" + P5;
@@ -70,10 +70,10 @@ public class RoomImage {
         + "\n   |                                              |"
         + "\tsake there is another way out. There is only one "
         + "\n   |                                              |" + "\tdoor to the WEST. So you should go that way. "
-        + "\n   |                                              |" + "\n   |                    " + player.H1
-        + "                    |" + "\n                        " + player.H2 + "                    |"
-        + "\n                        " + player.H3 + "                    |" + "\n                        " + player.H4
-        + "                    |" + "\n                        " + player.H5 + "                    |"
+        + "\n   |                                              |" + "\n   |                    " + gm.getPlayer().H1
+        + "                    |" + "\n                        " + gm.getPlayer().H2 + "                    |"
+        + "\n                        " + gm.getPlayer().H3 + "                    |" + "\n                        " + gm.getPlayer().H4
+        + "                    |" + "\n                        " + gm.getPlayer().H5 + "                    |"
         + "\n   |                                              |"
         + "\n   |                                              |"
         + "\n   |                                              |" + "\t" + P1
@@ -85,21 +85,21 @@ public class RoomImage {
 
   static public String moveAssit() {
     SetCommands();
-    return "   ******************            ******************"
+    return "   ******************" + "************" + "******************"
         + "\tYou enter a new room. There is nothing in it but"
         + "\n   /                                              \\" + "\tyou. There are 2 doors to the North, and EAST."
         + "\n   \\                                              /" + "\tChoose a door to LEAVE."
         + "\n   /                                              \\"
         + "\n   \\                                              /"
-        + "\n   /                                              \\" + "\n   \\                    " + player.H1
-        + "                    /" + "\n   /                    " + player.H2 + "                     "
-        + "\n   \\                    " + player.H3 + "                     " + "\n   |                    " + player.H4
-        + "                     " + "\n   |                    " + player.H5 + "                     "
+        + "\n   /                                              \\" + "\n   \\                    " + gm.getPlayer().H1
+        + "                    /" + "\n   /                    " + gm.getPlayer().H2 + "                     "
+        + "\n   \\                    " + gm.getPlayer().H3 + "                     " + "\n   |                    " + gm.getPlayer().H4
+        + "                     " + "\n   |                    " + gm.getPlayer().H5 + "                     "
         + "\n   |                                              |"
         + "\n   |                                              |"
         + "\n   |                                              |" + "\t" + P1
         + "\n   |                                              |" + "\t" + P2
-        + "\n   |                                              |" + "\t" + P3
+        + "\n  |                                              |" + "\t" + P3
         + "\n   |                                              |" + "\t" + P4
         + "\n   ************************************************" + "\t" + P5;
   }
@@ -137,9 +137,9 @@ public class RoomImage {
         + "\tTime to press on! There are 3 doors that go NORTH,"
         + "\n   \\                                              /" + "\tEAST, and SOUTH"
         + "\n   /                                              \\" + "\tChoose a door to LEAVE."
-        + "\n   \\                    " + player.H1 + "                    /" + "\n   /                    " + player.H2
-        + "                     " + "\n   \\                    " + player.H3 + "                     "
-        + "\n   /                    " + player.H4 + "                     " + "\n   \\                    " + player.H5
+        + "\n   \\                    " + gm.getPlayer().H1 + "                    /" + "\n   /                    " + gm.getPlayer().H2
+        + "                     " + "\n   \\                    " + gm.getPlayer().H3 + "                     "
+        + "\n   /                    " + gm.getPlayer().H4 + "                     " + "\n   \\                    " + gm.getPlayer().H5
         + "                     " + "\n   /                                              \\"
         + "\n   \\                                              /"
         + "\n   /                                              \\" + "\t" + P1
@@ -178,10 +178,10 @@ public class RoomImage {
         + "\n   \\                                              |"
         + "\n   /                                              |"
         + "\n   \\                                              |"
-        + "\n   /                                              |" + "\n   \\                    " + player.H1
-        + "                    |" + "\n                        " + player.H2 + "                    |"
-        + "\n                        " + player.H3 + "                    |" + "\n                        " + player.H4
-        + "                    |" + "\n                        " + player.H5 + "                    |"
+        + "\n   /                                              |" + "\n   \\                    " + gm.getPlayer().H1
+        + "                    |" + "\n                        " + gm.getPlayer().H2 + "                    |"
+        + "\n                        " + gm.getPlayer().H3 + "                    |" + "\n                        " + gm.getPlayer().H4
+        + "                    |" + "\n                        " + gm.getPlayer().H5 + "                    |"
         + "\n   /                                              |"
         + "\n   \\                                              |"
         + "\n   /                                              |" + "\t" + P1
@@ -198,10 +198,10 @@ public class RoomImage {
         + "\n   |                                              |" + "\tThere are 3 doors to the NORTH, EAST, and SOUTH."
         + "\n   |                                              |" + "\tChoose a door to LEAVE."
         + "\n   |                                              |"
-        + "\n   |                                              |" + "\n   |                    " + player.H1
-        + "                    |" + "\n   |                    " + player.H2 + "                     "
-        + "\n   |                    " + player.H3 + "                     " + "\n   /                    " + player.H4
-        + "                     " + "\n   \\                    " + player.H5 + "                     "
+        + "\n   |                                              |" + "\n   |                    " + gm.getPlayer().H1
+        + "                    |" + "\n   |                    " + gm.getPlayer().H2 + "                     "
+        + "\n   |                    " + gm.getPlayer().H3 + "                     " + "\n   /                    " + gm.getPlayer().H4
+        + "                     " + "\n   \\                    " + gm.getPlayer().H5 + "                     "
         + "\n   /                                              \\"
         + "\n   \\                                              /"
         + "\n   /                                              \\" + "\t" + P1
@@ -218,10 +218,10 @@ public class RoomImage {
         + "\n   \\                                              /" + "\tThere are 3 doors to the NORTH, EAST, and WEST."
         + "\n   /                                              \\" + "\tChoose a door to LEAVE."
         + "\n   \\                                              /"
-        + "\n   /                                              \\" + "\n   \\                    " + player.H1
-        + "                    /" + "\n                        " + player.H2 + "                     "
-        + "\n                        " + player.H3 + "                     " + "\n                        " + player.H4
-        + "                     " + "\n                        " + player.H5 + "                     "
+        + "\n   /                                              \\" + "\n   \\                    " + gm.getPlayer().H1
+        + "                    /" + "\n                        " + gm.getPlayer().H2 + "                     "
+        + "\n                        " + gm.getPlayer().H3 + "                     " + "\n                        " + gm.getPlayer().H4
+        + "                     " + "\n                        " + gm.getPlayer().H5 + "                     "
         + "\n   |                                              \\"
         + "\n   |                                              /"
         + "\n   |                                              \\" + "\t" + P1
@@ -238,10 +238,10 @@ public class RoomImage {
         + "\n   |                                              /" + "\tThere are 2 doors to the EAST, and SOUTH."
         + "\n   |                                              \\" + "\tChoose a door to LEAVE."
         + "\n   |                                              /"
-        + "\n   |                                              \\" + "\n   |                    " + player.H1
-        + "                    /" + "\n   |                    " + player.H2 + "                     "
-        + "\n   |                    " + player.H3 + "                     " + "\n   |                    " + player.H4
-        + "                     " + "\n   |                    " + player.H5 + "                     "
+        + "\n   |                                              \\" + "\n   |                    " + gm.getPlayer().H1
+        + "                    /" + "\n   |                    " + gm.getPlayer().H2 + "                     "
+        + "\n   |                    " + gm.getPlayer().H3 + "                     " + "\n   |                    " + gm.getPlayer().H4
+        + "                     " + "\n   |                    " + gm.getPlayer().H5 + "                     "
         + "\n   |                                              \\"
         + "\n   |                                              /"
         + "\n   |                                              \\" + "\t" + P1
@@ -280,10 +280,10 @@ public class RoomImage {
         + "\n   \\                                              /" + "\tto the EAST, SOUTH, and WEST."
         + "\n   /                                              \\" + "\tChoose a door to LEAVE."
         + "\n   \\                                              /"
-        + "\n   /                                              \\" + "\n   \\                    " + player.H1
-        + "                    /" + "\n                        " + player.H2 + "                     "
-        + "\n                        " + player.H3 + "                     " + "\n                        " + player.H4
-        + "                     " + "\n                        " + player.H5 + "                     "
+        + "\n   /                                              \\" + "\n   \\                    " + gm.getPlayer().H1
+        + "                    /" + "\n                        " + gm.getPlayer().H2 + "                     "
+        + "\n                        " + gm.getPlayer().H3 + "                     " + "\n                        " + gm.getPlayer().H4
+        + "                     " + "\n                        " + gm.getPlayer().H5 + "                     "
         + "\n   /                                              \\"
         + "\n   \\                                              /"
         + "\n   /                                              \\" + "\t" + P1
@@ -322,10 +322,10 @@ public class RoomImage {
         + "\n   \\                                              /" + "\tto the NORTH EAST, and SOUTH."
         + "\n   /                                              \\" + "\tChoose a door to LEAVE."
         + "\n   \\                                              /"
-        + "\n   /                                              \\" + "\n   \\                    " + player.H1
-        + "                    /" + "\n                        " + player.H2 + "                    \\"
-        + "\n                        " + player.H3 + "                    /" + "\n                        " + player.H4
-        + "                    \\" + "\n                        " + player.H5 + "                    /"
+        + "\n   /                                              \\" + "\n   \\                    " + gm.getPlayer().H1
+        + "                    /" + "\n                        " + gm.getPlayer().H2 + "                    \\"
+        + "\n                        " + gm.getPlayer().H3 + "                    /" + "\n                        " + gm.getPlayer().H4
+        + "                    \\" + "\n                        " + gm.getPlayer().H5 + "                    /"
         + "\n   /                                              \\"
         + "\n   \\                                              /"
         + "\n   /                                              \\" + "\t" + P1
@@ -364,10 +364,10 @@ public class RoomImage {
         + "\n   \\                                              |" + "\tChoose a door to LEAVE."
         + "\n   /                                              |"
         + "\n   \\                                              |"
-        + "\n   /                                              |" + "\n   \\                    " + player.H1
-        + "                    |" + "\n                        " + player.H2 + "                    |"
-        + "\n                        " + player.H3 + "                    |" + "\n                        " + player.H4
-        + "                    \\" + "\n                        " + player.H5 + "                    /"
+        + "\n   /                                              |" + "\n   \\                    " + gm.getPlayer().H1
+        + "                    |" + "\n                        " + gm.getPlayer().H2 + "                    |"
+        + "\n                        " + gm.getPlayer().H3 + "                    |" + "\n                        " + gm.getPlayer().H4
+        + "                    \\" + "\n                        " + gm.getPlayer().H5 + "                    /"
         + "\n   /                                              \\"
         + "\n   \\                                              /"
         + "\n   /                                              \\" + "\t" + P1
@@ -407,10 +407,10 @@ public class RoomImage {
         + "\n   \\                                              /" + "\tOne goes NORTH and one goes SOUTH."
         + "\n   /                                              \\" + "\tChoose a door to LEAVE."
         + "\n   \\                                              /"
-        + "\n   /                                              \\" + "\n   \\                    " + player.H1
-        + "                    /" + "\n   /                    " + player.H2 + "                    \\"
-        + "\n   \\                    " + player.H3 + "                    /" + "\n   /                    " + player.H4
-        + "                    \\" + "\n   \\                    " + player.H5 + "                    /"
+        + "\n   /                                              \\" + "\n   \\                    " + gm.getPlayer().H1
+        + "                    /" + "\n   /                    " + gm.getPlayer().H2 + "                    \\"
+        + "\n   \\                    " + gm.getPlayer().H3 + "                    /" + "\n   /                    " + gm.getPlayer().H4
+        + "                    \\" + "\n   \\                    " + gm.getPlayer().H5 + "                    /"
         + "\n   /                                              \\"
         + "\n   \\                                              /"
         + "\n   /                                              \\" + "\t" + P1
@@ -450,9 +450,9 @@ public class RoomImage {
         + "\n   /                                              \\" + "\tBetter move on sooner rather than later."
         + "\n   \\                                              /" + "\tThere are 2 doors to the NORTH and EAST."
         + "\n   /                                              \\" + "\tChoose a door to LEAVE."
-        + "\n   \\                    " + player.H1 + "                    /" + "\n   /                    " + player.H2
-        + "                     " + "\n   \\                    " + player.H3 + "                     "
-        + "\n   /                    " + player.H4 + "                     " + "\n   \\                    " + player.H5
+        + "\n   \\                    " + gm.getPlayer().H1 + "                    /" + "\n   /                    " + gm.getPlayer().H2
+        + "                     " + "\n   \\                    " + gm.getPlayer().H3 + "                     "
+        + "\n   /                    " + gm.getPlayer().H4 + "                     " + "\n   \\                    " + gm.getPlayer().H5
         + "                     " + "\n   /                                              \\"
         + "\n   \\                                              /"
         + "\n   /                                              \\" + "\t" + P1
@@ -469,10 +469,10 @@ public class RoomImage {
         + "\n   \\                                              /" + "\tThere are 2 doors to the West, and NORTH."
         + "\n   /                                              \\" + "\tChoose a door to LEAVE."
         + "\n   \\                                              /"
-        + "\n   /                                              \\" + "\n   \\                    " + player.H1
-        + "                    /" + "\n                        " + player.H2 + "                    \\"
-        + "\n                        " + player.H3 + "                    /" + "\n                        " + player.H4
-        + "                    |" + "\n                        " + player.H5 + "                    |"
+        + "\n   /                                              \\" + "\n   \\                    " + gm.getPlayer().H1
+        + "                    /" + "\n                        " + gm.getPlayer().H2 + "                    \\"
+        + "\n                        " + gm.getPlayer().H3 + "                    /" + "\n                        " + gm.getPlayer().H4
+        + "                    |" + "\n                        " + gm.getPlayer().H5 + "                    |"
         + "\n   |                                              |"
         + "\n   |                                              |"
         + "\n   |                                              |" + "\t" + P1
@@ -514,9 +514,9 @@ public class RoomImage {
         + "\n   /                                              \\" + "\tcave floor."
         + "\n   \\                                              /" + "\tThere is a door to the SOUTH and a door to the "
         + "\n   /                                              \\" + "\tNORTH" + "\n   \\                    "
-        + player.H1 + "                    /" + "\n   /                    " + player.H2 + "                    \\"
-        + "\n   \\                    " + player.H3 + "                    /" + "\n   /                    " + player.H4
-        + "                    \\" + "\n   \\                    " + player.H5 + "                    /"
+        + gm.getPlayer().H1 + "                    /" + "\n   /                    " + gm.getPlayer().H2 + "                    \\"
+        + "\n   \\                    " + gm.getPlayer().H3 + "                    /" + "\n   /                    " + gm.getPlayer().H4
+        + "                    \\" + "\n   \\                    " + gm.getPlayer().H5 + "                    /"
         + "\n   /                                              \\"
         + "\n   \\                                              /"
         + "\n   /                                              \\" + "\t" + P1
@@ -536,11 +536,11 @@ public class RoomImage {
         + "\n   /    ||||||   |||||            ||||�||||       \\" + "\tis light streaming in from the far door!"
         + "\n   \\   _______                    |||||||||       /" + "\t text."
         + "\n   /  [|-----|]   [---]                    {----} \\" + "\t text." + "\n   \\  |VVV�VVV|   ||�|| "
-        + player.H1 + "             ||[]|| /" + "\t text." + "\n   /  |||||||||   ||||| " + player.H2
-        + "    [---]    |||||| \\" + "\t text." + "\n   \\  |||||||||         " + player.H3 + "    ||�||           /"
-        + "\t text" + "\n   /             [---]  " + player.H4 + "    |||||  [----]   \\"
+        + gm.getPlayer().H1 + "             ||[]|| /" + "\t text." + "\n   /  |||||||||   ||||| " + gm.getPlayer().H2
+        + "    [---]    |||||| \\" + "\t text." + "\n   \\  |||||||||         " + gm.getPlayer().H3 + "    ||�||           /"
+        + "\t text" + "\n   /             [---]  " + gm.getPlayer().H4 + "    |||||  [----]   \\"
                           +"\t text."
-                        +"\n   \\    [-----]  ||�||  " + player.H5 + "    |||||  ||[]||   /"
+                        +"\n   \\    [-----]  ||�||  " + gm.getPlayer().H5 + "    |||||  ||[]||   /"
                         +"\n   /    |||�|||  |||||                   ||||||   \\"
                         +"\n   \\    |||||||                [---]     _______  /"
                         +"\n   /         [---]             ||�||    [|-----|] \\"
