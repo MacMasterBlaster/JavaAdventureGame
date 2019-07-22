@@ -518,11 +518,11 @@ public class InputManager {
         }
         gm.player.CharacterSprite();// set the players character sprite based on class chosen.
         System.out.println(gm.player.toString());
-        System.out.print("\nHe takes all the paperwork you filled out and gets out in his chair."
+        System.out.print("\nHe takes all the paperwork you filled out and gets out of his chair."
                 + "\n\"Now that you have provided all the necessary information and waived the your right"
                 + "\nto hold the Adventurers' Guild liable in the case of your death or dismemberment.\""
                 +"\nHe says still smiling. \"We wish you the best of luck in your conquest of the dungeon"
-                + "\nof the Terrible Javalang.\" He gives you a map and begins to shove you out the door with your new"
+                + "\nof the Terrible Javalang.\" He gives you a map and begins to shove you out the door with your \"new\""
                 +"\nequipment clutched awkwardly in your arms."
                 + "\n\n Time seems to pass in a blur. Next thing you know you are standing before the entrance to a"
                 + "\ncave located right where the map said it would be.\n\n Do you dare to enter? (Y)es or (N)o: ");
