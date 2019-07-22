@@ -236,7 +236,7 @@ public class GameManager {
         spider.setHasMonster(true);
         spider.setRoomImages(RoomImage.spiderWithEnemy(), RoomImage.spiderWithoutEnemy());
 
-        empty4.setExits(boss, null, null, empty4);
+        empty4.setExits(boss, null, null, spider);
         empty4.setRoomImages(null, RoomImage.empty4());
 
         boss.setExits(treasure, null, empty4, null);
