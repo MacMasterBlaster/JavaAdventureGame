@@ -495,15 +495,15 @@ public class InputManager {
                 gm.MakeWizard(gm.player, gm.player.getName());
                 System.out.println(
                         "\"\nCongratulations! You're a wizard " + gm.player.getName() + "! Here's your free wand.\""
-                        +"\n He hands you a stick of questionable value.\n");
+                        +"\nHe hands you a stick of questionable value.\n");
                 break;
             case "s":
             case "sword":
                 isValid = true;
                 gm.MakeWarrior(gm.player, gm.player.getName());
-                System.out.println("\"Might makes right! I always say. Well " + gm.player.getName()
+                System.out.println("\n\"Might makes right! I always say. Well " + gm.player.getName()
                         + ", here's your free sword and shield.\" He says smiling."
-                        + "\n He hands you a sword and shield that have definitely seen better days.");
+                        + "\nHe hands you a sword and shield that have definitely seen better days.\n");
                 break;
             case "c":
             case "code":
