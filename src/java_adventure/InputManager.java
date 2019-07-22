@@ -402,6 +402,7 @@ public class InputManager {
                 // TODO: Add player death tracker.
                 isValid = true;
                 System.out.println("Okay then! Up you get, the blood should wash out eventually.");
+                gm.inCombat = false;
                 gm.player.setHealth(gm.player.getMaxHealth()); // Reset player health.
                 currentRoom.getMonster().setHealth(currentRoom.getMonster().getMaxHealth()); // Reset monster health.
                 setCurrentRoom(getPreviousRoom()); // Returns player to the previous room.
