@@ -15,7 +15,7 @@ public class InputManager {
     private Room currentRoom, previousRoom;
     private GameManager gm;
 
-    //Input Manager Constructor
+    // Input Manager Constructor
     public InputManager(GameManager _gm) {
         currentRoom = null;
         previousRoom = null;
@@ -41,13 +41,14 @@ public class InputManager {
     // Compares user input against possible acceptable values.
     public void VerifyInput(Room cr) {
         System.out.println("\n\t*You are now in " + cr.getName() + ".*");
-        System.out.println("What would you like to do?");
         Scanner scan = new Scanner(System.in);
         boolean isValid = false;
         if (!cr.getHasMonster()) {
+            System.out.println("What would you like to do?");
             while (!isValid) {
                 String input = scan.nextLine();
                 switch (input.toLowerCase()) {
+                // TODO: add "go [direction]" to the list of options
                 case "north":
                 case "n":
                     isValid = true;
@@ -100,7 +101,6 @@ public class InputManager {
                 case "status":
                 case "stat":
                     isValid = false;
-                    // TODO: Added references to player to GameManager class
                     System.out.println(gm.player.toString());
                     break;
                 case "quit":
@@ -120,7 +120,141 @@ public class InputManager {
             }
         } else {
             // If the player is in combat they have fewer options.
-            gm.StartCombat(gm.player, currentRoom.getMonster());
+            StartCombat(gm.player, currentRoom.getMonster());
+        }
+    }
+
+    public void StartCombat(CharacterController player, CharacterController monster) {
+        int playerIntiative = 0, monsterIntiative = 0, escapeAttempts = 0;
+        ;
+        playerIntiative = player.RollInitiative();
+        monsterIntiative = monster.RollInitiative();
+        boolean inCombat = true;
+        System.out.println("Entered combat with " + monster.getName() + "!\n");
+        boolean isValid = false;
+        while (inCombat == true) {
+            {
+                isValid = false;
+                while (!isValid) {
+                    if (playerIntiative > monsterIntiative) {
+                        System.out.println("What would you like to do?");
+                        Scanner scan = new Scanner(System.in);
+                        String input = scan.nextLine();
+                        switch (input.toLowerCase()) {
+                        case "attack":
+                        case "a":
+                            isValid = true;
+                            // Player attacks first
+                            Attack(player, monster);
+                            break;
+                        case "leave":
+                        case "l":
+                        case "run":
+                        case "retreat":
+                        case "flee":
+                            isValid = true;
+                            if (player.RollInitiative() > monster.RollInitiative()) {
+                                System.out.println("You escaped!");
+                                monster.setHealth(monster.getMaxHealth()); // Reset monster health.
+                                setCurrentRoom(getPreviousRoom()); // Returns player to the previous room.
+                                inCombat = false;
+                            } else {
+                                System.out.println(monster.getName() + " prevents your escape!");
+                            }
+                        case "help":
+                        case "h":
+                            System.out.println("Try typing in a direction or action you wish to attempt.");
+                            break;
+                        case "status":
+                        case "stat":
+                            System.out.println(player.toString());
+                            break;
+                        case "quit":
+                        case "q":
+                            isValid = true;
+                            System.out.println("\nDo you want quit? (Y)es or (N)o");
+                            input = scan.nextLine().toLowerCase();
+                            if (input.equals("yes") || input.equals("y"))
+                                scan.close();
+                            else if (input.equals("no") || input.equals("n"))
+                                break;
+                        default:
+                            System.out.println("You can't do that.");
+                            break;
+                        }
+                        // if monster is still alive it attacks
+                        if (inCombat)
+                            Attack(monster, player);
+                    } else {
+                        // monster attacks first
+                        Attack(monster, player);
+                        // then player gets to respond
+                        System.out.println("What would you like to do?");
+                        Scanner scan = new Scanner(System.in);
+                        String input = scan.nextLine();
+                        switch (input.toLowerCase()) {
+                        case "attack":
+                        case "a":
+                            // Player attacks
+                            Attack(player, monster);
+                            break;
+                        case "leave":
+                        case "l":
+                        case "run":
+                        case "retreat":
+                        case "flee":
+                            if (player.RollInitiative() > monster.RollInitiative()) {
+                                System.out.println("You escaped!");
+                                monster.setHealth(monster.getMaxHealth()); // Reset monster health.
+                                setCurrentRoom(getPreviousRoom()); // Returns player to the previous room.
+                                inCombat = false;
+                            } else {
+                                System.out.println(monster.getName() + "prevents your escape!");
+                            }
+                        case "help":
+                        case "h":
+                            System.out.println("Try typing in a direction or action you wish to attempt.");
+                            break;
+                        case "status":
+                        case "stat":
+                            System.out.println(player.toString());
+                            break;
+                        case "quit":
+                        case "q":
+                            System.out.println("\nDo you want quit? (Y)es or (N)o");
+                            input = scan.nextLine().toLowerCase();
+                            if (input.equals("yes") || input.equals("y"))
+                                scan.close();
+                            else if (input.equals("no") || input.equals("n"))
+                                break;
+                        default:
+                            System.out.println("You do not attack.");
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        gm.inCombat = false;
+    }
+
+    private void Attack(CharacterController attacker, CharacterController target) {
+        if (attacker.getAttackRoll() > target.getArmorClass()) {
+            int damage = attacker.getDamageRoll();
+            target.setHealth(target.getHealth() - damage);
+            System.out.println(attacker.getName() + " did " + damage + " damage to " + target.getName());
+
+            if (target.getHealth() <= 0) {
+                System.out.println(attacker.getName() + " defeated " + target.getName() + "!");
+                if (attacker == gm.player) {
+                    getCurrentRoom().setHasMonster(false);
+                } else {
+                    GameOver();
+                }
+                gm.inCombat = false;
+            }
+        } else {
+            System.out.println(attacker.getName() + " missed!");
         }
     }
 
@@ -162,8 +296,8 @@ public class InputManager {
             case "pen":
                 isValid = true;
                 gm.MakeWizard(gm.player, gm.player.getName());
-                System.out.println(
-                        "Congratulations! Your a wizard " + gm.player.getName() + "! Here's your free wand.\n");
+                System.out.println("Congratulations! You're a wizard " + gm.player.getName() 
+                + "! Here's your free wand.\n");
                 break;
             case "s":
             case "sword":
@@ -180,13 +314,13 @@ public class InputManager {
                 break;
             default:
                 System.out.println("Um... okay. But \"" + classAnswer.toLowerCase() + "\" wasn't one of the choices. "
-                        + "Which do you think is mightier? The PEN or the SWORD?");
+                        + "So which do you think is mightier? The PEN or the SWORD?");
             }
         }
-        gm.player.CharacterSprite();//set the players character sprite based on class chosen.
+        gm.player.CharacterSprite();// set the players character sprite based on class chosen.
         System.out.println("Your current stats are: " + gm.player.toString());
         System.out.println("\nNow that you have provided all the necessary information "
-                + "\nand waived the Adventurers' Guild of all liability in the case of your death or dismemberment."
+                + "\nand waived the your right to hold the Adventurers' Guild liabile in the case of your death or dismemberment."
                 + "\nWe wish you luck in your conquest of the dungeon of the Terrible Javalang.");
         scan.nextLine();
     }
@@ -204,8 +338,9 @@ public class InputManager {
             case "y":
                 isValid = true;
                 System.out.println("Okay then! Up you get, the blood should wash out eventually.");
-                // TODO: restore player and previous enemy to full health and place player in
-                // previous room. Increment a death counter.
+                currentRoom.getMonster().setHealth(currentRoom.getMonster().getMaxHealth()); // Reset monster health.
+                setCurrentRoom(getPreviousRoom()); // Returns player to the previous room.
+                gm.inCombat = false;
                 break;
             case "no":
             case "n":

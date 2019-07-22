@@ -7,7 +7,6 @@
 package java_adventure;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class GameManager {
     InputManager im;
@@ -240,128 +239,6 @@ public class GameManager {
         dungeon.add(end);
     }
 
-    public void StartCombat(CharacterController player, CharacterController monster) {
-        int playerIntiative = 0, monsterIntiative = 0;
-        playerIntiative = player.RollInitiative();
-        monsterIntiative = monster.RollInitiative();
-        boolean inCombat = true;
-        System.out.println("Entered combat with " + monster.getName() + "!\n");
-        while (inCombat == true) {
-            {
-                if (playerIntiative > monsterIntiative) {
-                    System.out.println("What would you like to do?");
-                    Scanner scan = new Scanner(System.in);
-                    String input = scan.nextLine();
-                    switch (input.toLowerCase()) {
-                    case "attack":
-                    case "a":
-                        // Player attacks first
-                        Attack(player, monster);
-                        break;
-                    case "leave":
-                    case "l":
-                    case "run":
-                    case "retreat":
-                    case "flee":
-                        if (player.RollInitiative() > monster.RollInitiative()) {
-                            System.out.println("You escaped!");
-                            monster.setHealth(monster.getMaxHealth()); //Reset monster health.
-                            im.setCurrentRoom(im.getPreviousRoom()); //Returns player to the previous room.
-                            inCombat = false;
-                        } else {
-                            System.out.println(monster.getName() + " prevents your escape!");
-                        }
-                    case "help":
-                    case "h":
-                        System.out.println("Try typing in a direction or action you wish to attempt.");
-                        break;
-                    case "status":
-                    case "stat":
-                        System.out.println(player.toString());
-                        break;
-                    case "quit":
-                    case "q":
-                        System.out.println("\nDo you want quit? (Y)es or (N)o");
-                        input = scan.nextLine().toLowerCase();
-                        if (input.equals("yes") || input.equals("y"))
-                            scan.close();
-                        else if (input.equals("no") || input.equals("n"))
-                            break;
-                    default:
-                        System.out.println("You do not attack.");
-                        break;
-                    }
-                    // if monster is still alive it attacks
-                    if (inCombat) Attack(monster, player);
-                } else {
-                    // monster attacks first
-                    Attack(monster, player);
-                    // then player gets to respond
-                    System.out.println("What would you like to do?");
-                    Scanner scan = new Scanner(System.in);
-                    String input = scan.nextLine();
-                    switch (input.toLowerCase()) {
-                    case "attack":
-                    case "a":
-                        // Player attacks
-                        Attack(player, monster);
-                        break;
-                    case "leave":
-                    case "l":
-                    case "run":
-                    case "retreat":
-                    case "flee":
-                        if (player.RollInitiative() > monster.RollInitiative()) {
-                            System.out.println("You escaped!");
-                            monster.setHealth(monster.getMaxHealth()); //Reset monster health.
-                            im.setCurrentRoom(im.getPreviousRoom()); //Returns player to the previous room.
-                            inCombat = false;
-                        } else {
-                            System.out.println(monster.getName() + "prevents your escape!");
-                        }
-                    case "help":
-                    case "h":
-                        System.out.println("Try typing in a direction or action you wish to attempt.");
-                        break;
-                    case "status":
-                    case "stat":
-                        System.out.println(player.toString());
-                        break;
-                    case "quit":
-                    case "q":
-                        System.out.println("\nDo you want quit? (Y)es or (N)o");
-                        input = scan.nextLine().toLowerCase();
-                        if (input.equals("yes") || input.equals("y"))
-                            scan.close();
-                        else if (input.equals("no") || input.equals("n"))
-                            break;
-                    default:
-                        System.out.println("You do not attack.");
-                        break;
-                    }
-                }
-            }
-        }
-        inCombat = false;
-    }
-
-    private void Attack(CharacterController attacker, CharacterController target) {
-        if (attacker.getAttackRoll() > target.getArmorClass()) {
-            int damage = attacker.getDamageRoll();
-            target.setHealth(target.getHealth() - damage);
-            System.out.println(attacker.getName() + " did " + damage + " damage to " + target.getName());
-            inCombat = true;
-        }
-        if (target.getHealth() <= 0) {
-            System.out.println(attacker.getName() + " defeated " + target.getName() + "!");
-            if (attacker == player) im.getCurrentRoom().setHasMonster(false);
-            inCombat = false;
-        } else {
-            System.out.println(attacker.getName() + " missed!");
-            inCombat = true;
-        }
-
-    }
     // TODO: Create/balance enemy stats
     // Boss/Knight > Spider > > Mimic > Slime > Goblin
     // General range to scale numbers off of once playtested
