@@ -9,7 +9,7 @@ package java_adventure;
 import java.util.ArrayList;
 
 public class GameManager {
-    InputManager im = InputManager.getInstance();
+    InputManager im;
     boolean inCombat = false;
     ArrayList<Room> dungeon = new ArrayList<Room>();
     CharacterController m_goblin = new CharacterController();
@@ -19,7 +19,7 @@ public class GameManager {
     CharacterController m_spider = new CharacterController();
     CharacterController m_boss = new CharacterController();
     
-    public CharacterController player = new CharacterController("Nobody", "None");
+    public static CharacterController player = new CharacterController("Nobody", "None");
     
     private static GameManager instance = null; 
 
@@ -42,7 +42,9 @@ public class GameManager {
     public void setInCombat(boolean temp) {
         inCombat = temp;
     }
-
+    public void setInputManagerInstance(){
+        im = InputManager.getInstance();
+    }
     // region Player Classes
     public void MakeWizard(CharacterController newCharacter, String name) {
         newCharacter.setHealth(15);
@@ -135,7 +137,6 @@ public class GameManager {
     // endregion
 
     public void CreateDungeon() {
-        RoomImage rm = new RoomImage();
         Room start = new Room();
         Room moveAssit = new Room();
         Room fight = new Room();
@@ -208,7 +209,7 @@ public class GameManager {
         slime2.setRoomImage(RoomImage.slime2WithEnemy());
 
         chest1.setExits(null, mimic, null, null);
-        chest1.setRoomImage(RoomImage.chest1());
+        //TODO:chest1.setRoomImage(RoomImage.chest1With());
 
         chest2.setExits(null, slime1, null, null);
         chest2.setRoomImage(RoomImage.chest2With());
