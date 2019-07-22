@@ -513,7 +513,7 @@ public class RoomImage {
         + "\n   \\                                              /" + "\tragged breathing and the drips of water on the"
         + "\n   /                                              \\" + "\tcave floor."
         + "\n   \\                                              /" + "\tThere is a door to the SOUTH and a door to the "
-        + "\n   /                                              \\" + "\tNORTH." + "\n  \\                    "
+        + "\n   /                                              \\" + "\tNORTH." + "\n   \\                    "
         + gm.getPlayer().H1 + "                    /" + "\n   /                    " + gm.getPlayer().H2 + "                    \\"
         + "\n   \\                    " + gm.getPlayer().H3 + "                    /" + "\n   /                    " + gm.getPlayer().H4
         + "                    \\" + "\n   \\                    " + gm.getPlayer().H5 + "                    /"
@@ -536,7 +536,7 @@ public class RoomImage {
         + "\n   /    ||||||   |||||            ||||�||||       \\" + "\tis light streaming in from the far door!"
         + "\n   \\   _______                    |||||||||       /" 
         + "\n   /  [|-----|]   [---]                    {----} \\" + "\n   \\  |VVV�VVV|   ||�|| "
-        + gm.getPlayer().H1 + "             ||[]|| /" + "\t text." + "\n   /  |||||||||   ||||| " + gm.getPlayer().H2
+        + gm.getPlayer().H1 + "             ||[]|| /" + "\n   /  |||||||||   ||||| " + gm.getPlayer().H2
         + "    [---]    |||||| \\" +  "\n   \\  |||||||||         " + gm.getPlayer().H3 + "    ||�||           /"
         + "\n   /             [---]  " + gm.getPlayer().H4 + "    |||||  [----]   \\"
                           
