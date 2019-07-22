@@ -215,7 +215,7 @@ public class GameManager {
         slime1.setHasMonster(true);
         slime1.setRoomImages(RoomImage.slime1WithEnemy(), RoomImage.slime1WithoutEnemy());
 
-        slime2.setExits(null, null, mimic, empty2);
+        slime2.setExits(chest1, null, mimic, empty2);
         slime2.setMonster(m_slime2);
         slime2.setHasMonster(true);
         slime2.setRoomImages(RoomImage.slime2WithEnemy(), RoomImage.slime2WithoutEnemy());
