@@ -9,7 +9,7 @@ package java_adventure;
 import java.util.ArrayList;
 
 public class GameManager {
-    InputManager im;
+    InputManager im = InputManager.getInstance();
     boolean inCombat = false;
     ArrayList<Room> dungeon = new ArrayList<Room>();
     CharacterController m_goblin = new CharacterController();
@@ -20,10 +20,19 @@ public class GameManager {
     CharacterController m_boss = new CharacterController();
     
     public CharacterController player = new CharacterController("Nobody", "None");
+    
+    private static GameManager instance = null; 
 
-    public void setInputManager(InputManager _im){
-        im = _im;
+    // private constructor restricted to this class itself 
+    GameManager(){
     }
+    // static method to create instance of Singleton class GameManager 
+    public static GameManager getInstance() 
+    { 
+        if (instance == null) 
+            instance = new GameManager();  
+        return instance; 
+    } 
 
     public boolean getInCombat() {
         return inCombat;
@@ -125,6 +134,7 @@ public class GameManager {
     // endregion
 
     public void CreateDungeon() {
+        RoomImage rm = new RoomImage();
         Room start = new Room();
         Room moveAssit = new Room();
         Room fight = new Room();

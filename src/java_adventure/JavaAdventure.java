@@ -5,7 +5,7 @@ import java.io.IOException;
 public class JavaAdventure {
 
     public static void main (String[] args)throws IOException, InterruptedException{
-        GameManager gm = new GameManager();
+        GameManager gm = GameManager.getInstance();
         InputManager im = new InputManager(gm);
         gm.setInputManager(im);
         im.Welcome();

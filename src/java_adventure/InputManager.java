@@ -13,15 +13,22 @@ import java.util.Scanner;
 public class InputManager {
 
     private Room currentRoom, previousRoom;
-    private GameManager gm;
+    private GameManager gm = GameManager.getInstance();
+    private static InputManager instance = null; 
 
-    // Input Manager Constructor
-    public InputManager(GameManager _gm) {
+    // private constructor restricted to this class itself 
+    public InputManager() {
         currentRoom = null;
         previousRoom = null;
-        gm = _gm;
     }
-
+    // static method to create instance of Singleton class InputManager 
+    public static InputManager getInstance() 
+    { 
+        if (instance == null) 
+        instance = new InputManager();  
+        return instance; 
+    } 
+    
     public Room getCurrentRoom() {
         return currentRoom;
     }

@@ -13,7 +13,7 @@ public class Room {
     private boolean hasMonster, hasChest;
     private RoomImage roomImage;
     private String name;
-    String P1, P2, P3, P4, P5;
+    
     // Room Contructor
     public Room() {
         exits[0] = null; // north
@@ -25,11 +25,6 @@ public class Room {
         hasChest = false;
         roomImage = null;
         name = "";
-        P1 = "Enter north(n), east(e), south(s), or west(w) ";
-        P2 = "to go through that door. Enter STATUS to check ";
-        P3 = "your character's status, leave to run away, or ";
-        P4 = "FIGHT to fight: ";
-        P5 = " ";
     }
 
     public void setExits(Room nRoom, Room eRoom, Room sRoom, Room wRoom) {
