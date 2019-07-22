@@ -460,11 +460,14 @@ public class InputManager {
     }
 
     // This method should be called on player death.
+    int playerDeaths = 0;
     public void GameOver() throws IOException, InterruptedException {
         Scanner scan = new Scanner(System.in);
         boolean isValid = false;
+        playerDeaths++;
         if (gm.player.getHealth() <= 0) {
-            System.out.print("\nWell that could have gone better. "
+            System.out.print("\nWell that could have gone better. On the bright side, you've only experienced a painful death " 
+                    + playerDeaths + " time(s)!\n"
                     + "\nWould you like to restart from the previous room? (Y)es or (N)o: ");
         } else {
             System.out.print("\nDo you want quit? (Y)es or (N)o: ");
