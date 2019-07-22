@@ -12,7 +12,7 @@ public class RoomImage {
     P1 = "Enter north(n), east(e), south(s), or west(w) ";
     P2 = "to go through that door. Enter STATUS to check ";
     P3 = "your character's status, leave to run away, or ";
-    P4 = "FIGHT to fight: ";
+    P4 = "FIGHT to fight. ";
     P5 = " ";
     gm = GameManager.getInstance();
   }
