@@ -147,7 +147,7 @@ public class InputManager {
                     System.out.println(currentRoom.toString(currentRoom.getHasMonster()));// draw room\
                     System.out.print("What would you like to do? ");
                     break;
-                //TODO: Remove MONSTAT case
+                // TODO: Remove MONSTAT case
                 case "monstat":
                     isValid = false;
                     if (currentRoom.getHasMonster() == true)
@@ -187,7 +187,6 @@ public class InputManager {
             gm.inCombat = true;
             // If the player is in combat they have fewer options.
             StartCombat(gm.player, currentRoom.getMonster());
-            scan.nextLine();
         }
     }
 
@@ -244,7 +243,7 @@ public class InputManager {
                             System.out.println(currentRoom.toString(currentRoom.getHasMonster()));// draw room
                             System.out.print("What would you like to do? ");
                             break;
-                        //TODO: Remove MONSTAT case
+                        // TODO: Remove MONSTAT case
                         case "monstat":
                             isValid = false;
                             if (currentRoom.getHasMonster() == true)
@@ -256,6 +255,7 @@ public class InputManager {
                             break;
                         case "quit":
                         case "q":
+                            isValid = true;
                             GameOver();
                             break;
                         default:
@@ -327,7 +327,7 @@ public class InputManager {
                             break;
                         case "quit":
                         case "q":
-                            System.out.println("\nDo you want quit? (Y)es or (N)o");
+                            isValid = true;
                             GameOver();
                             break;
                         default:
@@ -351,14 +351,15 @@ public class InputManager {
         if (attacker.getAttackRoll() > target.getArmorClass()) {
             int damage = attacker.getDamageRoll();
             target.setHealth(target.getHealth() - damage);
-            System.out.println("\t*" + attacker.getName() + " did " + damage + " damage to " + target.getName() + ".*" );
+            System.out.println("\t*" + attacker.getName() + " did " + damage + " damage to " + target.getName() + ".*");
 
-            if (target.getHealth() <= 0) {                            
+            if (target.getHealth() <= 0) {
                 if (attacker == gm.player) {
                     currentRoom.setHasMonster(false);
                     ClearConsole();
                     System.out.println(currentRoom.toString(currentRoom.getHasMonster()));// draw room
                     System.out.println("\t*" + attacker.getName() + " defeated " + target.getName() + "!*");
+                    VerifyInput(currentRoom);
                 } else {
                     System.out.println(currentRoom.toString(currentRoom.getHasMonster()));// draw room
                     System.out.println("\t*" + attacker.getName() + " defeated " + target.getName() + "!*");
@@ -452,6 +453,7 @@ public class InputManager {
         }
         gm.player.CharacterSprite();// set the players character sprite based on class chosen.
         System.out.println("Your current stats are: " + gm.player.toString());
+        scan.nextLine();
         System.out.println("\nNow that you have provided all the necessary information "
                 + "\nand waived the your right to hold the Adventurers' Guild liabile in the case of your death or dismemberment."
                 + "\nWe wish you luck in your conquest of the dungeon of the Terrible Javalang.");
@@ -481,20 +483,24 @@ public class InputManager {
                 isValid = true;
                 // if player dies
                 if (gm.player.getHealth() <= 0) {
-                    System.out.println("Okay then! Up you get, the blood should wash out eventually.");
+                    ClearConsole();
                     gm.player.setHealth(gm.player.getMaxHealth()); // Reset player health.
                     if (currentRoom.getHasMonster() != false) {
                         currentRoom.getMonster().setHealth(currentRoom.getMonster().getMaxHealth());
                     } // Reset monster health.
-                    if (previousRoom != null)
+                    if (previousRoom != null) {
                         currentRoom = previousRoom; // Returns player to the previous room.
+                    }
+                    System.out.println(currentRoom.toString(currentRoom.getHasMonster()));// draw room
+                    System.out.println("Okay then! Up you get, the blood should wash out eventually.");
                     gm.inCombat = false;
-                    ClearConsole();
+                    VerifyInput(currentRoom);
                 } else {
                     // player attempts to quit
-                    isValid = true;
-                    System.out.println("Oh well. We can't all be winners.");
-                    scan.nextLine();
+                    gm.inCombat = false;
+                    System.out.print("(1)Oh well. We can't all be winners.\n");
+                    //scan.nextLine();
+                    scan.close();
                 }
                 break;
             case "n":
@@ -502,14 +508,16 @@ public class InputManager {
                 isValid = true;
                 // if player dies
                 if (gm.player.getHealth() <= 0) {
-                    System.out.print("Oh well. We can't all be winners.");
+                    System.out.print("(2)Oh well. We can't all be winners.\n");
                     scan.nextLine();
+                    scan.close();
                 } else {
                     ClearConsole();
+                    VerifyInput(currentRoom);
                 }
                 break;
             default:
-                System.out.println("It's a yes or no question " + gm.player.getName() + ". (Y)es or (N)o");
+                System.out.print("It's a yes or no question " + gm.player.getName() + ". (Y)es or (N)o: ");
                 input = scan.nextLine();
                 break;
             }

@@ -202,20 +202,20 @@ public class GameManager {
         fight.setRoomImages(RoomImage.fightWithEnemy(), RoomImage.fightWithoutEnemy());
 
         empty1.setExits(empty3, empty2, fight, null);
-        empty1.setRoomImages(null, RoomImage.empty1());
+        empty1.setRoomImages(RoomImage.empty1(), RoomImage.empty1());
 
         empty2.setExits(slime1, slime2, null, empty1);
-        empty2.setRoomImages(null, RoomImage.empty2());
+        empty2.setRoomImages(RoomImage.empty2(), RoomImage.empty2());
 
         empty3.setExits(null, slime1, empty1, null);
-        empty3.setRoomImages(null, RoomImage.empty3());
+        empty3.setRoomImages(RoomImage.empty3(), RoomImage.empty3());
 
         slime1.setExits(null, chest2, empty2, empty3);
         slime1.setMonster(m_slime1);
         slime1.setHasMonster(true);
         slime1.setRoomImages(RoomImage.slime1WithEnemy(), RoomImage.slime1WithoutEnemy());
 
-        slime2.setExits(null, null, mimic, empty2);
+        slime2.setExits(chest1, null, mimic, empty2);
         slime2.setMonster(m_slime2);
         slime2.setHasMonster(true);
         slime2.setRoomImages(RoomImage.slime2WithEnemy(), RoomImage.slime2WithoutEnemy());
@@ -237,7 +237,7 @@ public class GameManager {
         spider.setRoomImages(RoomImage.spiderWithEnemy(), RoomImage.spiderWithoutEnemy());
 
         empty4.setExits(boss, null, null, spider);
-        empty4.setRoomImages(null, RoomImage.empty4());
+        empty4.setRoomImages(RoomImage.empty4(), RoomImage.empty4());
 
         treasure.setExits(null, null, boss, null);
         treasure.setRoomImages(null, RoomImage.treasure());
