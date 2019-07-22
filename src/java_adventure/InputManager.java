@@ -62,6 +62,9 @@ public class InputManager {
                 case "north":
                 case "go north":
                 case "go forward":
+                case "go up":
+                case "up":
+                case "forward":
                 case "n":
                     isValid = true;
                     if (cr.getnDoor() != null) {
@@ -76,6 +79,8 @@ public class InputManager {
                 case "go south":
                 case "go back":
                 case "go down":
+                case "back":
+                case "down":
                 case "s":
                     isValid = true;
                     if (cr.getsDoor() != null) {
@@ -89,6 +94,7 @@ public class InputManager {
                 case "east":
                 case "go east":
                 case "go right":
+                case "right":
                 case "e":
                     isValid = true;
                     if (cr.geteDoor() != null) {
@@ -102,6 +108,7 @@ public class InputManager {
                 case "west":
                 case "go west":
                 case "go left":
+                case "left":
                 case "w":
                     isValid = true;
                     if (cr.getwDoor() != null) {
@@ -210,7 +217,6 @@ public class InputManager {
                     if (gm.inCombat)
                         Attack(monster, player);
                 } else {
-                    isValid = true;
                     // monster attacks first
                     if (gm.inCombat)
                         Attack(monster, player);
