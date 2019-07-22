@@ -495,7 +495,8 @@ public class InputManager {
                 } else {
                     // player attempts to quit
                     gm.inCombat = false;
-                    System.out.print("(1)Oh well. We can't all be winners.\n");
+                    gm.player.setHealth(0);
+                    System.out.print("Oh well. We can't all be winners.\n");
                     //scan.nextLine();
                     scan.close();
                 }
@@ -505,7 +506,7 @@ public class InputManager {
                 isValid = true;
                 // if player dies
                 if (gm.player.getHealth() <= 0) {
-                    System.out.print("(2)Oh well. We can't all be winners.\n");
+                    System.out.print("Oh well. We can't all be winners.\n");
                     scan.nextLine();
                     scan.close();
                 } else {
