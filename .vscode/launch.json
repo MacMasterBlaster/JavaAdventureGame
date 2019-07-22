@@ -2,6 +2,12 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - JavaAdventure",
+            "request": "launch",
+            "mainClass": "java_adventure.JavaAdventure"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - ConsoleClearTest",
             "request": "launch",
             "mainClass": "java_adventure.ConsoleClearTest",

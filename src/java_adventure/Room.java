@@ -109,6 +109,11 @@ public class Room {
     public void setRoomImage(RoomImage temp) {
         roomImage = temp;
     }
+
+    public String toString() {
+        return roomImage;
+    }
+
     
     // Name Properties
     public String getName() {
@@ -118,6 +123,6 @@ public class Room {
     public void setName(String _name) {
         name = _name;
     }
-    // TODO: toString() required. Should build room image.
+ 
 
 }
