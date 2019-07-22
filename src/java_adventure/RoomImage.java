@@ -9,10 +9,10 @@ public class RoomImage {
   static String P1, P2, P3, P4, P5;
   static GameManager gm;
   static void SetCommands(){
-    P1 = "Enter north(n), east(e), south(s), or west(w) ";
+    P1 = "Enter (n)orth, (e)ast, (s)outh, or (w)est ";
     P2 = "to go through that door. Enter STATUS to check ";
-    P3 = "your character's status, LEAVE(L) to run away, or ";
-    P4 = "Attack(a) to attack. ";
+    P3 = "your character's status, (l)eave to run away, or ";
+    P4 = "(a)ttack to attack. ";
     P5 = " ";
     gm = GameManager.getInstance();
   }
