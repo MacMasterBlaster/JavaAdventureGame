@@ -207,6 +207,7 @@ public class InputManager {
                     if (gm.inCombat)
                         Attack(monster, player);
                 } else {
+                    isValid = true;
                     // monster attacks first
                     if (gm.inCombat)
                         Attack(monster, player);
@@ -256,6 +257,12 @@ public class InputManager {
                             } else if (input.equals("no") || input.equals("n"))
                                 break;
                         default:
+                            if (monster.getHealth() <= 0)
+                            {
+                                gm.inCombat = false;
+                                currentRoom.setHasMonster(false);
+                                break;
+                            }
                             System.out.println("You do not attack.");
                             break;
                         }
@@ -265,7 +272,7 @@ public class InputManager {
         }
     }
 
-    }
+    
 
     private void Attack(CharacterController attacker, CharacterController target) {
         if (attacker.getAttackRoll() > target.getArmorClass()) {
