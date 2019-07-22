@@ -556,6 +556,6 @@ public class RoomImage {
   }
   static public String end() {
     SetCommands();
-      return "   That's all folks!!" + "\n   test";
+      return "   That's all folks!!" + "\n";
   }
 }

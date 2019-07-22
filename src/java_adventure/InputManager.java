@@ -59,7 +59,11 @@ public class InputManager {
         // for debugging only.
         Scanner scan = new Scanner(System.in);
         boolean isValid = false;
-        if (!cr.getHasMonster()) {
+        if (cr.getName().equals("end")){
+            System.out.println(currentRoom.toString(currentRoom.getHasMonster()));// draw room
+            Win(scan);
+        }
+        else if (!cr.getHasMonster()) {
             System.out.print("    What would you like to do? ");
             while (!isValid) {
                 String input = scan.nextLine();
@@ -616,7 +620,7 @@ public class InputManager {
                 }
                 break;
             default:
-                System.out.print("   It's a yes or no question " + gm.player.getName() + ". (Y)es or (N)o: ");
+                System.out.print("\n   It's a yes or no question " + gm.player.getName() + ". (Y)es or (N)o: ");
                 input = scan.nextLine();
                 break;
             }
@@ -626,9 +630,9 @@ public class InputManager {
     // This method should be called on player win.
     public void Win(Scanner scan) throws IOException, InterruptedException {
         ClearConsole();
-        System.out.println("CONGRATULATIONS! You have conquered the dungeon of Javalang!"
-        + "\n It only took you " + gm.playerDeaths + " terrible death(s) to do so.");
-        System.out.println("This game was created by:\n\tMac Orchard");
+        System.out.println("\n    CONGRATULATIONS! You have conquered the dungeon of Javalang!"
+        + "\n   It only took you " + gm.playerDeaths + " terrible death(s) to do so.");
+        System.out.println("    This game was created by:\n\t\tMac Orchard\n\t\tJoshua Danzell\n\t\tNoah Wagstaff");
         gm.player.setHealth(0);
         scan.close(); // This will cause the game to end.
     }
