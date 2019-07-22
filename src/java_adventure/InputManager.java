@@ -58,7 +58,7 @@ public class InputManager {
         Scanner scan = new Scanner(System.in);
         boolean isValid = false;
         if (!cr.getHasMonster()) {
-            System.out.print("What would you like to do?");
+            System.out.print("What would you like to do? ");
             while (!isValid) {
                 String input = scan.nextLine();
                 switch (input.toLowerCase()) {
