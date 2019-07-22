@@ -60,7 +60,7 @@ public class InputManager {
         Scanner scan = new Scanner(System.in);
         boolean isValid = false;
         if (!cr.getHasMonster()) {
-            System.out.print("What would you like to do? ");
+            System.out.print("    What would you like to do? ");
             while (!isValid) {
                 String input = scan.nextLine();
                 switch (input.toLowerCase()) {
@@ -165,7 +165,7 @@ public class InputManager {
                     scan.nextLine();
                     ClearConsole();
                     System.out.println(currentRoom.toString(currentRoom.getHasMonster()));// draw room\
-                    System.out.print("What would you like to do? ");
+                    System.out.print("    What would you like to do? ");
                     break;
                 // TODO: Remove MONSTAT case
                 case "monstat":
@@ -175,7 +175,7 @@ public class InputManager {
                     scan.nextLine();
                     ClearConsole();
                     System.out.println(currentRoom.toString(currentRoom.getHasMonster()));// draw room
-                    System.out.print("What would you like to do? ");
+                    System.out.print("    What would you like to do? ");
                     break;
                 case "die":
                     if (gm.player.getCharClass().equals("God")) {
@@ -223,7 +223,7 @@ public class InputManager {
                 isValid = false;
                 if (playerIntiative > monsterIntiative) {
                     while (!isValid) {
-                        System.out.print("What would you like to do? ");
+                        System.out.print("    What would you like to do? ");
                         String input = scan.nextLine();
                         switch (input.toLowerCase()) {
                         case "attack":
@@ -281,7 +281,7 @@ public class InputManager {
                             scan.nextLine();
                             ClearConsole();
                             System.out.println(currentRoom.toString(currentRoom.getHasMonster()));// draw room
-                            System.out.print("What would you like to do? ");
+                            System.out.print("    What would you like to do? ");
                             break;
                         // TODO: Remove MONSTAT case
                         case "monstat":
@@ -291,7 +291,7 @@ public class InputManager {
                             scan.nextLine();
                             ClearConsole();
                             System.out.println(currentRoom.toString(currentRoom.getHasMonster()));// draw room
-                            System.out.print("What would you like to do? ");
+                            System.out.print("    What would you like to do? ");
                             break;
                         case "quit":
                         case "q":
@@ -317,7 +317,7 @@ public class InputManager {
                         Attack(monster, player);
                     while (!isValid) {
                         // then player gets to respond
-                        System.out.print("What would you like to do? ");
+                        System.out.print("    What would you like to do? ");
                         String input = scan.nextLine();
                         switch (input.toLowerCase()) {
                         case "attack":
