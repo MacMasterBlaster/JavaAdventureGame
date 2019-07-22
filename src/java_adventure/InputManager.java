@@ -8,7 +8,6 @@
 // ***********************************************
 package java_adventure;
 
-
 import java.util.Scanner;
 
 public class InputManager {
