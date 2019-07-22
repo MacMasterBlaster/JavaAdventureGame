@@ -6,7 +6,7 @@ public class JavaAdventure {
 
     public static void main (String[] args)throws IOException, InterruptedException{
         GameManager gm = GameManager.getInstance();
-        InputManager im = new InputManager(gm);
+        InputManager im = InputManager.getInstance();
         im.Welcome();
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor(); // clears the console window.
         im.setCurrentRoom(gm.dungeon.get(0));
