@@ -208,6 +208,12 @@ public class InputManager {
                             } else if (input.equals("no") || input.equals("n"))
                                 break;
                         default:
+                            if (gm.inCombat) 
+                            {
+                                System.out.println("You do not attack.");
+                                 Attack(monster, player);
+                                 break;
+                            }
                             System.out.println("You can't do that.");
                             break;
                         }
