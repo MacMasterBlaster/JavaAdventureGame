@@ -11,8 +11,8 @@ public class RoomImage {
   static void SetCommands(){
     P1 = "Enter north(n), east(e), south(s), or west(w) ";
     P2 = "to go through that door. Enter STATUS to check ";
-    P3 = "your character's status, leave to run away, or ";
-    P4 = "FIGHT to fight. ";
+    P3 = "your character's status, LEAVE(L) to run away, or ";
+    P4 = "Attack(a) to attack. ";
     P5 = " ";
     gm = GameManager.getInstance();
   }
