@@ -396,33 +396,36 @@ public class InputManager {
         System.out.println("\t\t\t\t\t\tPress Enter to Start!");
         scan.nextLine();
         ClearConsole();
-        System.out.print("Greetings would-be adventurer! Before you begin your "
-                + "quest, \nwe need some personal information. (For liabilty purposes)" + "\nWhat is your name? ");
+        System.out.print("You have decided to attempt to join the Adventures' Guild for the first time. It is a massive and \n" 
+        +"imposing building teaming with people, all of whom appear to better equipped than you. You make your way to \n"
+        + "the front desk where a portly, smiling man with a thick beard sits waiting patiently. Before you have a chance to"
+        + "\neven speak, he says \"Greetings would-be adventurer! Before you can begin a your life as a "
+        + "\nmember of the Adventures' Guild, we need some personal information. For liabilty purposes.\"" + "\n\n\"What is your name?\" ");
         String newName = scan.nextLine();
-        gm.player.setName(newName);
-        System.out.println("Great! Just a few more questions. \nDo you have any next of kin " + gm.player.getName()
-                + "? (Y)es or (N)o");
+        if (!newName.equals(""))gm.player.setName(newName);
+        System.out.print("\n\"Good, good! Just a few more questions. Do you have any next of kin " + gm.player.getName()
+                + "?\" (Y)es or (N)o: ");
         while (!isValid) {
             String answer = scan.nextLine();
             switch (answer.toLowerCase()) {
             case "yes":
             case "y":
                 isValid = true;
-                System.out.println("Well thats unfortunate. I hope they aren't expecting you back in time for dinner.");
+                System.out.println("\n\"Well thats unfortunate. I hope they aren't expecting you back in time for dinner.\"");
                 break;
             case "no":
             case "n":
                 isValid = true;
-                System.out.print("Excellent! ");
+                System.out.println("\n\"Excellent!\" He says smiling even more broadly. ");
                 break;
             default:
-                System.out.println("It's a yes or no question... So do you have any next of kin " + gm.player.getName()
-                        + "? (Y)es or (N)o");
+                System.out.print("\n\"It's a yes or no question... So do you have any next of kin " + gm.player.getName()
+                        + "?\" (Y)es or (N)o: ");
                 break;
             }
         }
         isValid = false;
-        System.out.println("One last question. Which do you think is mighter? The pen or the sword?");
+        System.out.print("\n\"One last question. Which do you think is mighter? The pen or the sword?\" ");
         while (!isValid) {
             String classAnswer = scan.nextLine();
             switch (classAnswer.toLowerCase()) {
@@ -431,46 +434,75 @@ public class InputManager {
                 isValid = true;
                 gm.MakeWizard(gm.player, gm.player.getName());
                 System.out.println(
-                        "Congratulations! You're a wizard " + gm.player.getName() + "! Here's your free wand.\n");
+                        "\"\nCongratulations! You're a wizard " + gm.player.getName() + "! Here's your free wand.\""
+                        +"\n He hands you a stick of questionable value.\n");
                 break;
             case "s":
             case "sword":
                 isValid = true;
                 gm.MakeWarrior(gm.player, gm.player.getName());
-                System.out.println("Might makes right! I always say. Well " + gm.player.getName()
-                        + ", here's your free sword and shield.\n");
+                System.out.println("\"Might makes right! I always say. Well " + gm.player.getName()
+                        + ", here's your free sword and shield.\" He says smiling."
+                        + "\n He hands you a sword and shield that have definitely seen better days.");
                 break;
             case "c":
             case "code":
                 isValid = true;
                 gm.MakeGod(gm.player, gm.player.getName());
-                System.out.println("You must be a programmer " + gm.player.getName() + ". Better start debugging.\n");
+                System.out.println("\n\"You must be a programmer " + gm.player.getName() + ". Better start debugging.\"\n");
                 break;
             default:
-                System.out.println("Um... okay. But \"" + classAnswer.toLowerCase() + "\" wasn't one of the choices. "
-                        + "So which do you think is mightier? The PEN or the SWORD?");
+                System.out.println("\nFrowning the man says, \"Um... okay. But \"" + classAnswer.toLowerCase() + "\" wasn't one of the choices. "
+                        + "So which do you think is mightier? The PEN or the SWORD?\" ");
             }
         }
         gm.player.CharacterSprite();// set the players character sprite based on class chosen.
-        System.out.println("Your current stats are: " + gm.player.toString());
-        scan.nextLine();
-        System.out.println("\nNow that you have provided all the necessary information "
-                + "\nand waived the your right to hold the Adventurers' Guild liabile in the case of your death or dismemberment."
-                + "\nWe wish you luck in your conquest of the dungeon of the Terrible Javalang.");
-        scan.nextLine();
+        System.out.println(gm.player.toString());
+        System.out.println("\nHe takes all the paperwork you filled out and sits back in his chair."
+                + "\"Now that you have provided all the necessary information and waived the your right"
+                + "to hold the Adventurers' Guild liable in the case of your death or dismemberment.\""
+                +"\n He says still smiling. \"We wish you the best of luck in your conquest of the dungeon"
+                + "of the Terrible Javalang.\" He gives you a map and begins to shove you out the door with your new"
+                +"\nequipment clutched awkardly in arms."
+                + "\n\n Time seems to pass in a blur. Next thing you know you are standing before the entrance to a"
+                + "\ncave located right where the map said it would be.\n\n Do you dare to enter? (Y)es or (N)o:");
+        String input = scan.nextLine();
+        while (!isValid) {
+            switch (input.toLowerCase()) {
+            case "y":
+            case "yes":
+                isValid = true;
+                break;
+            case "n":
+            case "no":
+            isValid = true;
+                System.out.println("Alright you go home and live a boring life. THE END");
+                gm.player.setHealth(0);
+                scan.close();
+                break;
+            default:
+                System.out.print("It's a yes or no question " + gm.player.getName() + ". (Y)es or (N)o: ");
+                input = scan.nextLine();
+                break;
+            }
+        }
         ClearConsole();
     }
 
     // This method should be called on player death.
-    int playerDeaths = 0;
     public void GameOver() throws IOException, InterruptedException {
         Scanner scan = new Scanner(System.in);
         boolean isValid = false;
-        playerDeaths++;
         if (gm.player.getHealth() <= 0) {
-            System.out.print("\nWell that could have gone better. On the bright side, you've only experienced a painful death " 
-                    + playerDeaths + " time(s)!\n"
-                    + "\nWould you like to restart from the previous room? (Y)es or (N)o: ");
+            gm.playerDeaths++;
+            if (gm.playerDeaths > 1) {
+                System.out.print("\nWell that could have gone better. On the bright side, you've only experienced a painful death "
+                                + gm.playerDeaths + " times!\n\nWould you like to restart from the previous room? (Y)es or (N)o: ");
+            } else {
+                System.out.print("\nWell that could have gone better. On the bright side, you've only experienced a painful death "
+                                + gm.playerDeaths + " time!\n\nWould you like to restart from the previous room? (Y)es or (N)o: ");
+            }
+
         } else {
             System.out.print("\nDo you want quit? (Y)es or (N)o: ");
         }
@@ -500,7 +532,7 @@ public class InputManager {
                     gm.inCombat = false;
                     gm.player.setHealth(0);
                     System.out.print("Oh well. We can't all be winners.\n");
-                    //scan.nextLine();
+                    // scan.nextLine();
                     scan.close();
                 }
                 break;
@@ -525,10 +557,10 @@ public class InputManager {
         }
     }
 
-        // This method should be called on player win.
+    // This method should be called on player win.
     public void Win(Scanner scan) throws IOException, InterruptedException {
         ClearConsole();
-        
+
         gm.player.setHealth(0);
         scan.close(); // This will cause the game to end.
     }

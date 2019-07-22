@@ -20,6 +20,7 @@ public class GameManager {
     CharacterController m_boss = new CharacterController();
 
     public CharacterController player = new CharacterController("Nobody", "None");
+    public int playerDeaths = 0;
 
     private static GameManager instance = null;
 
