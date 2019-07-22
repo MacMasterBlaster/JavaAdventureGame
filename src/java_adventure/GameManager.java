@@ -94,6 +94,7 @@ public class GameManager {
         newCharacter.setDamageDie(4);
         newCharacter.setDamageMod(2);
         newCharacter.setAttackMod(2);
+        newCharacter.setInitMod(2);
         newCharacter.setCharClass("Goblin");
         newCharacter.setName("Goblin");
     }
@@ -105,6 +106,7 @@ public class GameManager {
         newCharacter.setDamageDie(4);
         newCharacter.setDamageMod(3);
         newCharacter.setAttackMod(3);
+        newCharacter.setInitMod(2);
         newCharacter.setCharClass("Slime");
         newCharacter.setName("Slime");
     }
@@ -116,6 +118,7 @@ public class GameManager {
         newCharacter.setDamageDie(8);
         newCharacter.setDamageMod(2);
         newCharacter.setAttackMod(6);
+        newCharacter.setInitMod(10);
         newCharacter.setCharClass("Mimic");
         newCharacter.setName("Mimic");
     }
@@ -127,17 +130,19 @@ public class GameManager {
         newCharacter.setDamageDie(8);
         newCharacter.setDamageMod(3);
         newCharacter.setAttackMod(4);
+        newCharacter.setInitMod(4);
         newCharacter.setCharClass("Spider");
         newCharacter.setName("Spider");
     }
 
     public void MakeKnight(CharacterController newCharacter) {
         newCharacter.setHealth(40);
-        newCharacter.setMaxHealth(30);
+        newCharacter.setMaxHealth(40);
         newCharacter.setArmorClass(8);
         newCharacter.setDamageDie(12);
         newCharacter.setDamageMod(5);
         newCharacter.setAttackMod(6);
+        newCharacter.setInitMod(10);
         newCharacter.setCharClass("Knight");
         newCharacter.setName("Black Knight Javalang");
     }
@@ -188,7 +193,7 @@ public class GameManager {
         start.setwDoor(moveAssit);
         start.setRoomImages(null, RoomImage.start());
 
-        moveAssit.setExits(fight, null, null, start);
+        moveAssit.setExits(fight, start, null, null);
         moveAssit.setRoomImages(null, RoomImage.moveAssit());
 
         fight.setExits(empty1, null, moveAssit, null);

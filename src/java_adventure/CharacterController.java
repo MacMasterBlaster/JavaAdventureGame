@@ -80,6 +80,14 @@ public class CharacterController {
         return d.RollInitiative(20, initMod);
     }
 
+    public int getInitMod() {
+        return initMod;
+    }
+    
+    public void setInitMod(int _initMod) {
+        initMod = _initMod;
+    }
+
     public int getAttackRoll() {
         return d.RollAttack(damageDie, attackMod);
     }

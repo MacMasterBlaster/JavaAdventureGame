@@ -54,11 +54,11 @@ public class InputManager {
     public void VerifyInput(Room cr)throws IOException, InterruptedException {
         ClearConsole();
         System.out.println(cr.toString(cr.getHasMonster()));//draw room
-        System.out.println("\n\t*You are now in " + cr.getName() + ".*");
+        //System.out.println("\n\t*You are now in " + cr.getName() + ".*"); //Intended for debugging only.
         Scanner scan = new Scanner(System.in);
         boolean isValid = false;
         if (!cr.getHasMonster()) {
-            System.out.println("What would you like to do?");
+            System.out.print("What would you like to do?");
             while (!isValid) {
                 String input = scan.nextLine();
                 switch (input.toLowerCase()) {
@@ -162,6 +162,7 @@ public class InputManager {
             gm.inCombat = true;
             // If the player is in combat they have fewer options.
             StartCombat(gm.player, currentRoom.getMonster());
+            scan.nextLine();
         }
     }
 
@@ -177,7 +178,7 @@ public class InputManager {
                 isValid = false;
                 if (playerIntiative > monsterIntiative) {
                     while (!isValid) {
-                        System.out.println("What would you like to do?");
+                        System.out.println("\nWhat would you like to do?");
                         String input = scan.nextLine();
                         switch (input.toLowerCase()) {
                         case "attack":
