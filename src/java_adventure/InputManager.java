@@ -270,6 +270,7 @@ public class InputManager {
                                 currentRoom.setHasMonster(false);
                                 break;
                             }
+                            isValid = true;
                             System.out.println("You do not attack.");
                             break;
                         }
