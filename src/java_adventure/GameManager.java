@@ -223,7 +223,7 @@ public class GameManager {
         chest1.setExits(null, null, null, fight);
         chest1.setRoomImages(RoomImage.chest1With(), RoomImage.chest1Without());
 
-        chest2.setExits(null, slime1, null, null);
+        chest2.setExits(null, slime1, slime2, null);
         chest2.setRoomImages(RoomImage.chest2With(), RoomImage.chest2Without());
 
         mimic.setExits(slime2, null, spider, null);
@@ -238,6 +238,9 @@ public class GameManager {
 
         empty4.setExits(boss, null, null, spider);
         empty4.setRoomImages(null, RoomImage.empty4());
+
+        treasure.setExits(null, null, boss, null);
+        treasure.setRoomImages(null, RoomImage.treasure());
 
         boss.setExits(treasure, null, empty4, null);
         boss.setMonster(m_boss);
