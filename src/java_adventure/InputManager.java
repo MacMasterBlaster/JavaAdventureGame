@@ -460,7 +460,7 @@ public class InputManager {
         +"imposing building teaming with people, all of whom appear to better equipped than you. You make your way to \n   "
         + "the front desk where a portly, smiling man with a thick beard sits waiting patiently. Before you have a chance to"
         + "\n   even speak, he says \"Greetings would-be adventurer! Before you can begin a your life as a "
-        + "\n   member of the Adventures' Guild, we need some personal information. For liabilty purposes.\"" + "\n\n\"   What is your name?\" ");
+        + "\n   member of the Adventures' Guild, we need some personal information. For liabilty purposes.\"" + "\n\n   \"What is your name?\" ");
         String newName = scan.nextLine();
         if (!newName.equals(""))gm.player.setName(newName);
         System.out.print("\n\"   Good, good! Just a few more questions. Do you have any next of kin " + gm.player.getName()
