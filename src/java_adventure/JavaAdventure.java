@@ -16,11 +16,7 @@ public class JavaAdventure {
         }
         gm.CreateDungeon();
         im.setCurrentRoom(gm.dungeon.get(0));
-        // new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor(); //
-        // clears the console window.
         while (gm.player.getHealth() > 0) {
-            // new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();//
-            // clears the console window.
             im.VerifyInput(im.getCurrentRoom());
         }
     }

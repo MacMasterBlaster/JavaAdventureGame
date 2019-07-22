@@ -184,7 +184,7 @@ public class InputManager {
                 case "die":
                     if (gm.player.getCharClass().equals("God")) {
                         isValid = true;
-                        System.out.print(" You die.");
+                        System.out.print("  You die.");
                         gm.player.setHealth(0);
                         scan.nextLine();
                     }
@@ -196,7 +196,7 @@ public class InputManager {
                 case "jumpto": // For Debugging ONLY! Allows player to jump to any room in the dungeon.
                     if (gm.player.getCharClass().equals("God")) {
                         isValid = true;
-                        System.out.print(" What room do you want to jump to? [0 - " + gm.dungeon.size() + "]: ");
+                        System.out.print("  What room do you want to jump to? [0 - " + gm.dungeon.size() + "]: ");
                         int room = scan.nextInt();
                         currentRoom = gm.dungeon.get(room);
                         ClearConsole();
@@ -205,7 +205,7 @@ public class InputManager {
                     break;
                 default:
                     isValid = false;
-                    System.out.println(" Sorry I don't understand. What do you want to do?");
+                    System.out.print("  Sorry I don't understand. What do you want to do? ");
                     break;
                 }
             }
