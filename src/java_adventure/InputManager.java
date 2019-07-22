@@ -495,15 +495,15 @@ public class InputManager {
                 gm.MakeWizard(gm.player, gm.player.getName());
                 System.out.println(
                         "\"\nCongratulations! You're a wizard " + gm.player.getName() + "! Here's your free wand.\""
-                        +"\n He hands you a stick of questionable value.\n");
+                        +"\nHe hands you a stick of questionable value.\n");
                 break;
             case "s":
             case "sword":
                 isValid = true;
                 gm.MakeWarrior(gm.player, gm.player.getName());
-                System.out.println("\"Might makes right! I always say. Well " + gm.player.getName()
+                System.out.println("\n\"Might makes right! I always say. Well " + gm.player.getName()
                         + ", here's your free sword and shield.\" He says smiling."
-                        + "\n He hands you a sword and shield that have definitely seen better days.");
+                        + "\nHe hands you a sword and shield that have definitely seen better days.\n");
                 break;
             case "c":
             case "code":
@@ -532,6 +532,7 @@ public class InputManager {
             switch (input.toLowerCase()) {
             case "y":
             case "yes":
+                ClearConsole();
                 isValid = true;
                 gm.beginQuest = true;
                 break;
@@ -539,17 +540,16 @@ public class InputManager {
             case "no":
             isValid = true;
                 gm.beginQuest = false;
-                System.out.println("Alright you go home and live a boring life. THE END");
+                System.out.println("\nAlright, you go home and live a boring life. THE END\n");
                 gm.player.setHealth(0);
                 scan.close();
                 break;
             default:
-                System.out.print("It's a yes or no question " + gm.player.getName() + ". (Y)es or (N)o: ");
+                System.out.print("\nIt's a yes or no question " + gm.player.getName() + ". (Y)es or (N)o: ");
                 input = scan.nextLine();
                 break;
             }
         }
-        ClearConsole();
     }
 
     // This method should be called on player death.
