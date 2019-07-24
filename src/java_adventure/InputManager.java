@@ -55,8 +55,7 @@ public class InputManager {
 
     // Compares user input against possible acceptable values.
     public void VerifyInput(Room cr) throws IOException, InterruptedException {
-        // System.out.println("\n\t*You are now in " + cr.getName() + ".*"); //Intended
-        // for debugging only.
+        // System.out.println("\n\t*You are now in " + cr.getName() + ".*"); //Intended for debugging only.
         Scanner scan = new Scanner(System.in);
         boolean isValid = false;
         if (cr.getName().equals("end")){

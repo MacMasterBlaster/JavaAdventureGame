@@ -107,7 +107,6 @@ public class Room {
         else roomImageString = roomImageEmpty;
         return roomImageString;
     }
-
     
     // Name Properties
     public String getName() {

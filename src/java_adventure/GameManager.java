@@ -10,18 +10,21 @@ import java.util.ArrayList;
 
 public class GameManager {
     InputManager im;
-    boolean inCombat = false;
+    boolean inCombat = false; //  used for enabling and disabling the combat loop.
     ArrayList<Room> dungeon = new ArrayList<Room>();
-    CharacterController m_goblin = new CharacterController();
-    CharacterController m_slime1 = new CharacterController();
-    CharacterController m_slime2 = new CharacterController();
-    CharacterController m_mimic = new CharacterController();
-    CharacterController m_spider = new CharacterController();
-    CharacterController m_boss = new CharacterController();
+    // Generic CharacterControllers that will be assigned custom values.
+    // Could probably be a single controller that is assigned to all rooms 
+    // and has its values changed depending on the desired monster for the current room.
+    CharacterController m_goblin = new CharacterController(); // Generic CharacterControllers that will be assigned custom values.     
+    CharacterController m_slime1 = new CharacterController(); // Generic CharacterControllers that will be assigned custom values.     
+    CharacterController m_slime2 = new CharacterController(); // Generic CharacterControllers that will be assigned custom values.     
+    CharacterController m_mimic = new CharacterController();  // Generic CharacterControllers that will be assigned custom values.     
+    CharacterController m_spider = new CharacterController(); // Generic CharacterControllers that will be assigned custom values.     
+    CharacterController m_boss = new CharacterController();   // Generic CharacterControllers that will be assigned custom values. 
 
-    public CharacterController player = new CharacterController("Nobody", "None");
+    public CharacterController player = new CharacterController("Nobody", "None"); // The user's player character
     public int playerDeaths = 0;
-    public boolean beginQuest = false;
+    public boolean beginQuest = false; // A quick and dirty way to exit main gameloop early in JavaAdventure.java
     private static GameManager instance = null;
 
     // private constructor restricted to this class itself
@@ -45,6 +48,7 @@ public class GameManager {
         inCombat = temp;
     }
 
+    //Necessary to make sure the reference is assigned after an InputManager Instance has been generated.
     public void setInputManagerInstance() {
         im = InputManager.getInstance();
     }
@@ -74,7 +78,7 @@ public class GameManager {
         newCharacter.setCharClass("Warrior");
     }
 
-    // For play testing only!
+    // For debugging and play testing only!
     public void MakeGod(CharacterController newCharacter, String name) {
         newCharacter.setHealth(1000);
         newCharacter.setMaxHealth(1000);
@@ -84,7 +88,6 @@ public class GameManager {
         newCharacter.setAttackMod(100);
         newCharacter.setCharClass("God");
     }
-
     // endregion
 
     // region Enemies
@@ -149,7 +152,9 @@ public class GameManager {
     }
     // endregion
 
+    //The not so proceedural dungeon generator.
     public void CreateDungeon() {
+        // Create all the rooms with default values as defined by the Room Contructor.
         Room start = new Room();
         Room moveAssit = new Room();
         Room fight = new Room();
@@ -166,7 +171,7 @@ public class GameManager {
         Room boss = new Room();
         Room treasure = new Room();
         Room end = new Room();
-        // room names for debugging
+        // Assign room names for debugging
         start.setName("start");
         moveAssit.setName("moveAssit");
         fight.setName("fight");
@@ -183,14 +188,14 @@ public class GameManager {
         boss.setName("boss");
         treasure.setName("treasure");
         end.setName("end");
-        // Make Monsters
+        // Set monster CharacterController stats
         MakeGoblin(m_goblin);
         MakeSlime(m_slime1);
         MakeSlime(m_slime2);
         MakeMimic(m_mimic);
         MakeSpider(m_spider);
         MakeKnight(m_boss);
-        // Set all room linkages
+        // Set all room linkages and string "images" then add the monsters where needed.
         start.setwDoor(moveAssit);
         start.setRoomImages(null, RoomImage.start());
 
@@ -251,7 +256,7 @@ public class GameManager {
         end.setExits(null, null, null, null);
         end.setRoomImages(null, RoomImage.end());
 
-        // Add all rooms to the dungeon list
+        // Add all rooms to the dungeon list. This is used mainly by the debugging "jumpto" call in the VerifyInput() method's switch statement.
         dungeon.add(start);
         dungeon.add(moveAssit);
         dungeon.add(fight);
