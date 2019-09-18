@@ -28,6 +28,7 @@ public class Dice {
         }
         return i + attackMod;
     }
+    
     public int RollInitiative(int die, int mod) {
         int i = rand.nextInt(die + 1);
         while (i == 0) {
